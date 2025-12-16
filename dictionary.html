@@ -2,188 +2,302 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Indian Slang Dictionary – SlangAdda AI</title>
+  <title>SlangAdda AI – Dictionary</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Search 850+ Indian slang terms with meanings, examples, and context. Free forever." />
+  <meta name="description" content="SlangAdda AI Dictionary – Decode Indian slang with meaning, context, tone & safety." />
 
   <!-- Fonts & Icons -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-  <!-- CSS -->
-  <link rel="stylesheet" href="styles.css">
+  <style>
+    :root {
+      --primary: #6366f1;
+      --primary-dark: #4f46e5;
+      --secondary: #f59e0b;
+      --dark: #1e293b;
+      --light: #f8fafc;
+      --gray: #64748b;
+      --gray-light: #e2e8f0;
+      --success: #10b981;
+      --warning: #f59e0b;
+      --danger: #ef4444;
+      --gradient: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+      --shadow: 0 10px 25px rgba(0,0,0,0.05);
+      --shadow-lg: 0 20px 40px rgba(99,102,241,0.12);
+      --radius: 16px;
+      --transition: all 0.3s ease;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Outfit','Poppins',sans-serif;
+      background: #fefefe;
+      color: var(--dark);
+    }
+
+    /* NAVBAR */
+    .navbar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      padding: 18px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+      z-index: 1000;
+    }
+
+    .logo {
+      font-size: 26px;
+      font-weight: 700;
+    }
+
+    .logo span {
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      color: transparent;
+      font-weight: 800;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--gray);
+      font-weight: 500;
+    }
+
+    nav a:hover { color: var(--primary); }
+
+    .login {
+      border: 2px solid var(--primary);
+      background: transparent;
+      color: var(--primary);
+      padding: 8px 20px;
+      border-radius: 50px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .login:hover {
+      background: var(--primary);
+      color: white;
+    }
+
+    /* PAGE */
+    .page {
+      padding: 140px 40px 80px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .page h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+
+    .page h1 span {
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .page p {
+      color: var(--gray);
+      margin-bottom: 40px;
+      font-size: 1.1rem;
+    }
+
+    /* SEARCH */
+    .search-box {
+      display: flex;
+      background: white;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-lg);
+      border: 1px solid var(--gray-light);
+      margin-bottom: 40px;
+    }
+
+    .search-box input {
+      flex: 1;
+      padding: 18px 22px;
+      border: none;
+      outline: none;
+      font-size: 1rem;
+      border-radius: var(--radius);
+    }
+
+    .search-box button {
+      background: var(--gradient);
+      border: none;
+      color: white;
+      padding: 0 28px;
+      font-weight: 600;
+      cursor: pointer;
+      border-radius: 12px;
+    }
+
+    /* RESULT CARD */
+    .result {
+      display: none;
+      background: white;
+      padding: 40px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-lg);
+      animation: fadeIn 0.4s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .word {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .word h2 {
+      font-size: 2.2rem;
+      font-weight: 800;
+    }
+
+    .badge {
+      padding: 6px 14px;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    .safe { background: rgba(16,185,129,0.15); color: var(--success); }
+    .warn { background: rgba(245,158,11,0.15); color: var(--warning); }
+    .danger { background: rgba(239,68,68,0.15); color: var(--danger); }
+
+    .meaning {
+      font-size: 1.2rem;
+      margin: 20px 0;
+    }
+
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .meta span {
+      background: var(--light);
+      padding: 10px 16px;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      box-shadow: var(--shadow);
+    }
+
+    .example {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 12px;
+      color: var(--gray);
+      font-style: italic;
+    }
+
+    /* FOOTER */
+    footer {
+      margin-top: 80px;
+      text-align: center;
+      color: var(--gray);
+      font-size: 0.9rem;
+    }
+
+    @media(max-width:768px){
+      nav{ display:none; }
+      .page h1{ font-size:2.2rem; }
+      .search-box{ flex-direction:column; gap:10px; padding:10px; }
+      .search-box button{ padding:14px; }
+    }
+  </style>
 </head>
 
 <body>
 
-<!-- NAVBAR (UNCHANGED) -->
 <header class="navbar">
   <div class="logo">SlangAdda<span>AI</span></div>
   <nav>
-    <a href="index.html"><i class="fas fa-home"></i> Home</a>
-    <a href="dictionary.html" class="active"><i class="fas fa-book"></i> Dictionary</a>
-    <a href="quiz.html"><i class="fas fa-brain"></i> Quiz</a>
-    <a href="blog.html"><i class="fas fa-blog"></i> Blog</a>
-    <a href="index.html#support" class="support-nav"><i class="fas fa-heart"></i> Support</a>
+    <a href="index.html">Home</a>
+    <a href="#">Dictionary</a>
+    <a href="#">Pro</a>
+    <button class="login">Login</button>
   </nav>
 </header>
 
-<!-- HERO / SEARCH (FOCUSED & LIGHT) -->
-<section class="dictionary-header">
-  <div class="container">
-    <h1><i class="fas fa-book-open"></i> Indian Slang Dictionary</h1>
-    <p class="subtitle">
-      Search Indian, Gen-Z & Internet slang meanings.  
-      <strong>850+ terms · Updated daily · Free forever</strong>
-    </p>
+<section class="page">
+  <h1>Slang <span>Dictionary</span></h1>
+  <p>Search Indian slang and understand the real meaning, tone, context & safety.</p>
 
-    <div class="search-container">
-      <div class="search-box-large">
-        <input
-          type="text"
-          id="dictionarySearch"
-          placeholder="Search slang or meaning (e.g. rizz, delulu, chapri)">
-        <button id="searchButton">
-          <i class="fas fa-search"></i> Search
-        </button>
-      </div>
+  <div class="search-box">
+    <input type="text" id="slangInput" placeholder="Type slang… e.g. rizz, delulu" />
+    <button id="searchBtn">Decode</button>
+  </div>
 
-      <div class="quick-suggestions">
-        <span class="quick-suggestion" data-term="rizz">rizz</span>
-        <span class="quick-suggestion" data-term="delulu">delulu</span>
-        <span class="quick-suggestion" data-term="chapri">chapri</span>
-        <span class="quick-suggestion" data-term="savage">savage</span>
-      </div>
+  <!-- RESULT -->
+  <div class="result" id="resultCard">
+    <div class="word">
+      <h2 id="wordText">rizz</h2>
+      <span class="badge safe" id="safetyTag">Office Safe</span>
+    </div>
+
+    <div class="meaning" id="meaningText">
+      Natural charm or confidence, especially in flirting or social situations.
+    </div>
+
+    <div class="meta">
+      <span><i class="fas fa-volume-up"></i> riz</span>
+      <span><i class="fas fa-map-marker-alt"></i> Internet / India</span>
+      <span><i class="fas fa-theater-masks"></i> Playful tone</span>
+    </div>
+
+    <div class="example" id="exampleText">
+      “Bhai ke paas alag hi rizz hai.”
     </div>
   </div>
 </section>
 
-<!-- SEARCH RESULTS INFO -->
-<div class="container">
-  <div class="search-results-info" id="searchResultsInfo" style="display:none">
-    <div class="results-stats">
-      <span id="resultsCount">0</span> results for "<span id="searchQuery"></span>"
-    </div>
-    <button class="action-icon-btn" id="clearSearchBtn">
-      <i class="fas fa-times"></i>
-    </button>
-  </div>
-</div>
-
-<!-- DICTIONARY CONTROLS (SIMPLIFIED VISUAL WEIGHT) -->
-<section class="dictionary-content">
-  <div class="container">
-
-    <div class="dictionary-controls">
-      <div class="filter-buttons">
-        <button class="filter-btn active" data-filter="all">All</button>
-        <button class="filter-btn" data-filter="genz">Gen-Z</button>
-        <button class="filter-btn" data-filter="professional">Professional</button>
-        <button class="filter-btn" data-filter="regional">Regional</button>
-        <button class="filter-btn" data-filter="internet">Internet</button>
-      </div>
-
-      <div class="sort-options">
-        <label>Sort:</label>
-        <select id="sortSelect">
-          <option value="popularity">Most Popular</option>
-          <option value="alphabetical">A–Z</option>
-          <option value="rating">Highest Rated</option>
-        </select>
-      </div>
-    </div>
-
-    <!-- MAIN GRID -->
-    <div class="dictionary-grid" id="dictionaryGrid"></div>
-
-    <div class="load-more-container">
-      <button id="loadMoreBtn" class="load-more-btn">
-        <i class="fas fa-sync-alt"></i> Load More
-      </button>
-      <p class="load-more-note">
-        Showing <span id="showingCount">20</span> of <span id="totalCount">850+</span>
-      </p>
-    </div>
-
-  </div>
-</section>
-
-<!-- DISCOVERY SECTION (MERGED & CALMER) -->
-<section class="featured-terms">
-  <div class="container">
-    <h2><i class="fas fa-fire"></i> Trending & Related Slang</h2>
-    <p class="section-subtitle">Popular terms users are exploring right now</p>
-
-    <div class="terms-carousel" id="featuredCarousel"></div>
-  </div>
-</section>
-
-<!-- DAILY TERM (MOVED LOWER) -->
-<section class="daily-term">
-  <div class="container">
-    <h3>✨ Slang of the Day</h3>
-    <div class="daily-term-content">
-      <div class="term-of-day" id="termOfDay">rizz</div>
-      <div class="meaning-of-day" id="meaningOfDay">
-        Charisma or charm, especially in romantic contexts
-      </div>
-      <button class="hero-btn secondary" onclick="showEnhancedTermDetails('rizz')">
-        Learn More
-      </button>
-    </div>
-  </div>
-</section>
-
-<!-- COMMUNITY / INFO (BOTTOM ONLY) -->
-<section class="dictionary-info">
-  <div class="container">
-    <div class="info-card">
-      <h3>Help Us Grow</h3>
-      <p>
-        Found a slang term we’re missing?
-        <a href="#" id="suggestTermLink">Submit a term</a>.
-      </p>
-    </div>
-
-    <div class="info-card">
-      <h3>API Coming Soon</h3>
-      <p>We’re building a public API for developers and researchers.</p>
-      <button class="api-notify-btn">Notify Me</button>
-    </div>
-  </div>
-</section>
-
-<!-- FOOTER (UNCHANGED) -->
 <footer>
-  <div class="footer-content">
-    <div class="footer-section">
-      <h3>SlangAdda<span>AI</span></h3>
-      <p>Free Indian slang dictionary. No paywalls.</p>
-    </div>
-  </div>
-
-  <div class="footer-bottom">
-    <p>© 2025 SlangAdda AI · Made with ❤️ for India</p>
-  </div>
+  © 2025 SlangAdda AI · Understand how India really speaks.
 </footer>
 
-<!-- MODALS (UNCHANGED HOOKS) -->
-<div class="modal" id="termModal">
-  <div class="modal-content term-modal">
-    <span class="close-modal">&times;</span>
-    <div class="modal-body" id="termModalBody"></div>
-  </div>
-</div>
-
-<!-- JS -->
-<script src="slang-database.js"></script>
-<script src="script.js"></script>
-
 <script>
-  document.addEventListener("DOMContentLoaded", () => {
-    initializeEnhancedDictionary();
-    setupEnhancedSearch();
-    loadFeaturedTerms();
+  document.addEventListener('DOMContentLoaded', () => {
+    const input = document.getElementById('slangInput');
+    const btn = document.getElementById('searchBtn');
+    const card = document.getElementById('resultCard');
+
+    btn.addEventListener('click', () => {
+      if(!input.value.trim()){
+        alert('Enter a slang word to decode');
+        return;
+      }
+      card.style.display = 'block';
+      card.scrollIntoView({ behavior: 'smooth' });
+    });
+
+    input.addEventListener('keypress', e => {
+      if(e.key === 'Enter') btn.click();
+    });
   });
 </script>
 
