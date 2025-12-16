@@ -4,109 +4,163 @@
   <meta charset="UTF-8" />
   <title>SlangAdda AI – Decode Indian Slang</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Decode Indian slang with context, safety and culture. Built for Gen-Z, parents, creators & professionals." />
+  <meta name="description" content="Decode Indian slang with context, safety and culture." />
 
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css" />
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Outfit', sans-serif;
+      background: #f8fafc;
+      color: #1e293b;
+    }
+
+    header {
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: white;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo {
+      font-size: 26px;
+      font-weight: 700;
+    }
+
+    .logo span {
+      color: #6366f1;
+    }
+
+    nav a {
+      margin-right: 20px;
+      text-decoration: none;
+      color: #64748b;
+      font-weight: 500;
+    }
+
+    .hero {
+      padding: 160px 20px 100px;
+      text-align: center;
+      background: linear-gradient(135deg,#f8fafc,#eef2ff);
+    }
+
+    h1 {
+      font-size: 3rem;
+      font-weight: 800;
+    }
+
+    h1 span {
+      color: #6366f1;
+    }
+
+    .search-box {
+      margin-top: 30px;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .search-box input {
+      width: 300px;
+      padding: 16px;
+      border-radius: 30px;
+      border: 1px solid #e2e8f0;
+    }
+
+    .search-box button {
+      padding: 16px 28px;
+      border-radius: 30px;
+      border: none;
+      background: #6366f1;
+      color: white;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    section {
+      padding: 80px 20px;
+      text-align: center;
+    }
+
+    .chips span {
+      display: inline-block;
+      margin: 8px;
+      padding: 12px 20px;
+      background: white;
+      border-radius: 30px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+      font-weight: 600;
+    }
+
+    .cta {
+      background: linear-gradient(135deg,#6366f1,#8b5cf6);
+      color: white;
+      padding: 100px 20px;
+    }
+
+    .cta button {
+      padding: 18px 40px;
+      border-radius: 40px;
+      border: none;
+      font-size: 1.1rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    footer {
+      padding: 40px;
+      text-align: center;
+      color: #64748b;
+    }
+  </style>
 </head>
 
 <body>
 
-<!-- NAVBAR -->
-<header class="navbar">
+<header>
   <div class="logo">SlangAdda<span>AI</span></div>
   <nav>
-    <a href="#">Dictionary</a>
-    <a href="#">Quiz</a>
-    <a href="#" class="pro">👑 Pro</a>
-    <button class="login">Login</button>
+    <a href="app.html">Dictionary</a>
   </nav>
 </header>
 
-<!-- HERO -->
 <section class="hero">
-  <div class="hero-content">
-    <span class="pill">India’s slang, decoded by AI</span>
-    <h1>Decode Indian Slang<br><span>Without Feeling Awkward</span></h1>
-    <p>Understand what people really mean — with context, tone & safety.</p>
+  <h1>Decode Indian Slang<br><span>Without Feeling Awkward</span></h1>
+  <p>Understand what people really mean — with context & safety.</p>
 
-    <div class="search-box">
-      <input type="text" placeholder="Try: ‘yeh banda alag hi rizz hai’" />
-      <button>Decode</button>
-    </div>
-
-    <p class="micro-text">Office-safe • Gen-Z • Regional • Context-aware</p>
+  <div class="search-box">
+    <input placeholder="Try: yeh banda alag hi rizz hai" />
+    <a href="app.html"><button>Decode</button></a>
   </div>
+</section>
 
-  <!-- Floating slang -->
-  <div class="floating">
-    <span>rizz</span>
+<section>
+  <h2>🔥 Trending Slang</h2>
+  <div class="chips">
+    <span>rizz 👑</span>
     <span>chapri</span>
     <span>delulu</span>
-    <span>scene kya hai?</span>
+    <span>bhai scene</span>
   </div>
 </section>
 
-<!-- TRENDING -->
-<section class="trending">
-  <h2>🔥 Trending Slang</h2>
-  <div class="carousel">
-    <div class="chip">rizz 👑</div>
-    <div class="chip">delulu</div>
-    <div class="chip">chapri</div>
-    <div class="chip">bhai scene</div>
-    <div class="chip">NPC energy</div>
-  </div>
-</section>
-
-<!-- WHY SLANGADDA -->
-<section class="why">
-  <h2>Why SlangAdda AI?</h2>
-
-  <div class="why-grid">
-    <div class="card">
-      <h3>🧠 Context First</h3>
-      <p>Not just meanings. Learn when, where and how slang is actually used.</p>
-    </div>
-
-    <div class="card">
-      <h3>🛡️ Safety Aware</h3>
-      <p>Office-safe, explicit & caution tags so you don’t embarrass yourself.</p>
-    </div>
-
-    <div class="card">
-      <h3>🇮🇳 Indian by Design</h3>
-      <p>Hinglish, regional slang & desi internet culture — finally decoded.</p>
-    </div>
-
-    <div class="card pro-card">
-      <h3>👑 Go Pro</h3>
-      <p>Unlock deep meanings, quizzes & premium slang.</p>
-    </div>
-  </div>
-</section>
-
-<!-- WHO IS THIS FOR -->
-<section class="audience">
-  <h2>Built for Everyone Who Hears Slang</h2>
-  <div class="audience-row">
-    <span>🎓 Students</span>
-    <span>👨‍👩‍👧 Parents</span>
-    <span>🎥 Creators</span>
-    <span>💼 Professionals</span>
-    <span>🌍 NRIs</span>
-  </div>
-</section>
-
-<!-- CTA -->
 <section class="cta">
   <h2>Stop guessing. Start understanding.</h2>
-  <button>Decode Slang Now</button>
+  <a href="app.html"><button>Go to Dictionary</button></a>
 </section>
 
-<!-- FOOTER -->
 <footer>
-  <p>© 2025 SlangAdda AI · Understand how India really speaks.</p>
+  © 2025 SlangAdda AI
 </footer>
 
 </body>
