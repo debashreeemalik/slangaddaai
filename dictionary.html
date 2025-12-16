@@ -1,121 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Indian Slang Dictionary – SlangAdda AI</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <title>Dictionary – SlangAdda AI</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f8fafc;
-    }
-    header {
-      background: linear-gradient(135deg, #6366f1, #8b5cf6);
-      color: white;
-      padding: 40px 20px;
-      text-align: center;
-    }
-    .container {
-      max-width: 900px;
-      margin: auto;
-      padding: 30px 20px;
-    }
-    .search-box {
-      display: flex;
-      gap: 10px;
-    }
-    input {
-      flex: 1;
-      padding: 14px;
-      font-size: 16px;
-      border-radius: 10px;
-      border: 1px solid #ccc;
-    }
-    button {
-      padding: 14px 20px;
-      font-size: 16px;
-      border-radius: 10px;
-      border: none;
-      cursor: pointer;
-      background: #6366f1;
-      color: white;
-    }
-    .card {
-      background: white;
-      padding: 16px;
-      border-radius: 12px;
-      margin-top: 15px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-    }
-    .card h3 {
-      margin: 0 0 6px;
-      color: #4f46e5;
-    }
-    .support {
-      margin-top: 40px;
-      background: #fff7ed;
-      padding: 20px;
-      border-radius: 12px;
-      text-align: center;
-    }
-  </style>
+  <!-- Fonts & Icons (SAME AS INDEX) -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+  <!-- CSS -->
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- Slang Data -->
   <script src="slang-database.js"></script>
 </head>
 
 <body>
 
-<header>
-  <h1>Indian Slang Dictionary</h1>
-  <p>Search Indian & Gen-Z slang meanings</p>
+<!-- NAVBAR (EXACT SAME AS INDEX) -->
+<header class="navbar">
+  <div class="logo">SlangAdda<span>AI</span></div>
+  <nav>
+    <a href="index.html"><i class="fas fa-home"></i> Home</a>
+    <a href="dictionary.html" class="active"><i class="fas fa-book"></i> Dictionary</a>
+    <a href="quiz.html"><i class="fas fa-brain"></i> Quiz</a>
+    <a href="blog.html"><i class="fas fa-blog"></i> Blog</a>
+    <a href="#support" class="support-nav"><i class="fas fa-heart"></i> Support</a>
+  </nav>
 </header>
 
-<div class="container">
+<!-- DICTIONARY SECTION -->
+<section class="container" style="margin-top:40px">
+  <h1><i class="fas fa-book"></i> Slang Dictionary</h1>
+  <p class="section-subtitle">Search Indian, Gen-Z & Internet slang meanings</p>
+
   <div class="search-box">
-    <input id="searchInput" placeholder="Search slang (word / meaning / category)">
-    <button onclick="searchSlang()">Search</button>
+    <input type="text" id="searchInput" placeholder="Type a slang word…" />
+    <button class="hero-btn primary" onclick="searchSlang()">
+      <i class="fas fa-search"></i> Search
+    </button>
   </div>
 
-  <div id="results"></div>
-
-  <div class="support">
-    <h3>Support SlangAdda AI ❤️</h3>
-    <p>Your support keeps the dictionary free forever.</p>
-    <strong>UPI: slangadda@ptyes</strong>
-  </div>
-</div>
+  <div id="results" style="margin-top:30px"></div>
+</section>
 
 <script>
   function searchSlang() {
     const q = document.getElementById("searchInput").value.toLowerCase();
     const box = document.getElementById("results");
+    box.innerHTML = "";
 
-    if (!q) {
-      box.innerHTML = "";
-      return;
-    }
+    if (!q) return;
 
-    const filtered = window.SLANG_DATA.filter(item =>
+    const matches = window.SLANG_DATA.filter(item =>
       item.word.toLowerCase().includes(q) ||
       item.meaning.toLowerCase().includes(q) ||
       item.category.toLowerCase().includes(q)
     );
 
-    if (!filtered.length) {
-      box.innerHTML = "<p>No results found</p>";
+    if (!matches.length) {
+      box.innerHTML = "<p>No results found.</p>";
       return;
     }
 
-    box.innerHTML = filtered.map(item => `
-      <div class="card">
-        <h3>${item.word}</h3>
-        <p><b>Meaning:</b> ${item.meaning}</p>
-        <p><b>Example:</b> ${item.example}</p>
-        <small>Category: ${item.category}</small>
-      </div>
-    `).join("");
+    matches.forEach(item => {
+      box.innerHTML += `
+        <div class="term-card">
+          <div class="term">${item.word}</div>
+          <div class="meaning">${item.meaning}</div>
+          <small><b>Example:</b> ${item.example}</small><br/>
+          <small><b>Category:</b> ${item.category}</small>
+        </div>
+      `;
+    });
+  }
+
+  // Auto search if coming from index page
+  const params = new URLSearchParams(window.location.search);
+  if (params.get("search")) {
+    document.getElementById("searchInput").value = params.get("search");
+    searchSlang();
   }
 </script>
 
