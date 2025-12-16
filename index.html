@@ -2,357 +2,942 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>SlangAdda AI – Free Indian Slang Decoder</title>
+  <title>SlangAdda AI – Free Indian Slang Decoder | Understand Gen-Z & Internet Slang</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Free Indian slang decoder. Understand Gen-Z, workplace & internet slang. No ads, no tracking, free forever." />
+  <meta name="description" content="Free tool to decode Indian slang. Understand Gen-Z, workplace slang, Bollywood terms, and cultural references instantly. Learn meanings of rizz, delulu, chapri, and more." />
+  <meta name="keywords" content="Indian slang, Gen-Z slang, free slang dictionary, rizz meaning, delulu meaning, chapri meaning, Bollywood slang, internet slang, Indian English, Hinglish" />
+  <meta name="author" content="SlangAdda AI" />
   <meta name="robots" content="index, follow" />
-
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <meta property="og:title" content="SlangAdda AI – Free Indian Slang Decoder" />
+  <meta property="og:description" content="Understand Indian slang instantly. No ads, no tracking, completely free." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://slangadda.ai" />
+  <meta property="og:image" content="https://slangadda.ai/og-image.png" />
+  
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
+  
   <!-- Firebase -->
   <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
-
-  <!-- Shared Styles -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-storage-compat.js"></script>
+  
+  <!-- CSS Files -->
   <link rel="stylesheet" href="styles.css">
-
   <style>
-    :root{
-      --primary:#6366f1;
-      --gradient:linear-gradient(135deg,#6366f1,#8b5cf6);
-      --dark:#1e293b;
-      --gray:#64748b;
-      --light:#f8fafc;
-      --radius:16px;
-      --shadow:0 10px 25px rgba(0,0,0,.06);
-      --shadow-lg:0 20px 40px rgba(99,102,241,.12);
+    /* QR Code Display */
+    .qr-real {
+      width: 200px;
+      height: 200px;
+      margin: 20px auto;
+      border: 10px solid white;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      background: white;
+      padding: 10px;
     }
-
-    body{
-      font-family:'Outfit','Poppins',sans-serif;
-      background:#fff;
-      color:var(--dark);
-      margin:0;
+    
+    .qr-real img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
     }
-
-    /* NAVBAR */
-    .navbar{
-      position:fixed;
-      top:0;
-      width:100%;
-      z-index:1000;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      padding:18px 40px;
-      background:rgba(255,255,255,.95);
-      backdrop-filter:blur(10px);
-      box-shadow:0 4px 20px rgba(0,0,0,.05);
+    
+    /* Live Stats Animation */
+    @keyframes countUp {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
     }
-
-    .logo{
-      font-size:26px;
-      font-weight:800;
+    
+    .counting {
+      animation: countUp 0.5s ease-out;
     }
-    .logo span{
-      background:var(--gradient);
-      -webkit-background-clip:text;
-      color:transparent;
+    
+    /* Ad Click Tracking */
+    .ad-trackable {
+      cursor: pointer;
+      transition: transform 0.3s;
     }
-
-    nav{
-      display:flex;
-      gap:26px;
-      align-items:center;
+    
+    .ad-trackable:hover {
+      transform: scale(1.02);
     }
-
-    nav a{
-      text-decoration:none;
-      color:var(--gray);
-      font-weight:500;
+    
+    /* Submission Success */
+    .submission-success {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: #10b981;
+      color: white;
+      padding: 15px 25px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-lg);
+      z-index: 10000;
+      display: none;
+      animation: slideIn 0.3s ease-out;
     }
-    nav a:hover{color:var(--primary);}
-
-    /* HERO */
-    .hero{
-      padding:160px 24px 120px;
-      text-align:center;
-      background:linear-gradient(180deg,#f8fafc,#ffffff);
-    }
-
-    .pill{
-      display:inline-block;
-      padding:10px 20px;
-      border-radius:50px;
-      background:rgba(99,102,241,.1);
-      color:var(--primary);
-      font-weight:600;
-      margin-bottom:24px;
-    }
-
-    h1{
-      font-size:3.4rem;
-      font-weight:800;
-      line-height:1.1;
-      margin-bottom:20px;
-    }
-
-    h1 span{
-      background:var(--gradient);
-      -webkit-background-clip:text;
-      color:transparent;
-    }
-
-    .hero p{
-      max-width:700px;
-      margin:0 auto 40px;
-      color:var(--gray);
-      font-size:1.15rem;
-    }
-
-    .search-box{
-      max-width:600px;
-      margin:0 auto 30px;
-      display:flex;
-      background:#fff;
-      border-radius:var(--radius);
-      box-shadow:var(--shadow-lg);
-      border:1px solid #e2e8f0;
-      padding:6px;
-    }
-
-    .search-box input{
-      flex:1;
-      border:none;
-      padding:18px 20px;
-      font-size:1rem;
-      outline:none;
-    }
-
-    .search-box button{
-      border:none;
-      background:var(--gradient);
-      color:#fff;
-      padding:0 30px;
-      border-radius:12px;
-      font-weight:600;
-      cursor:pointer;
-    }
-
-    .hero-trust{
-      display:flex;
-      justify-content:center;
-      gap:20px;
-      flex-wrap:wrap;
-      font-size:.9rem;
-      color:var(--gray);
-    }
-
-    /* STATS */
-    .stats{
-      padding:80px 24px;
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-      gap:24px;
-      max-width:1000px;
-      margin:auto;
-    }
-
-    .stat{
-      background:#fff;
-      border-radius:var(--radius);
-      box-shadow:var(--shadow);
-      padding:30px;
-      text-align:center;
-    }
-
-    .stat h3{
-      font-size:2rem;
-      color:var(--primary);
-      margin-bottom:8px;
-    }
-
-    /* TRENDING */
-    .trending{
-      padding:80px 24px;
-      background:#f8fafc;
-      text-align:center;
-    }
-
-    .terms-grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-      gap:20px;
-      max-width:1000px;
-      margin:40px auto 0;
-    }
-
-    .term-card{
-      background:#fff;
-      padding:24px;
-      border-radius:var(--radius);
-      box-shadow:var(--shadow);
-      cursor:pointer;
-    }
-
-    .term-card:hover{
-      transform:translateY(-6px);
-      box-shadow:var(--shadow-lg);
-    }
-
-    .term-card .term{
-      font-size:1.3rem;
-      font-weight:700;
-      margin-bottom:6px;
-    }
-
-    .term-card .meaning{
-      font-size:.95rem;
-      color:var(--gray);
-    }
-
-    /* WHY FREE */
-    .why-free{
-      padding:100px 24px;
-      max-width:1000px;
-      margin:auto;
-      text-align:center;
-    }
-
-    .why-flow{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-      gap:30px;
-      margin-top:50px;
-    }
-
-    .why-card{
-      background:#fff;
-      padding:36px;
-      border-radius:var(--radius);
-      box-shadow:var(--shadow);
-    }
-
-    /* SUPPORT */
-    .support{
-      padding:100px 24px;
-      background:var(--gradient);
-      color:#fff;
-      text-align:center;
-    }
-
-    .support-stats{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-      gap:24px;
-      max-width:900px;
-      margin:40px auto 0;
-    }
-
-    .support-stat{
-      background:rgba(255,255,255,.15);
-      padding:24px;
-      border-radius:var(--radius);
-    }
-
-    /* FOOTER */
-    footer{
-      padding:60px 24px;
-      text-align:center;
-      color:var(--gray);
-      border-top:1px solid #e2e8f0;
-    }
-
-    @media(max-width:768px){
-      h1{font-size:2.2rem;}
-      nav{display:none;}
-      .search-box{flex-direction:column;gap:10px;}
-      .search-box button{padding:16px;}
+    
+    @keyframes slideIn {
+      from { transform: translateX(100%); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
     }
   </style>
 </head>
 
 <body>
 
+<!-- Submission Success Message -->
+<div class="submission-success" id="submissionSuccess">
+  <i class="fas fa-check-circle"></i> <span id="successMessage">Thank you for your submission!</span>
+</div>
+
+<!-- NAVBAR -->
 <header class="navbar">
   <div class="logo">SlangAdda<span>AI</span></div>
   <nav>
-    <a href="index.html">Home</a>
-    <a href="dictionary.html">Dictionary</a>
-    <a href="quiz.html">Quiz</a>
-    <a href="#support">Support</a>
+    <a href="index.html"><i class="fas fa-home"></i> Home</a>
+    <a href="dictionary.html"><i class="fas fa-book"></i> Dictionary</a>
+    <a href="quiz.html"><i class="fas fa-brain"></i> Quiz</a>
+    <a href="blog.html"><i class="fas fa-blog"></i> Blog</a>
+    <a href="#support" class="support-nav"><i class="fas fa-heart"></i> Support</a>
   </nav>
 </header>
 
+<!-- ADVERTISEMENT TOP -->
+<div class="container">
+  <div class="ad-container">
+    <div class="ad-label">Advertisement</div>
+    <div class="ad-unit horizontal ad-trackable" data-ad-id="top-banner">
+      <i class="fas fa-ad"></i>
+      <p>728×90 Ad Space</p>
+      <small>Your ad here. Contact: ads@slangadda.ai</small>
+    </div>
+  </div>
+</div>
+
 <!-- HERO -->
 <section class="hero">
-  <span class="pill">100% Free · No Login · No Tracking</span>
-  <h1>India’s Slang,<br><span>Finally Explained</span></h1>
-  <p>Understand Gen-Z, workplace & internet slang without embarrassment. Built for students, parents, professionals & NRIs.</p>
+  <div class="hero-content">
+    <span class="pill"><i class="fas fa-star"></i> 100% Free & Always Will Be</span>
+    <h1 id="dynamic-title">Decode Indian Slang<br><span class="typing-text">Without Paywalls or Ads</span></h1>
+    <p class="hero-subtitle" id="dynamic-subtitle">We believe understanding language should be free. No subscriptions, no tracking, just pure knowledge sharing.</p>
 
-  <div class="search-box">
-    <input id="quickSearch" placeholder="Try: rizz, delulu, chapri…" />
-    <button onclick="performSearch()">Decode</button>
+    <div class="hero-buttons">
+      <a href="dictionary.html" class="hero-btn primary" id="dict-btn">
+        <i class="fas fa-book"></i> <span>Browse Dictionary</span>
+      </a>
+      <a href="#why-free" class="hero-btn secondary" id="why-btn">
+        <i class="fas fa-heart"></i> <span>Why We're Free</span>
+      </a>
+      <a href="#support" class="hero-btn tertiary" id="support-btn">
+        <i class="fas fa-hands-helping"></i> <span>Join Movement</span>
+      </a>
+    </div>
+
+    <div class="hero-features">
+      <div class="feature interactive" data-term="rizz">
+        <i class="fas fa-bolt"></i>
+        <span>Try: 'rizz'</span>
+      </div>
+      <div class="feature interactive" data-term="delulu">
+        <i class="fas fa-brain"></i>
+        <span>Try: 'delulu'</span>
+      </div>
+      <div class="feature interactive" data-term="chapri">
+        <i class="fas fa-motorcycle"></i>
+        <span>Try: 'chapri'</span>
+      </div>
+      <div class="feature" id="quick-search-toggle">
+        <i class="fas fa-search"></i>
+        <span>Quick Search</span>
+      </div>
+    </div>
+
+    <div class="quick-search hidden" id="quickSearchContainer">
+      <input type="text" placeholder="Type any slang term..." id="quickSearch">
+      <button id="quickSearchBtn"><i class="fas fa-arrow-right"></i></button>
+      <div class="search-suggestions" id="searchSuggestions"></div>
+    </div>
   </div>
 
-  <div class="hero-trust">
-    <span>🔓 No Login</span>
-    <span>🚫 No Ads</span>
-    <span>🛡 No Tracking</span>
-    <span>❤️ Free Forever</span>
+  <!-- Floating elements -->
+  <div class="floating">
+    <span class="float-item" data-text="No Login Required"><i class="fas fa-lock-open"></i> No Login</span>
+    <span class="float-item" data-text="Zero Ads Ever"><i class="fas fa-ad"></i> Ad-Free</span>
+    <span class="float-item" data-text="Free Forever Promise"><i class="fas fa-rupee-sign"></i> Free Forever</span>
+    <span class="float-item" data-text="Community Powered"><i class="fas fa-users"></i> Community</span>
   </div>
 </section>
 
-<!-- STATS -->
-<section class="stats" id="liveStats">
-  <div class="stat"><h3 id="statTerms">850+</h3><p>Slang Terms</p></div>
-  <div class="stat"><h3 id="statUsers">50K+</h3><p>Monthly Users</p></div>
-  <div class="stat"><h3 id="statSearches">2M+</h3><p>Searches</p></div>
-  <div class="stat"><h3>100%</h3><p>Free Forever</p></div>
-</section>
+<!-- LIVE STATS -->
+<div class="container">
+  <div class="stats-section" id="liveStats">
+    <div class="stat-box">
+      <i class="fas fa-book"></i>
+      <h3 id="statTerms">850+</h3>
+      <p>Slang Terms</p>
+    </div>
+    <div class="stat-box">
+      <i class="fas fa-users"></i>
+      <h3 id="statUsers">50K+</h3>
+      <p>Monthly Users</p>
+    </div>
+    <div class="stat-box">
+      <i class="fas fa-search"></i>
+      <h3 id="statSearches">2M+</h3>
+      <p>Terms Searched</p>
+    </div>
+    <div class="stat-box">
+      <i class="fas fa-heart"></i>
+      <h3>100%</h3>
+      <p>Free Forever</p>
+    </div>
+  </div>
+</div>
 
-<!-- TRENDING -->
-<section class="trending">
-  <h2>🔥 Trending Indian Slang</h2>
-  <div class="terms-grid" id="trendingTerms"></div>
-</section>
+<!-- ADVERTISEMENT MIDDLE -->
+<div class="container">
+  <div class="ad-container">
+    <div class="ad-label">Sponsored</div>
+    <div class="ad-unit ad-trackable" data-ad-id="middle-rectangle">
+      <i class="fas fa-ad"></i>
+      <p>300×250 Ad Space</p>
+      <small>Premium ad placement. Contact: ads@slangadda.ai</small>
+    </div>
+  </div>
+</div>
 
-<!-- WHY FREE -->
-<section class="why-free">
-  <h2>Why SlangAdda Is Free</h2>
-  <div class="why-flow">
-    <div class="why-card"><h3>The Problem</h3><p>Slang creates invisible social gaps.</p></div>
-    <div class="why-card"><h3>Our Choice</h3><p>No paywalls. No data selling.</p></div>
-    <div class="why-card"><h3>The Impact</h3><p>Millions understand each other better.</p></div>
+<!-- TRENDING TERMS -->
+<div class="container">
+  <div class="trending-terms">
+    <h2><i class="fas fa-fire"></i> 🔥 Trending Indian Slang This Week</h2>
+    <p class="section-subtitle">The most searched terms by our users. Click to learn more.</p>
+    
+    <div class="terms-grid" id="trendingTerms">
+      <!-- Loaded dynamically -->
+    </div>
+  </div>
+</div>
+
+<!-- WHY FREE SECTION -->
+<section class="why-free" id="why-free">
+  <div class="container">
+    <h2><i class="fas fa-heart"></i> Why SlangAdda is Free & Why That Matters</h2>
+    
+    <div class="story-card">
+      <div class="story-content">
+        <h3>The Problem We're Solving</h3>
+        <p>Remember when you heard a slang term and felt left out? Or worse, used it wrong and felt embarrassed? Language barriers create real social divides.</p>
+        
+        <div class="problem-stats">
+          <div class="stat">
+            <span class="number">73%</span>
+            <span class="label">of Indian youth feel left out by slang</span>
+          </div>
+          <div class="stat">
+            <span class="number">82%</span>
+            <span class="label">parents don't understand their kids' slang</span>
+          </div>
+          <div class="stat">
+            <span class="number">Daily</span>
+            <span class="label">new slang terms emerge on Indian internet</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="solution-card">
+      <div class="solution-content">
+        <h3>Our Solution: Keep It Free</h3>
+        <p>We chose freedom over profit because:</p>
+        
+        <div class="reasons-grid">
+          <div class="reason">
+            <i class="fas fa-graduation-cap"></i>
+            <h4>Education Should Be Free</h4>
+            <p>No student should pay to understand their peers. Language learning is a right, not a privilege.</p>
+          </div>
+          
+          <div class="reason">
+            <i class="fas fa-hands-helping"></i>
+            <h4>Bridge Generational Gaps</h4>
+            <p>Helping parents connect with children is priceless. Family understanding shouldn't have a price tag.</p>
+          </div>
+          
+          <div class="reason">
+            <i class="fas fa-globe-asia"></i>
+            <h4>Preserve Indian Culture</h4>
+            <p>Our slang tells India's story. Documenting it freely preserves our cultural evolution for everyone.</p>
+          </div>
+          
+          <div class="reason">
+            <i class="fas fa-shield-alt"></i>
+            <h4>Privacy Matters</h4>
+            <p>No accounts mean no data collection. Your searches stay private - we don't even use analytics.</p>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
-<!-- SUPPORT -->
-<section class="support" id="support">
-  <h2>Keep This Free</h2>
-  <p>This project survives only because people believe in free knowledge.</p>
-  <div class="support-stats">
-    <div class="support-stat"><h3>25K+</h3><p>Students helped</p></div>
-    <div class="support-stat"><h3>₹83/day</h3><p>Running cost</p></div>
-    <div class="support-stat"><h3>1,200+</h3><p>Supporters</p></div>
+<!-- SUBMIT SLANG SECTION -->
+<section class="submit-slang" id="submit-slang">
+  <div class="container">
+    <h2><i class="fas fa-plus-circle"></i> Help Us Grow!</h2>
+    <p class="section-subtitle">Found a slang term we're missing? Submit it and help thousands of others.</p>
+    
+    <div class="submit-form-container">
+      <form id="slangSubmissionForm">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="submitTerm">Slang Term *</label>
+            <input type="text" id="submitTerm" placeholder="e.g., 'rizz', 'delulu'" required>
+          </div>
+          <div class="form-group">
+            <label for="submitMeaning">What does it mean? *</label>
+            <textarea id="submitMeaning" placeholder="Explain the meaning..." rows="2" required></textarea>
+          </div>
+        </div>
+        
+        <div class="form-row">
+          <div class="form-group">
+            <label for="submitExample">Example Sentence</label>
+            <input type="text" id="submitExample" placeholder="e.g., 'He has so much rizz!'">
+          </div>
+          <div class="form-group">
+            <label for="submitCategory">Category</label>
+            <select id="submitCategory">
+              <option value="genz">Gen-Z Slang</option>
+              <option value="internet">Internet Slang</option>
+              <option value="regional">Regional Slang</option>
+              <option value="bollywood">Bollywood Slang</option>
+              <option value="professional">Professional</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label for="submitContext">Where did you hear it? (optional)</label>
+          <input type="text" id="submitContext" placeholder="e.g., Instagram, college, Mumbai">
+        </div>
+        
+        <div class="form-group">
+          <label for="submitEmail">Your email (optional, for updates)</label>
+          <input type="email" id="submitEmail" placeholder="email@example.com">
+        </div>
+        
+        <div class="form-actions">
+          <button type="submit" class="hero-btn primary">
+            <i class="fas fa-paper-plane"></i> Submit Slang Term
+          </button>
+          <p class="form-note">We review all submissions within 24 hours. You'll get credit when published!</p>
+        </div>
+      </form>
+    </div>
   </div>
 </section>
 
+<!-- SUPPORT SECTION -->
+<section class="support-section" id="support">
+  <div class="container">
+    <div class="support-header">
+      <h2><i class="fas fa-users"></i> Join the Free Knowledge Movement</h2>
+      <p class="section-subtitle">Help us keep SlangAdda free forever. Your support directly maintains this resource.</p>
+    </div>
+    
+    <div class="mission-stats">
+      <div class="mission-stat">
+        <i class="fas fa-user-graduate"></i>
+        <h3>25,000+</h3>
+        <p>Students helped monthly</p>
+      </div>
+      <div class="mission-stat">
+        <i class="fas fa-search"></i>
+        <h3>500k+</h3>
+        <p>Terms searched monthly</p>
+      </div>
+      <div class="mission-stat">
+        <i class="fas fa-heart"></i>
+        <h3>1,247</h3>
+        <p>Community supporters</p>
+      </div>
+      <div class="mission-stat">
+        <i class="fas fa-handshake"></i>
+        <h3>₹83/day</h3>
+        <p>Our running cost</p>
+      </div>
+    </div>
+    
+    <div class="contribute-options">
+      <div class="contribute-card">
+        <div class="contribute-icon">
+          <i class="fas fa-qrcode"></i>
+        </div>
+        <h3>Quick Support</h3>
+        <p>Scan or use UPI ID</p>
+        
+        <!-- Real QR Code -->
+        <div class="qr-real">
+          <!-- Replace with your actual QR code image -->
+          <div style="background: white; padding: 10px; border-radius: 5px; text-align: center;">
+            <div style="width: 180px; height: 180px; background: #f0f0f0; margin: 0 auto; display: flex; align-items: center; justify-content: center; color: #666; font-size: 12px;">
+              [Your QR Code Here]
+            </div>
+            <p style="margin-top: 10px; font-weight: bold; color: #333;">slangadda@ptyes</p>
+          </div>
+        </div>
+        
+        <div class="support-actions">
+          <button class="support-btn copy-upi">
+            <i class="fas fa-copy"></i> Copy UPI ID
+          </button>
+          <div class="quick-amounts">
+            <button class="amount-chip" data-amount="50">₹50</button>
+            <button class="amount-chip" data-amount="100">₹100</button>
+            <button class="amount-chip" data-amount="200">₹200</button>
+          </div>
+        </div>
+      </div>
+      
+      <div class="contribute-card">
+        <div class="contribute-icon">
+          <i class="fas fa-hands-helping"></i>
+        </div>
+        <h3>Community Power</h3>
+        <p>Other ways to make impact</p>
+        
+        <div class="community-actions">
+          <button class="action-btn share-action">
+            <i class="fas fa-share-alt"></i>
+            <span>Share with friends</span>
+          </button>
+          <button class="action-btn suggest-action" onclick="showSuggestionModal()">
+            <i class="fas fa-lightbulb"></i>
+            <span>Suggest slang</span>
+          </button>
+          <button class="action-btn contribute-action" onclick="showContributeModal()">
+            <i class="fas fa-code"></i>
+            <span>Contribute skills</span>
+          </button>
+        </div>
+        
+        <div class="impact-meter">
+          <div class="meter-label">
+            <span>Monthly Goal: ₹2,500</span>
+            <span id="goal-percentage">42%</span>
+          </div>
+          <div class="meter-bar">
+            <div class="meter-fill" id="meter-fill" style="width: 42%"></div>
+          </div>
+          <p class="meter-note"><i class="fas fa-bolt"></i> ₹1,050 raised this month</p>
+        </div>
+      </div>
+      
+      <div class="contribute-card">
+        <div class="contribute-icon">
+          <i class="fas fa-seedling"></i>
+        </div>
+        <h3>Sustain the Project</h3>
+        <p>Help us grow sustainably</p>
+        
+        <div class="sustain-options">
+          <div class="sustain-option">
+            <i class="fas fa-coffee"></i>
+            <div>
+              <h4>Monthly Supporter</h4>
+              <p>₹100/month · Sustains servers</p>
+            </div>
+          </div>
+          <div class="sustain-option">
+            <i class="fas fa-server"></i>
+            <div>
+              <h4>Infrastructure Help</h4>
+              <p>One-time · Covers hosting</p>
+            </div>
+          </div>
+          <div class="sustain-option">
+            <i class="fas fa-graduation-cap"></i>
+            <div>
+              <h4>Education Sponsor</h4>
+              <p>₹500+ · Helps students</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="custom-support">
+          <h4>Custom Support</h4>
+          <div class="custom-input">
+            <span>₹</span>
+            <input type="number" placeholder="Enter amount" min="10" id="customSupport">
+            <button class="support-now" onclick="showSupportModal()">Support Now</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ADVERTISEMENT BOTTOM -->
+<div class="container">
+  <div class="ad-container">
+    <div class="ad-label">Advertisement</div>
+    <div class="ad-unit ad-trackable" data-ad-id="bottom-rectangle">
+      <i class="fas fa-ad"></i>
+      <p>300×600 Ad Space</p>
+      <small>Sidebar ad placement. Contact: ads@slangadda.ai</small>
+    </div>
+  </div>
+</div>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <div class="container">
+    <h2><i class="fas fa-comment-alt"></i> What People Say</h2>
+    
+    <div class="testimonial-grid">
+      <div class="testimonial-card">
+        <div class="testimonial-content">
+          <p>"Finally understand what my kids are saying! This free resource saved our family dinners."</p>
+        </div>
+        <div class="testimonial-author">
+          <i class="fas fa-user-circle"></i>
+          <div>
+            <h5>Mrs. Sharma</h5>
+            <p>Parent from Delhi</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="testimonial-card">
+        <div class="testimonial-content">
+          <p>"As an NRI, this helps me stay connected with home. Free access means everything."</p>
+        </div>
+        <div class="testimonial-author">
+          <i class="fas fa-user-circle"></i>
+          <div>
+            <h5>Raj Patel</h5>
+            <p>NRI in Canada</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="testimonial-card">
+        <div class="testimonial-content">
+          <p>"Used this before a client meeting. Understanding slang made me connect better. Thank you!"</p>
+        </div>
+        <div class="testimonial-author">
+          <i class="fas fa-user-circle"></i>
+          <div>
+            <h5>Priya Nair</h5>
+            <p>Marketing Professional</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
 <footer>
-  © 2025 SlangAdda AI · Made with ❤️ for India
+  <div class="footer-content">
+    <div class="footer-section">
+      <h3>SlangAdda<span>AI</span></h3>
+      <p class="footer-tagline">Free Indian slang decoder. No ads. No tracking. Just understanding.</p>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="dictionary.html">Dictionary</a>
+        <a href="quiz.html">Quiz</a>
+        <a href="blog.html">Blog</a>
+        <a href="#support">Join Movement</a>
+      </div>
+    </div>
+    
+    <div class="footer-section">
+      <h4>Quick Links</h4>
+      <a href="#why-free">Why Free?</a>
+      <a href="#support">Support</a>
+      <a href="#submit-slang" onclick="showSuggestionModal()">Suggest Slang</a>
+      <a href="policies.html">Policies</a>
+      <a href="admin.html" style="color: var(--warning); font-weight: bold;">
+        <i class="fas fa-lock"></i> Admin
+      </a>
+    </div>
+    
+    <div class="footer-section">
+      <h4>Connect</h4>
+      <div class="social-links">
+        <a href="#"><i class="fab fa-twitter"></i> Twitter</a>
+        <a href="#"><i class="fab fa-instagram"></i> Instagram</a>
+        <a href="#"><i class="fab fa-github"></i> GitHub</a>
+        <a href="mailto:hello@slangadda.ai"><i class="fas fa-envelope"></i> Email</a>
+        <a href="mailto:ads@slangadda.ai"><i class="fas fa-ad"></i> Advertise</a>
+      </div>
+    </div>
+    
+    <div class="footer-section">
+      <h4>Our Promise</h4>
+      <p><i class="fas fa-lock"></i> No tracking</p>
+      <p><i class="fas fa-ad"></i> No intrusive ads</p>
+      <p><i class="fas fa-rupee-sign"></i> Free forever</p>
+      <p><i class="fas fa-heart"></i> Community-driven</p>
+      <p><i class="fas fa-seedling"></i> Sustainable growth</p>
+    </div>
+  </div>
+  
+  <div class="footer-bottom">
+    <p>© 2025 SlangAdda AI · Made with ❤️ for India · Keeping knowledge free for everyone</p>
+    <p class="footer-note">
+      A community-powered project. Every contribution helps maintain this free resource.
+    </p>
+  </div>
 </footer>
 
-<!-- JS -->
+<!-- Support Modal -->
+<div class="modal" id="supportModal">
+  <div class="modal-content support-modal">
+    <span class="close-modal">&times;</span>
+    <div class="modal-body" id="modalBody">
+      <!-- Content loaded by JavaScript -->
+    </div>
+  </div>
+</div>
+
+<!-- Suggestion Modal -->
+<div class="modal" id="suggestionModal">
+  <div class="modal-content suggestion-modal">
+    <span class="close-modal">&times;</span>
+    <h3><i class="fas fa-lightbulb"></i> Suggest New Slang</h3>
+    <p>Help us grow! Suggest slang terms you've heard but couldn't find.</p>
+    
+    <div class="suggestion-form">
+      <div class="form-group">
+        <label for="slangTerm">Slang Term *</label>
+        <input type="text" id="slangTerm" placeholder="e.g., 'rizz', 'delulu'">
+      </div>
+      
+      <div class="form-group">
+        <label for="slangMeaning">What do you think it means? *</label>
+        <textarea id="slangMeaning" placeholder="Your understanding of the term..." rows="3"></textarea>
+      </div>
+      
+      <div class="form-group">
+        <label for="slangContext">Where did you hear it? (optional)</label>
+        <input type="text" id="slangContext" placeholder="e.g., Instagram, college, Mumbai">
+      </div>
+      
+      <div class="form-group">
+        <label for="slangExample">Example sentence (optional)</label>
+        <input type="text" id="slangExample" placeholder="e.g., 'He has so much rizz!'">
+      </div>
+      
+      <div class="form-group">
+        <label for="userEmail">Your email (optional, for updates)</label>
+        <input type="email" id="userEmail" placeholder="email@example.com">
+      </div>
+      
+      <div class="form-actions">
+        <button type="button" class="cancel-btn">Cancel</button>
+        <button type="button" class="submit-btn" id="submitSuggestion">
+          <i class="fas fa-paper-plane"></i> Submit Suggestion
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- JavaScript -->
 <script src="firebase-config.js"></script>
 <script src="script.js"></script>
 
 <script>
-  window.performSearch=function(){
-    const v=document.getElementById('quickSearch').value.trim();
-    if(v) location.href=`dictionary.html?search=${encodeURIComponent(v)}`;
+  // Enhanced home page specific JavaScript
+  document.addEventListener('DOMContentLoaded', function() {
+    // Load live stats
+    loadLiveStats();
+    
+    // Load trending terms
+    loadTrendingTerms();
+    
+    // Setup search suggestions
+    setupSearchSuggestions();
+    
+    // Setup ad tracking
+    setupAdTracking();
+    
+    // Setup slang submission form
+    setupSlangSubmission();
+    
+    // Initialize animations
+    initializeHomeAnimations();
+  });
+  
+  function loadLiveStats() {
+    // Get stats from Firestore
+    if (window.firestoreDB) {
+      firestoreDB.collection('stats').doc('global').get()
+        .then(doc => {
+          if (doc.exists) {
+            const data = doc.data();
+            document.getElementById('statTerms').textContent = data.totalTerms + '+';
+            document.getElementById('statUsers').textContent = data.monthlyUsers + '+';
+            document.getElementById('statSearches').textContent = data.totalSearches + '+';
+            
+            // Add counting animation
+            document.querySelectorAll('#liveStats h3').forEach(el => {
+              el.classList.add('counting');
+            });
+          }
+        })
+        .catch(error => {
+          console.log('Stats not loaded, using defaults');
+        });
+    }
+  }
+  
+  function loadTrendingTerms() {
+    const container = document.getElementById('trendingTerms');
+    
+    // Default trending terms
+    const defaultTerms = [
+      {term: 'rizz', meaning: 'Charisma or romantic charm'},
+      {term: 'delulu', meaning: 'Delusional, especially romantically'},
+      {term: 'chapri', meaning: 'Trying too hard to be cool'},
+      {term: 'savage', meaning: 'Extremely cool or ruthless'}
+    ];
+    
+    // Try to get from Firestore
+    if (window.firestoreDB) {
+      firestoreDB.collection('slang_terms')
+        .where('trending', '==', true)
+        .limit(4)
+        .get()
+        .then(snapshot => {
+          if (!snapshot.empty) {
+            container.innerHTML = '';
+            snapshot.forEach(doc => {
+              const data = doc.data();
+              container.innerHTML += `
+                <div class="term-card" data-term="${data.term}" onclick="window.location.href='dictionary.html?search=${data.term}'">
+                  <div class="term">${data.term}</div>
+                  <div class="meaning">${data.meaning.substring(0, 40)}...</div>
+                </div>
+              `;
+            });
+          } else {
+            loadDefaultTerms();
+          }
+        })
+        .catch(() => {
+          loadDefaultTerms();
+        });
+    } else {
+      loadDefaultTerms();
+    }
+    
+    function loadDefaultTerms() {
+      container.innerHTML = defaultTerms.map(term => `
+        <div class="term-card" data-term="${term.term}" onclick="window.location.href='dictionary.html?search=${term.term}'">
+          <div class="term">${term.term}</div>
+          <div class="meaning">${term.meaning}</div>
+        </div>
+      `).join('');
+    }
+  }
+  
+  function setupSearchSuggestions() {
+    const searchInput = document.getElementById('quickSearch');
+    const suggestionsContainer = document.getElementById('searchSuggestions');
+    
+    if (!searchInput || !suggestionsContainer) return;
+    
+    searchInput.addEventListener('input', function() {
+      const query = this.value.trim().toLowerCase();
+      
+      if (query.length < 2) {
+        suggestionsContainer.innerHTML = '';
+        suggestionsContainer.style.display = 'none';
+        return;
+      }
+      
+      // Get suggestions from Firestore
+      if (window.firestoreDB) {
+        firestoreDB.collection('slang_terms')
+          .where('term', '>=', query)
+          .where('term', '<=', query + '\uf8ff')
+          .limit(5)
+          .get()
+          .then(snapshot => {
+            if (!snapshot.empty) {
+              suggestionsContainer.innerHTML = '';
+              snapshot.forEach(doc => {
+                const data = doc.data();
+                const div = document.createElement('div');
+                div.className = 'suggestion-item';
+                div.textContent = data.term;
+                div.onclick = function() {
+                  searchInput.value = data.term;
+                  suggestionsContainer.innerHTML = '';
+                  suggestionsContainer.style.display = 'none';
+                  performSearch();
+                };
+                suggestionsContainer.appendChild(div);
+              });
+              suggestionsContainer.style.display = 'block';
+            } else {
+              suggestionsContainer.innerHTML = '<div class="suggestion-item">No matches found</div>';
+              suggestionsContainer.style.display = 'block';
+            }
+          })
+          .catch(() => {
+            suggestionsContainer.style.display = 'none';
+          });
+      }
+    });
+    
+    // Hide suggestions when clicking outside
+    document.addEventListener('click', function(e) {
+      if (!searchInput.contains(e.target) && !suggestionsContainer.contains(e.target)) {
+        suggestionsContainer.style.display = 'none';
+      }
+    });
+  }
+  
+  function setupAdTracking() {
+    document.querySelectorAll('.ad-trackable').forEach(ad => {
+      ad.addEventListener('click', function() {
+        const adId = this.getAttribute('data-ad-id');
+        
+        // Track ad click in Firestore
+        if (window.firestoreDB) {
+          firestoreDB.collection('ad_clicks').add({
+            adId: adId,
+            timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+            page: 'index.html',
+            userAgent: navigator.userAgent
+          });
+        }
+        
+        // Open ad link in new tab (replace with actual ad URL)
+        window.open('https://slangadda.ai/advertise.html', '_blank');
+      });
+    });
+  }
+  
+  function setupSlangSubmission() {
+    const form = document.getElementById('slangSubmissionForm');
+    if (!form) return;
+    
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const term = document.getElementById('submitTerm').value.trim();
+      const meaning = document.getElementById('submitMeaning').value.trim();
+      const example = document.getElementById('submitExample').value.trim();
+      const category = document.getElementById('submitCategory').value;
+      const context = document.getElementById('submitContext').value.trim();
+      const email = document.getElementById('submitEmail').value.trim();
+      
+      if (!term || !meaning) {
+        showSuccessMessage('Please fill in required fields', 'error');
+        return;
+      }
+      
+      // Create anonymous user session
+      firebaseAuth.signInAnonymously()
+        .then(() => {
+          // Submit to Firestore
+          return firestoreDB.collection('slang_submissions').add({
+            term: term.toLowerCase(),
+            meaning: meaning,
+            example: example,
+            category: category,
+            context: context,
+            email: email,
+            status: 'pending',
+            submittedAt: firebase.firestore.FieldValue.serverTimestamp(),
+            ip: 'anonymous' // In production, get actual IP
+          });
+        })
+        .then(() => {
+          // Show success
+          showSuccessMessage('Thank you! Your submission is under review.');
+          
+          // Reset form
+          form.reset();
+          
+          // Send email notification (optional)
+          sendSubmissionNotification(term, meaning, email);
+        })
+        .catch(error => {
+          console.error('Submission error:', error);
+          showSuccessMessage('Error submitting. Please try again.', 'error');
+        });
+    });
+  }
+  
+  function showSuccessMessage(message, type = 'success') {
+    const successDiv = document.getElementById('submissionSuccess');
+    const messageSpan = document.getElementById('successMessage');
+    
+    successDiv.style.background = type === 'error' ? '#ef4444' : '#10b981';
+    messageSpan.textContent = message;
+    successDiv.style.display = 'block';
+    
+    setTimeout(() => {
+      successDiv.style.display = 'none';
+    }, 5000);
+  }
+  
+  function sendSubmissionNotification(term, meaning, email) {
+    // This would be implemented with a backend function
+    // For now, just log it
+    console.log(`New submission: ${term} - ${meaning} from ${email}`);
+  }
+  
+  function initializeHomeAnimations() {
+    // Initialize any home-specific animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate-in');
+        }
+      });
+    }, { threshold: 0.1 });
+    
+    // Observe elements
+    document.querySelectorAll('.stat-box, .term-card, .testimonial-card').forEach(el => {
+      observer.observe(el);
+    });
+  }
+  
+  // Make functions globally available
+  window.performSearch = function() {
+    const term = document.getElementById('quickSearch').value.trim();
+    if (term) {
+      window.location.href = `dictionary.html?search=${encodeURIComponent(term)}`;
+    }
+  };
+  
+  window.showSuggestionModal = function() {
+    const modal = document.getElementById('suggestionModal');
+    if (modal) modal.style.display = 'flex';
+  };
+  
+  window.showContributeModal = function() {
+    alert('🎯 Want to contribute your skills? Awesome!\n\nWe need help with:\n\n✨ Adding new slang terms\n📝 Improving explanations\n💻 Website development\n🎨 Design improvements\n\n📧 Email us at: contribute@slangadda.ai\n\nThank you for wanting to help! 🙏');
+  };
+  
+  window.showSupportModal = function() {
+    const amount = document.getElementById('customSupport').value || '100';
+    // Implementation from script.js
+    if (window.SlangAdda && window.SlangAdda.showSupportModal) {
+      window.SlangAdda.showSupportModal(amount);
+    }
   };
 </script>
 
