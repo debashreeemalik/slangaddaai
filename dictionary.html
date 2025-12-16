@@ -1,1 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Slang Dictionary - SlangAdda AI</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Searchable dictionary of Indian slang terms with meanings, examples, and context." />
+  
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="styles.css">
+</head>
 
+<body>
+
+<!-- NAVBAR -->
+<header class="navbar">
+  <div class="logo">SlangAdda<span>AI</span></div>
+  <nav>
+    <a href="index.html"><i class="fas fa-home"></i> Home</a>
+    <a href="dictionary.html" class="active"><i class="fas fa-book"></i> Dictionary</a>
+    <a href="quiz.html"><i class="fas fa-brain"></i> Quiz</a>
+    <a href="index.html#donate" class="donate-nav"><i class="fas fa-heart"></i> Support</a>
+  </nav>
+</header>
+
+<!-- DICTIONARY HEADER -->
+<section class="dictionary-header">
+  <div class="container">
+    <h1><i class="fas fa-book-open"></i> Indian Slang Dictionary</h1>
+    <p class="subtitle">500+ slang terms with context, safety ratings, and real examples. Updated daily.</p>
+    
+    <div class="dictionary-stats">
+      <div class="stat">
+        <span class="number" id="totalTerms">500+</span>
+        <span class="label">Slang Terms</span>
+      </div>
+      <div class="stat">
+        <span class="number" id="updatedToday">Today</span>
+        <span class="label">Last Updated</span>
+      </div>
+      <div class="stat">
+        <span class="number" id="mostSearched">rizz</span>
+        <span class="label">Most Searched</span>
+      </div>
+      <div class="stat">
+        <span class="number">Free</span>
+        <span class="label">Always Free</span>
+      </div>
+    </div>
+    
+    <div class="search-container">
+      <div class="search-box-large">
+        <input type="text" id="dictionarySearch" placeholder="Search for slang terms... Try 'rizz', 'chapri', 'delulu'">
+        <button id="searchButton"><i class="fas fa-search"></i> Search</button>
+      </div>
+      <div class="search-tips">
+        <p><i class="fas fa-lightbulb"></i> Tip: Search by meaning too! Try "charisma" or "overconfident"</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MOST SEARCHED SECTION -->
+<section class="most-searched">
+  <div class="container">
+    <h2><i class="fas fa-fire"></i> Most Searched Terms</h2>
+    <p class="section-subtitle">These are the terms people search for the most. Click any to view details.</p>
+    
+    <div class="trending-grid" id="mostSearchedGrid">
+      <!-- Most searched terms will be loaded here -->
+    </div>
+  </div>
+</section>
+
+<!-- DICTIONARY CONTENT -->
+<section class="dictionary-content">
+  <div class="container">
+    <div class="dictionary-controls">
+      <div class="controls-left">
+        <div class="filter-buttons">
+          <button class="filter-btn active" data-filter="all">All Terms</button>
+          <button class="filter-btn" data-filter="genz">Gen-Z</button>
+          <button class="filter-btn" data-filter="professional">Professional</button>
+          <button class="filter-btn" data-filter="regional">Regional</button>
+          <button class="filter-btn" data-filter="internet">Internet</button>
+        </div>
+      </div>
+      
+      <div class="controls-right">
+        <div class="sort-options">
+          <label for="sortSelect">Sort by:</label>
+          <select id="sortSelect">
+            <option value="popularity">Most Popular</option>
+            <option value="alphabetical">A to Z</option>
+            <option value="newest">Newest First</option>
+            <option value="rating">Highest Rated</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    
+    <div class="dictionary-grid" id="dictionaryGrid">
+      <!-- Dictionary items will be loaded here -->
+    </div>
+    
+    <div class="load-more-container">
+      <button id="loadMoreBtn" class="load-more-btn">
+        <i class="fas fa-sync-alt"></i> Load More Terms
+      </button>
+      <p class="load-more-note">Showing <span id="showingCount">20</span> of <span id="totalCount">500+</span> terms</p>
+    </div>
+    
+    <div class="dictionary-info">
+      <div class="info-card">
+        <i class="fas fa-plus-circle"></i>
+        <h3>How to Add New Slang</h3>
+        <p>Found a term we're missing? <a href="#" id="suggestTermLink">Suggest it here</a>. We review all submissions daily and update the dictionary regularly.</p>
+      </div>
+      
+      <div class="info-card">
+        <i class="fas fa-history"></i>
+        <h3>Update Schedule</h3>
+        <p>Dictionary updated: <strong>Daily</strong><br>
+           New terms added: <strong>Every 24 hours</strong><br>
+           Community suggestions: <strong>Reviewed within 48 hours</strong></p>
+      </div>
+      
+      <div class="info-card">
+        <i class="fas fa-download"></i>
+        <h3>Want the Data?</h3>
+        <p>We'll soon release the complete slang database for developers, researchers, and educators. <a href="#">Notify me</a> when available.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-content">
+    <div class="footer-section">
+      <h3>SlangAdda<span>
