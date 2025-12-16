@@ -1853,6 +1853,75 @@ footer {
   }
 }
 
+/* ADVERTISEMENT STYLES */
+.ad-container {
+  margin: 30px auto;
+  padding: 15px;
+  background: #f8f9fa;
+  border-radius: var(--radius);
+  border: 1px solid var(--gray-light);
+  text-align: center;
+  max-width: 100%;
+}
+
+.ad-label {
+  font-size: 0.8rem;
+  color: var(--gray);
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.ad-unit {
+  width: 100%;
+  height: 250px;
+  background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+  border-radius: var(--radius);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--gray);
+  font-size: 0.9rem;
+}
+
+.ad-unit.horizontal {
+  height: 100px;
+}
+
+.ad-unit.vertical {
+  height: 600px;
+}
+
+.ad-unit i {
+  font-size: 2rem;
+  margin-bottom: 15px;
+  color: var(--primary);
+}
+
+/* Dictionary page ad integration */
+.dictionary-ad {
+  grid-column: 1 / -1;
+  margin: 20px 0;
+}
+
+/* Quiz page ad integration */
+.quiz-ad {
+  margin: 30px 0;
+  text-align: center;
+}
+
+/* Responsive ads */
+@media (max-width: 768px) {
+  .ad-unit.horizontal {
+    height: 150px;
+  }
+  
+  .ad-unit.vertical {
+    height: 400px;
+  }
+}
+
 /* Loading animation */
 .loading-dots {
   display: flex;
