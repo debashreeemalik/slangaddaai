@@ -1,0 +1,990 @@
+[file name]: blog.html
+[file content begin]
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Slang Blog - Latest Indian Slang Trends & Insights | SlangAdda AI</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Read articles about Indian slang trends, Gen-Z language, Bollywood slang, workplace terms, and cultural insights. Stay updated with the latest slang." />
+  <meta name="keywords" content="Indian slang blog, Gen-Z language trends, Bollywood slang, workplace slang, Indian English blog, slang insights, language culture" />
+  <meta name="author" content="SlangAdda AI" />
+  
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Blog page specific styles */
+    .blog-header {
+      background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+      color: white;
+      padding: 100px 40px 60px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .blog-header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url("data:image/svg+xml,%3Csvg width='100' height='20' viewBox='0 0 100 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M21.184 20c.357-.13.72-.264 1.088-.402l1.768-.661C33.64 15.347 39.647 14 50 14c10.271 0 15.362 1.222 24.629 4.928.955.383 1.869.74 2.75 1.072h6.225c-2.51-.73-5.139-1.691-8.233-2.928C65.888 13.278 60.562 12 50 12c-10.626 0-16.855 1.397-26.66 5.063l-1.767.662c-2.475.923-4.66 1.674-6.724 2.275h6.335zm0-20C13.258 2.892 8.077 4 0 4V2c5.744 0 9.951-.574 14.85-2h6.334zM77.38 0C85.239 2.966 90.502 4 100 4V2c-6.842 0-11.386-.542-16.396-2h-6.225zM0 14c8.44 0 13.718-1.21 22.272-4.402l1.768-.661C33.64 5.347 39.647 4 50 4c10.271 0 15.362 1.222 24.629 4.928C84.112 12.722 89.438 14 100 14v-2c-10.271 0-15.362-1.222-24.629-4.928C65.888 3.278 60.562 2 50 2 39.374 2 33.145 3.397 23.34 7.063l-1.767.662C13.223 10.84 8.163 12 0 12v2z' fill='%23ffffff' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
+    }
+    
+    .blog-header h1 {
+      color: white;
+      font-size: 3.5rem;
+      margin-bottom: 15px;
+    }
+    
+    .blog-header .subtitle {
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: 0 auto 30px;
+    }
+    
+    /* Blog layout */
+    .blog-container {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 40px;
+      margin: 50px 0;
+    }
+    
+    /* Main content */
+    .blog-main {
+      background: white;
+      border-radius: var(--radius);
+    }
+    
+    .featured-article {
+      background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+      color: white;
+      padding: 40px;
+      border-radius: var(--radius);
+      margin-bottom: 40px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .featured-article::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url("data:image/svg+xml,%3Csvg width='100' height='20' viewBox='0 0 100 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M21.184 20c.357-.13.72-.264 1.088-.402l1.768-.661C33.64 15.347 39.647 14 50 14c10.271 0 15.362 1.222 24.629 4.928.955.383 1.869.74 2.75 1.072h6.225c-2.51-.73-5.139-1.691-8.233-2.928C65.888 13.278 60.562 12 50 12c-10.626 0-16.855 1.397-26.66 5.063l-1.767.662c-2.475.923-4.66 1.674-6.724 2.275h6.335zm0-20C13.258 2.892 8.077 4 0 4V2c5.744 0 9.951-.574 14.85-2h6.334zM77.38 0C85.239 2.966 90.502 4 100 4V2c-6.842 0-11.386-.542-16.396-2h-6.225zM0 14c8.44 0 13.718-1.21 22.272-4.402l1.768-.661C33.64 5.347 39.647 4 50 4c10.271 0 15.362 1.222 24.629 4.928C84.112 12.722 89.438 14 100 14v-2c-10.271 0-15.362-1.222-24.629-4.928C65.888 3.278 60.562 2 50 2 39.374 2 33.145 3.397 23.34 7.063l-1.767.662C13.223 10.84 8.163 12 0 12v2z' fill='%23ffffff' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
+    }
+    
+    .featured-badge {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: white;
+      color: var(--primary);
+      padding: 8px 16px;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 0.8rem;
+      z-index: 1;
+    }
+    
+    .featured-article h2 {
+      color: white;
+      margin-bottom: 15px;
+      font-size: 2rem;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .featured-article p {
+      color: rgba(255, 255, 255, 0.9);
+      margin-bottom: 25px;
+      line-height: 1.7;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .article-meta {
+      display: flex;
+      gap: 20px;
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 0.9rem;
+      margin-bottom: 25px;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .article-meta span {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    
+    /* Articles grid */
+    .articles-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 30px;
+    }
+    
+    .article-card {
+      background: white;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      border: 1px solid var(--gray-light);
+    }
+    
+    .article-card:hover {
+      transform: translateY(-10px);
+      box-shadow: var(--shadow-lg);
+    }
+    
+    .article-image {
+      height: 200px;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 3rem;
+    }
+    
+    .article-content {
+      padding: 25px;
+    }
+    
+    .article-category {
+      display: inline-block;
+      background: rgba(99, 102, 241, 0.1);
+      color: var(--primary);
+      padding: 5px 12px;
+      border-radius: 50px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-bottom: 15px;
+    }
+    
+    .article-content h3 {
+      font-size: 1.3rem;
+      margin-bottom: 10px;
+      line-height: 1.4;
+    }
+    
+    .article-content p {
+      color: var(--gray);
+      font-size: 0.95rem;
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+    
+    .article-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 20px;
+      border-top: 1px solid var(--gray-light);
+      color: var(--gray);
+      font-size: 0.85rem;
+    }
+    
+    .read-time {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    
+    .read-more {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: var(--transition);
+    }
+    
+    .read-more:hover {
+      color: var(--primary-dark);
+      gap: 10px;
+    }
+    
+    .read-more i {
+      transition: var(--transition);
+    }
+    
+    .read-more:hover i {
+      transform: translateX(5px);
+    }
+    
+    /* Sidebar */
+    .blog-sidebar {
+      background: white;
+      border-radius: var(--radius);
+      padding: 30px;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--gray-light);
+      height: fit-content;
+      position: sticky;
+      top: 100px;
+    }
+    
+    .sidebar-section {
+      margin-bottom: 40px;
+    }
+    
+    .sidebar-section:last-child {
+      margin-bottom: 0;
+    }
+    
+    .sidebar-section h3 {
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+      padding-bottom: 15px;
+      border-bottom: 2px solid var(--gray-light);
+      color: var(--dark);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .categories-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    
+    .category-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 15px;
+      background: #f8fafc;
+      border-radius: var(--radius);
+      transition: var(--transition);
+      cursor: pointer;
+    }
+    
+    .category-item:hover {
+      background: var(--primary);
+      color: white;
+    }
+    
+    .category-item:hover .category-count {
+      background: white;
+      color: var(--primary);
+    }
+    
+    .category-count {
+      background: var(--gray-light);
+      padding: 3px 10px;
+      border-radius: 50px;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+    
+    .popular-articles {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    
+    .popular-article {
+      display: flex;
+      gap: 15px;
+      padding: 15px;
+      background: #f8fafc;
+      border-radius: var(--radius);
+      transition: var(--transition);
+    }
+    
+    .popular-article:hover {
+      background: var(--primary);
+      color: white;
+    }
+    
+    .popular-article:hover .popular-title {
+      color: white;
+    }
+    
+    .popular-image {
+      width: 60px;
+      height: 60px;
+      min-width: 60px;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      border-radius: var(--radius);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.5rem;
+    }
+    
+    .popular-content {
+      flex: 1;
+    }
+    
+    .popular-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 5px;
+      line-height: 1.4;
+      color: var(--dark);
+    }
+    
+    .popular-date {
+      font-size: 0.8rem;
+      color: var(--gray);
+    }
+    
+    .popular-article:hover .popular-date {
+      color: rgba(255, 255, 255, 0.8);
+    }
+    
+    .tags-cloud {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    
+    .tag {
+      background: rgba(99, 102, 241, 0.1);
+      color: var(--primary);
+      padding: 8px 15px;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      transition: var(--transition);
+      cursor: pointer;
+    }
+    
+    .tag:hover {
+      background: var(--primary);
+      color: white;
+    }
+    
+    /* Newsletter sidebar */
+    .sidebar-newsletter {
+      background: linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%);
+      padding: 25px;
+      border-radius: var(--radius);
+      color: white;
+    }
+    
+    .sidebar-newsletter h3 {
+      color: white;
+      border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+    }
+    
+    .sidebar-newsletter p {
+      color: rgba(255, 255, 255, 0.9);
+      margin-bottom: 20px;
+      font-size: 0.95rem;
+    }
+    
+    .sidebar-newsletter input {
+      width: 100%;
+      padding: 12px 15px;
+      border: none;
+      border-radius: var(--radius);
+      margin-bottom: 15px;
+      font-size: 0.9rem;
+    }
+    
+    .sidebar-newsletter input:focus {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.3);
+    }
+    
+    .sidebar-newsletter button {
+      width: 100%;
+      padding: 12px;
+      background: var(--dark);
+      color: white;
+      border: none;
+      border-radius: var(--radius);
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    
+    .sidebar-newsletter button:hover {
+      background: #1e293b;
+    }
+    
+    /* Ad sidebar */
+    .sidebar-ad {
+      text-align: center;
+      padding: 20px;
+      background: #f8fafc;
+      border-radius: var(--radius);
+      border: 2px dashed var(--gray-light);
+    }
+    
+    .sidebar-ad .ad-label {
+      font-size: 0.7rem;
+      color: var(--gray);
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    
+    .sidebar-ad .ad-unit {
+      width: 100%;
+      height: 300px;
+      background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+      border-radius: var(--radius);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: var(--gray);
+    }
+    
+    /* Pagination */
+    .pagination {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      margin: 50px 0;
+    }
+    
+    .page-link {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: white;
+      border: 1px solid var(--gray-light);
+      border-radius: var(--radius);
+      color: var(--gray);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+    
+    .page-link:hover {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+    }
+    
+    .page-link.active {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+    }
+    
+    .page-link.disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+    
+    /* Responsive */
+    @media (max-width: 992px) {
+      .blog-container {
+        grid-template-columns: 1fr;
+      }
+      
+      .blog-sidebar {
+        position: static;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .blog-header h1 {
+        font-size: 2.5rem;
+      }
+      
+      .articles-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .featured-article h2 {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<header class="navbar">
+  <div class="logo">SlangAdda<span>AI</span></div>
+  <nav>
+    <a href="index.html"><i class="fas fa-home"></i> Home</a>
+    <a href="dictionary.html"><i class="fas fa-book"></i> Dictionary</a>
+    <a href="quiz.html"><i class="fas fa-brain"></i> Quiz</a>
+    <a href="blog.html" class="active"><i class="fas fa-blog"></i> Blog</a>
+    <a href="index.html#support" class="support-nav"><i class="fas fa-heart"></i> Support</a>
+  </nav>
+</header>
+
+<!-- BLOG HEADER -->
+<section class="blog-header">
+  <div class="container">
+    <h1><i class="fas fa-blog"></i> SlangAdda Blog</h1>
+    <p class="subtitle">Your go-to resource for Indian slang trends, language insights, and cultural analysis. Stay updated with the ever-evolving world of Indian slang.</p>
+    
+    <div class="blog-stats">
+      <div class="stat">
+        <span class="number">150+</span>
+        <span class="label">Articles</span>
+      </div>
+      <div class="stat">
+        <span class="number">50K+</span>
+        <span class="label">Monthly Readers</span>
+      </div>
+      <div class="stat">
+        <span class="number">10+</span>
+        <span class="label">Categories</span>
+      </div>
+      <div class="stat">
+        <span class="number">Free</span>
+        <span class="label">Always Free</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ADVERTISEMENT -->
+<div class="container">
+  <div class="ad-container">
+    <div class="ad-label">Advertisement</div>
+    <div class="ad-unit horizontal">
+      <i class="fas fa-ad"></i>
+      <p>728×90 Ad Space</p>
+      <small>Your ad here. Contact: ads@slangadda.ai</small>
+    </div>
+  </div>
+</div>
+
+<!-- BLOG CONTENT -->
+<div class="container">
+  <div class="blog-container">
+    <!-- Main Content -->
+    <div class="blog-main">
+      <!-- Featured Article -->
+      <div class="featured-article">
+        <div class="featured-badge">
+          <i class="fas fa-star"></i> FEATURED
+        </div>
+        <h2>Top 20 Gen-Z Slang Terms Every Indian Should Know in 2025</h2>
+        <p>From 'rizz' to 'delulu' - understand the language of Indian youth. This comprehensive guide covers the most important Gen-Z slang terms, their origins, and how to use them correctly.</p>
+        
+        <div class="article-meta">
+          <span><i class="far fa-calendar"></i> March 15, 2025</span>
+          <span><i class="far fa-clock"></i> 8 min read</span>
+          <span><i class="fas fa-user"></i> By SlangAdda Team</span>
+        </div>
+        
+        <a href="#" class="hero-btn secondary" style="background: white; color: var(--primary);">
+          <i class="fas fa-book-open"></i> Read Full Article
+        </a>
+      </div>
+      
+      <!-- Articles Grid -->
+      <div class="articles-grid">
+        <!-- Article 1 -->
+        <div class="article-card">
+          <div class="article-image">
+            <i class="fas fa-briefcase"></i>
+          </div>
+          <div class="article-content">
+            <span class="article-category">Professional</span>
+            <h3>Office Slang: Navigating Corporate Lingo in Indian Workplaces</h3>
+            <p>Learn which slang terms are acceptable in professional settings and which ones to avoid. Essential reading for corporate professionals.</p>
+            <div class="article-footer">
+              <span class="read-time"><i class="far fa-clock"></i> 7 min</span>
+              <a href="#" class="read-more">
+                Read More <i class="fas fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Article 2 -->
+        <div class="article-card">
+          <div class="article-image">
+            <i class="fas fa-film"></i>
+          </div>
+          <div class="article-content">
+            <span class="article-category">Bollywood</span>
+            <h3>How Bollywood Movies Create and Popularize New Slang Terms</h3>
+            <p>Explore the powerful influence of Indian cinema on everyday language and how movies shape slang evolution.</p>
+            <div class="article-footer">
+              <span class="read-time"><i class="far fa-clock"></i> 6 min</span>
+              <a href="#" class="read-more">
+                Read More <i class="fas fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Article 3 -->
+        <div class="article-card">
+          <div class="article-image">
+            <i class="fas fa-map-marker-alt"></i>
+          </div>
+          <div class="article-content">
+            <span class="article-category">Regional</span>
+            <h3>Regional Slang Spotlight: Mumbai's Tapori Language Guide</h3>
+            <p>Dive into the unique slang of Mumbai's streets - from 'bhidu' to 'ayyashi'. Learn authentic Mumbai tapori lingo.</p>
+            <div class="article-footer">
+              <span class="read-time"><i class="far fa-clock"></i> 9 min</span>
+              <a href="#" class="read-more">
+                Read More <i class="fas fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Article 4 -->
+        <div class="article-card">
+          <div class="article-image">
+            <i class="fas fa-graduation-cap"></i>
+          </div>
+          <div class="article-content">
+            <span class="article-category">Education</span>
+            <h3>Slang in Indian Classrooms: What Teachers Need to Know</h3>
+            <p>A guide for educators to understand student slang, bridge communication gaps, and create better learning environments.</p>
+            <div class="article-footer">
+              <span class="read-time"><i class="far fa-clock"></i> 5 min</span>
+              <a href="#" class="read-more">
+                Read More <i class="fas fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Article 5 -->
+        <div class="article-card">
+          <div class="article-image">
+            <i class="fas fa-mobile-alt"></i>
+          </div>
+          <div class="article-content">
+            <span class="article-category">Social Media</span>
+            <h3>Instagram & TikTok Slang: Decoding Reels Culture in India</h3>
+            <p>Understand the slang born on Indian social media platforms and how it spreads virally across the country.</p>
+            <div class="article-footer">
+              <span class="read-time"><i class="far fa-clock"></i> 7 min</span>
+              <a href="#" class="read-more">
+                Read More <i class="fas fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Article 6 -->
+        <div class="article-card">
+          <div class="article-image">
+            <i class="fas fa-history"></i>
+          </div>
+          <div class="article-content">
+            <span class="article-category">Historical</span>
+            <h3>90s Slang Revival: Why Old School Indian Slang is Trending Again</h3>
+            <p>Discover why slang from the 90s and early 2000s is making a comeback among today's youth.</p>
+            <div class="article-footer">
+              <span class="read-time"><i class="far fa-clock"></i> 8 min</span>
+              <a href="#" class="read-more">
+                Read More <i class="fas fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Pagination -->
+      <div class="pagination">
+        <a href="#" class="page-link disabled">
+          <i class="fas fa-chevron-left"></i>
+        </a>
+        <a href="#" class="page-link active">1</a>
+        <a href="#" class="page-link">2</a>
+        <a href="#" class="page-link">3</a>
+        <a href="#" class="page-link">4</a>
+        <a href="#" class="page-link">5</a>
+        <span>...</span>
+        <a href="#" class="page-link">10</a>
+        <a href="#" class="page-link">
+          <i class="fas fa-chevron-right"></i>
+        </a>
+      </div>
+    </div>
+    
+    <!-- Sidebar -->
+    <div class="blog-sidebar">
+      <!-- Newsletter -->
+      <div class="sidebar-section sidebar-newsletter">
+        <h3><i class="fas fa-envelope"></i> Subscribe</h3>
+        <p>Get weekly slang updates and new articles directly in your inbox.</p>
+        <input type="email" placeholder="Your email address">
+        <button>Subscribe Now</button>
+      </div>
+      
+      <!-- Categories -->
+      <div class="sidebar-section">
+        <h3><i class="fas fa-folder"></i> Categories</h3>
+        <div class="categories-list">
+          <div class="category-item">
+            <span>Gen-Z Slang</span>
+            <span class="category-count">45</span>
+          </div>
+          <div class="category-item">
+            <span>Bollywood</span>
+            <span class="category-count">32</span>
+          </div>
+          <div class="category-item">
+            <span>Professional</span>
+            <span class="category-count">28</span>
+          </div>
+          <div class="category-item">
+            <span>Regional</span>
+            <span class="category-count">25</span>
+          </div>
+          <div class="category-item">
+            <span>Social Media</span>
+            <span class="category-count">22</span>
+          </div>
+          <div class="category-item">
+            <span>Historical</span>
+            <span class="category-count">18</span>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Ad Space -->
+      <div class="sidebar-section">
+        <div class="sidebar-ad">
+          <div class="ad-label">Sponsored</div>
+          <div class="ad-unit">
+            <i class="fas fa-ad"></i>
+            <p>300×250 Ad Space</p>
+            <small>Premium sidebar placement</small>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Popular Articles -->
+      <div class="sidebar-section">
+        <h3><i class="fas fa-fire"></i> Popular Now</h3>
+        <div class="popular-articles">
+          <div class="popular-article">
+            <div class="popular-image">
+              <i class="fas fa-users"></i>
+            </div>
+            <div class="popular-content">
+              <div class="popular-title">Understanding Gen-Z Dating Slang</div>
+              <div class="popular-date">Mar 10, 2025</div>
+            </div>
+          </div>
+          
+          <div class="popular-article">
+            <div class="popular-image">
+              <i class="fas fa-gamepad"></i>
+            </div>
+            <div class="popular-content">
+              <div class="popular-title">Gaming Slang in Indian Esports</div>
+              <div class="popular-date">Mar 8, 2025</div>
+            </div>
+          </div>
+          
+          <div class="popular-article">
+            <div class="popular-image">
+              <i class="fas fa-utensils"></i>
+            </div>
+            <div class="popular-content">
+              <div class="popular-title">Food & Restaurant Slang Guide</div>
+              <div class="popular-date">Mar 5, 2025</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Tags -->
+      <div class="sidebar-section">
+        <h3><i class="fas fa-tags"></i> Popular Tags</h3>
+        <div class="tags-cloud">
+          <span class="tag">rizz</span>
+          <span class="tag">delulu</span>
+          <span class="tag">chapri</span>
+          <span class="tag">genz</span>
+          <span class="tag">bollywood</span>
+          <span class="tag">workplace</span>
+          <span class="tag">mumbai</span>
+          <span class="tag">dating</span>
+          <span class="tag">gaming</span>
+          <span class="tag">socialmedia</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ADVERTISEMENT -->
+<div class="container">
+  <div class="ad-container">
+    <div class="ad-label">Advertisement</div>
+    <div class="ad-unit">
+      <i class="fas fa-ad"></i>
+      <p>300×600 Ad Space</p>
+      <small>Premium ad placement. Contact: ads@slangadda.ai</small>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-content">
+    <div class="footer-section">
+      <h3>SlangAdda<span>AI</span></h3>
+      <p class="footer-tagline">Free Indian slang decoder. No ads. No tracking. Just understanding.</p>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="dictionary.html">Dictionary</a>
+        <a href="quiz.html">Quiz</a>
+        <a href="blog.html">Blog</a>
+        <a href="index.html#support">Join Movement</a>
+      </div>
+    </div>
+    
+    <div class="footer-section">
+      <h4>Blog Categories</h4>
+      <a href="#">Gen-Z Slang</a>
+      <a href="#">Bollywood</a>
+      <a href="#">Professional</a>
+      <a href="#">Regional</a>
+      <a href="#">Social Media</a>
+    </div>
+    
+    <div class="footer-section">
+      <h4>Connect</h4>
+      <div class="social-links">
+        <a href="#"><i class="fab fa-twitter"></i> Twitter</a>
+        <a href="#"><i class="fab fa-instagram"></i> Instagram</a>
+        <a href="#"><i class="fab fa-github"></i> GitHub</a>
+        <a href="mailto:hello@slangadda.ai"><i class="fas fa-envelope"></i> Email</a>
+        <a href="mailto:ads@slangadda.ai"><i class="fas fa-ad"></i> Advertise</a>
+      </div>
+    </div>
+    
+    <div class="footer-section">
+      <h4>Blog Stats</h4>
+      <p><i class="fas fa-newspaper"></i> 150+ Articles</p>
+      <p><i class="fas fa-users"></i> 50K+ Readers</p>
+      <p><i class="fas fa-pen"></i> 10+ Writers</p>
+      <p><i class="fas fa-heart"></i> 98% Satisfaction</p>
+      <p><i class="fas fa-rss"></i> RSS Feed Available</p>
+    </div>
+  </div>
+  
+  <div class="footer-bottom">
+    <p>© 2025 SlangAdda AI · Made with ❤️ for India · Keeping knowledge free for everyone</p>
+    <p class="footer-note">
+      Blog updated daily. Subscribe to never miss new slang insights!
+    </p>
+  </div>
+</footer>
+
+<!-- Suggestion Modal -->
+<div class="modal" id="suggestionModal">
+  <div class="modal-content suggestion-modal">
+    <span class="close-modal">&times;</span>
+    <h3><i class="fas fa-lightbulb"></i> Suggest Blog Topic</h3>
+    <p>Have an idea for a blog post? We'd love to hear it!</p>
+    
+    <div class="suggestion-form">
+      <div class="form-group">
+        <label for="topicTitle">Topic Title *</label>
+        <input type="text" id="topicTitle" placeholder="e.g., 'Slang in Indian Colleges'">
+      </div>
+      
+      <div class="form-group">
+        <label for="topicDescription">Brief Description *</label>
+        <textarea id="topicDescription" placeholder="Tell us about your topic idea..." rows="3"></textarea>
+      </div>
+      
+      <div class="form-group">
+        <label for="writerEmail">Your email (optional)</label>
+        <input type="email" id="writerEmail" placeholder="email@example.com">
+      </div>
+      
+      <div class="form-actions">
+        <button type="button" class="cancel-btn">Cancel</button>
+        <button type="button" class="submit-btn" id="submitTopic">
+          <i class="fas fa-paper-plane"></i> Submit Topic
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- JavaScript -->
+<script src="script.js"></script>
+
+<script>
+  // Blog page specific JavaScript
+  document.addEventListener('DOMContentLoaded', function() {
+    // Category filter
+    document.querySelectorAll('.category-item').forEach(item => {
+      item.addEventListener('click', function() {
+        const category = this.querySelector('span').textContent;
+        alert(`Filtering articles by: ${category}`);
+      });
+    });
+    
+    // Tag filter
+    document.querySelectorAll('.tag').forEach(tag => {
+      tag.addEventListener('click', function() {
+        const tagText = this.textContent;
+        alert(`Searching articles with tag: ${tagText}`);
+      });
+    });
+    
+    // Newsletter subscription
+    const subscribeBtn = document.querySelector('.sidebar-newsletter button');
+    const newsletterInput = document.querySelector('.sidebar-newsletter input');
+    
+    if (subscribeBtn) {
+      subscribeBtn.addEventListener('click', function() {
+        const email = newsletterInput.value.trim();
+        if (email && email.includes('@')) {
+          alert('Thank you for subscribing to our blog newsletter!');
+          newsletterInput.value = '';
+        } else {
+          alert('Please enter a valid email address.');
+        }
+      });
+    }
+    
+    // Simulate ad loading
+    simulateAdLoading();
+  });
+  
+  function simulateAdLoading() {
+    setTimeout(() => {
+      document.querySelectorAll('.ad-unit').forEach(ad => {
+        ad.innerHTML = `
+          <div style="background: white; padding: 10px; border-radius: 8px; margin-bottom: 10px;">
+            <strong style="color: var(--primary);">Sponsored Content</strong>
+            <p style="margin: 5px 0; font-size: 0.8rem;">Advertisement helps keep this blog free</p>
+          </div>
+          <small>Advertisement</small>
+        `;
+      });
+    }, 1500);
+  }
+</script>
+
+</body>
+</html>
+[file content end]
