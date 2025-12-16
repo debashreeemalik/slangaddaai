@@ -1,1 +1,1057 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Slang Quiz - Test Your Knowledge - SlangAdda AI</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Test your knowledge of Indian slang with our interactive quiz. Multiple difficulty levels, instant feedback." />
+  
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="styles.css">
+</head>
 
+<body>
+
+<!-- NAVBAR -->
+<header class="navbar">
+  <div class="logo">SlangAdda<span>AI</span></div>
+  <nav>
+    <a href="index.html"><i class="fas fa-home"></i> Home</a>
+    <a href="dictionary.html"><i class="fas fa-book"></i> Dictionary</a>
+    <a href="quiz.html" class="active"><i class="fas fa-brain"></i> Quiz</a>
+    <a href="index.html#donate" class="donate-nav"><i class="fas fa-heart"></i> Support</a>
+  </nav>
+</header>
+
+<!-- QUIZ HEADER -->
+<section class="quiz-header">
+  <div class="container">
+    <h1><i class="fas fa-brain"></i> Test Your Slang Knowledge</h1>
+    <p class="subtitle">How well do you understand Indian slang? Take our quiz and find out!</p>
+    
+    <div class="quiz-stats">
+      <div class="stat">
+        <span class="number" id="totalQuizzes">10,000+</span>
+        <span class="label">Quizzes Taken</span>
+      </div>
+      <div class="stat">
+        <span class="number" id="averageScore">72%</span>
+        <span class="label">Average Score</span>
+      </div>
+      <div class="stat">
+        <span class="number" id="totalQuestions">500+</span>
+        <span class="label">Questions</span>
+      </div>
+      <div class="stat">
+        <span class="number">Free</span>
+        <span class="label">Always Free</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUIZ SELECTION -->
+<section class="quiz-selection">
+  <div class="container">
+    <h2><i class="fas fa-gamepad"></i> Choose Your Quiz</h2>
+    <p class="section-subtitle">Select a quiz based on your interest and difficulty level.</p>
+    
+    <div class="quiz-grid">
+      <div class="quiz-card beginner">
+        <div class="quiz-card-header">
+          <div class="difficulty">
+            <span class="difficulty-badge">Beginner</span>
+            <div class="stars">
+              <i class="fas fa-star"></i>
+              <i class="far fa-star"></i>
+              <i class="far fa-star"></i>
+            </div>
+          </div>
+          <i class="fas fa-seedling"></i>
+        </div>
+        
+        <div class="quiz-card-body">
+          <h3>Slang Basics</h3>
+          <p>Perfect for parents and beginners. Common terms you hear daily.</p>
+          <ul class="quiz-features">
+            <li><i class="fas fa-check"></i> 10 questions</li>
+            <li><i class="fas fa-check"></i> Multiple choice</li>
+            <li><i class="fas fa-check"></i> Instant feedback</li>
+            <li><i class="fas fa-check"></i> Basic explanations</li>
+          </ul>
+        </div>
+        
+        <div class="quiz-card-footer">
+          <button class="start-quiz-btn" data-quiz="beginner">
+            Start Quiz <i class="fas fa-play"></i>
+          </button>
+          <span class="completion-rate">85% completion rate</span>
+        </div>
+      </div>
+      
+      <div class="quiz-card intermediate popular">
+        <div class="popular-badge">MOST POPULAR</div>
+        <div class="quiz-card-header">
+          <div class="difficulty">
+            <span class="difficulty-badge">Intermediate</span>
+            <div class="stars">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="far fa-star"></i>
+            </div>
+          </div>
+          <i class="fas fa-bolt"></i>
+        </div>
+        
+        <div class="quiz-card-body">
+          <h3>Gen-Z Slang Challenge</h3>
+          <p>Test your knowledge of trending internet slang used by youth.</p>
+          <ul class="quiz-features">
+            <li><i class="fas fa-check"></i> 15 questions</li>
+            <li><i class="fas fa-check"></i> Timed questions</li>
+            <li><i class="fas fa-check"></i> Detailed explanations</li>
+            <li><i class="fas fa-check"></i> Performance tracking</li>
+          </ul>
+        </div>
+        
+        <div class="quiz-card-footer">
+          <button class="start-quiz-btn" data-quiz="intermediate">
+            Start Quiz <i class="fas fa-play"></i>
+          </button>
+          <span class="completion-rate">78% completion rate</span>
+        </div>
+      </div>
+      
+      <div class="quiz-card advanced">
+        <div class="quiz-card-header">
+          <div class="difficulty">
+            <span class="difficulty-badge">Advanced</span>
+            <div class="stars">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+          </div>
+          <i class="fas fa-crown"></i>
+        </div>
+        
+        <div class="quiz-card-body">
+          <h3>Slang Master</h3>
+          <p>For true slang experts. Regional terms, niche references, and obscure slang.</p>
+          <ul class="quiz-features">
+            <li><i class="fas fa-check"></i> 20 questions</li>
+            <li><i class="fas fa-check"></i> Mixed formats</li>
+            <li><i class="fas fa-check"></i> Regional focus</li>
+            <li><i class="fas fa-check"></i> Certificate on completion</li>
+          </ul>
+        </div>
+        
+        <div class="quiz-card-footer">
+          <button class="start-quiz-btn" data-quiz="advanced">
+            Start Quiz <i class="fas fa-play"></i>
+          </button>
+          <span class="completion-rate">62% completion rate</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="special-quizzes">
+      <h3><i class="fas fa-gem"></i> Special Quizzes</h3>
+      <div class="special-grid">
+        <div class="special-card">
+          <i class="fas fa-briefcase"></i>
+          <h4>Workplace Slang</h4>
+          <p>Office-appropriate terms and professional jargon</p>
+          <button class="special-quiz-btn" data-quiz="workplace">
+            Try Now
+          </button>
+        </div>
+        
+        <div class="special-card">
+          <i class="fas fa-film"></i>
+          <h4>Bollywood Slang</h4>
+          <p>Slang from movies and celebrity culture</p>
+          <button class="special-quiz-btn" data-quiz="bollywood">
+            Try Now
+          </button>
+        </div>
+        
+        <div class="special-card">
+          <i class="fas fa-map-marker-alt"></i>
+          <h4>Regional Slang</h4>
+          <p>State-specific slang from across India</p>
+          <button class="special-quiz-btn" data-quiz="regional">
+            Try Now
+          </button>
+        </div>
+        
+        <div class="special-card">
+          <i class="fas fa-history"></i>
+          <h4>Historical Slang</h4>
+          <p>Old-school slang from 90s and 2000s</p>
+          <button class="special-quiz-btn" data-quiz="historical">
+            Try Now
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ACTIVE QUIZ SECTION (Hidden by default) -->
+<section class="active-quiz" id="activeQuiz" style="display: none;">
+  <div class="container">
+    <div class="quiz-container">
+      <div class="quiz-header-bar">
+        <div class="quiz-info">
+          <h2 id="quizTitle">Slang Quiz</h2>
+          <p id="quizDescription">Test your knowledge</p>
+        </div>
+        
+        <div class="quiz-controls">
+          <div class="quiz-timer" id="quizTimer">
+            <i class="fas fa-clock"></i> <span id="timerValue">10:00</span>
+          </div>
+          <button class="quit-quiz-btn" id="quitQuizBtn">
+            <i class="fas fa-times"></i> Quit
+          </button>
+        </div>
+      </div>
+      
+      <div class="quiz-progress">
+        <div class="progress-bar">
+          <div class="progress-fill" id="progressFill" style="width: 0%"></div>
+        </div>
+        <div class="progress-text">
+          Question <span id="currentQuestion">1</span> of <span id="totalQuestionsCount">10</span>
+        </div>
+      </div>
+      
+      <div class="quiz-question-container">
+        <div class="question-card" id="questionCard">
+          <div class="question-header">
+            <h3 id="questionText">What does "rizz" mean?</h3>
+          </div>
+          
+          <div class="question-options" id="questionOptions">
+            <!-- Options loaded by JavaScript -->
+          </div>
+          
+          <div class="question-navigation">
+            <button class="nav-btn prev-btn" id="prevQuestionBtn" disabled>
+              <i class="fas fa-arrow-left"></i> Previous
+            </button>
+            
+            <div class="question-status">
+              <span class="status-text" id="statusText">Select an answer</span>
+            </div>
+            
+            <button class="nav-btn next-btn" id="nextQuestionBtn">
+              Next <i class="fas fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+        
+        <div class="quiz-sidebar">
+          <div class="score-card">
+            <h4><i class="fas fa-trophy"></i> Your Score</h4>
+            <div class="score-display">
+              <span class="score-value" id="scoreValue">0</span>
+              <span class="score-max">/100</span>
+            </div>
+            <p class="score-label">Points</p>
+          </div>
+          
+          <div class="streak-card">
+            <h4><i class="fas fa-fire"></i> Streak</h4>
+            <div class="streak-display">
+              <span class="streak-value" id="streakValue">0</span>
+              <span class="streak-label">in a row</span>
+            </div>
+            <p class="streak-label">Correct answers</p>
+          </div>
+          
+          <div class="hint-card">
+            <h4><i class="fas fa-lightbulb"></i> Need Help?</h4>
+            <button class="hint-btn" id="hintBtn">
+              Get Hint (3 left)
+            </button>
+            <p class="hint-note">Hints don't affect score</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUIZ RESULTS (Hidden by default) -->
+<section class="quiz-results" id="quizResults" style="display: none;">
+  <div class="container">
+    <div class="results-card">
+      <div class="results-header">
+        <h2><i class="fas fa-award"></i> Quiz Complete!</h2>
+        <p id="resultsSubtitle">Here's how you did</p>
+      </div>
+      
+      <div class="results-content">
+        <div class="score-summary">
+          <div class="final-score">
+            <div class="score-circle">
+              <span class="score-percent" id="scorePercent">0%</span>
+            </div>
+            <div class="score-details">
+              <h3 id="scoreTitle">Novice</h3>
+              <p id="scoreDescription">Keep practicing!</p>
+            </div>
+          </div>
+          
+          <div class="score-stats">
+            <div class="stat-item">
+              <span class="stat-label">Correct</span>
+              <span class="stat-value" id="correctCount">0</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-label">Incorrect</span>
+              <span class="stat-value" id="incorrectCount">0</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-label">Time</span>
+              <span class="stat-value" id="timeTaken">0:00</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-label">Streak</span>
+              <span class="stat-value" id="finalStreak">0</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="results-breakdown">
+          <h4><i class="fas fa-chart-bar"></i> Question Breakdown</h4>
+          <div class="breakdown-list" id="breakdownList">
+            <!-- Questions breakdown loaded here -->
+          </div>
+        </div>
+        
+        <div class="results-actions">
+          <button class="action-btn retry-btn" id="retryQuizBtn">
+            <i class="fas fa-redo"></i> Retry Quiz
+          </button>
+          <button class="action-btn new-quiz-btn" id="newQuizBtn">
+            <i class="fas fa-plus"></i> Try Another Quiz
+          </button>
+          <button class="action-btn share-btn" id="shareResultsBtn">
+            <i class="fas fa-share-alt"></i> Share Score
+          </button>
+        </div>
+        
+        <div class="improvement-tips">
+          <h4><i class="fas fa-graduation-cap"></i> How to Improve</h4>
+          <div class="tips-grid">
+            <div class="tip">
+              <i class="fas fa-book"></i>
+              <p>Study our <a href="dictionary.html">dictionary</a> daily</p>
+            </div>
+            <div class="tip">
+              <i class="fas fa-film"></i>
+              <p>Watch Indian web series with subtitles</p>
+            </div>
+            <div class="tip">
+              <i class="fas fa-users"></i>
+              <p>Join online Indian youth communities</p>
+            </div>
+            <div class="tip">
+              <i class="fas fa-history"></i>
+              <p>Take quizzes regularly to track progress</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LEADERBOARD -->
+<section class="leaderboard">
+  <div class="container">
+    <h2><i class="fas fa-trophy"></i> Top Scorers This Week</h2>
+    <p class="section-subtitle">See how you compare with other slang experts</p>
+    
+    <div class="leaderboard-table">
+      <div class="table-header">
+        <div class="header-cell rank">Rank</div>
+        <div class="header-cell name">Name</div>
+        <div class="header-cell score">Score</div>
+        <div class="header-cell time">Time</div>
+        <div class="header-cell quiz">Quiz</div>
+      </div>
+      
+      <div class="table-body" id="leaderboardBody">
+        <!-- Leaderboard loaded by JavaScript -->
+      </div>
+    </div>
+    
+    <div class="leaderboard-note">
+      <p><i class="fas fa-info-circle"></i> Leaderboard updates daily. Scores are anonymous unless you choose to share.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-content">
+    <div class="footer-section">
+      <h3>SlangAdda<span>AI</span></h3>
+      <p class="footer-tagline">Free Indian slang decoder. No ads. No tracking. Just understanding.</p>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="dictionary.html">Dictionary</a>
+        <a href="quiz.html">Quiz</a>
+        <a href="index.html#donate">Support</a>
+      </div>
+    </div>
+    
+    <div class="footer-section">
+      <h4>Quiz Info</h4>
+      <a href="#" id="quizSuggestLink">Suggest Quiz Question</a>
+      <a href="#" id="viewAnswersLink">View Answer Key</a>
+      <a href="#">Quiz Categories</a>
+      <a href="policies.html">Quiz Policies</a>
+    </div>
+    
+    <div class="footer-section">
+      <h4>Connect</h4>
+      <div class="social-links">
+        <a href="#"><i class="fab fa-twitter"></i> Twitter</a>
+        <a href="#"><i class="fab fa-instagram"></i> Instagram</a>
+        <a href="#"><i class="fab fa-github"></i> GitHub</a>
+        <a href="mailto:hello@slangadda.ai"><i class="fas fa-envelope"></i> Email</a>
+      </div>
+    </div>
+    
+    <div class="footer-section">
+      <h4>Quiz Stats</h4>
+      <p><i class="fas fa-gamepad"></i> 10,000+ Quizzes</p>
+      <p><i class="fas fa-users"></i> 5,000+ Players</p>
+      <p><i class="fas fa-question-circle"></i> 500+ Questions</p>
+      <p><i class="fas fa-heart"></i> 98% Satisfaction</p>
+    </div>
+  </div>
+  
+  <div class="footer-bottom">
+    <p>© 2025 SlangAdda AI · Made with ❤️ for India · Keeping knowledge free for everyone</p>
+    <p class="footer-note">
+      Quizzes updated weekly. Challenge your friends and learn together!
+    </p>
+  </div>
+</footer>
+
+<!-- Quiz Data and JavaScript -->
+<script src="script.js"></script>
+<script src="slang-database.js"></script>
+
+<!-- Quiz questions database -->
+<script>
+  const quizDatabase = {
+    beginner: [
+      {
+        question: "What does 'rizz' mean?",
+        options: [
+          "Charisma or romantic charm",
+          "A type of dance",
+          "Quick movement",
+          "A food item"
+        ],
+        correct: 0,
+        explanation: "'Rizz' is short for charisma, especially in romantic contexts. It became popular on TikTok."
+      },
+      {
+        question: "What does 'delulu' mean?",
+        options: [
+          "Delicious food",
+          "Delusional thinking",
+          "Delayed response",
+          "Delightful person"
+        ],
+        correct: 1,
+        explanation: "'Delulu' is internet slang for being delusional, often about unrealistic romantic scenarios."
+      },
+      {
+        question: "If someone says 'slay', what do they mean?",
+        options: [
+          "To kill someone",
+          "To do something exceptionally well",
+          "To sleep",
+          "To leave quickly"
+        ],
+        correct: 1,
+        explanation: "'Slay' means to do something amazingly well or look fantastic. It's praise."
+      },
+      {
+        question: "What is 'ghosting' in dating?",
+        options: [
+          "Watching horror movies together",
+          "Suddenly stopping all communication",
+          "Dressing up as ghosts",
+          "Sending ghost emojis"
+        ],
+        correct: 1,
+        explanation: "Ghosting is when someone cuts off all contact without explanation, common in dating apps."
+      }
+    ],
+    intermediate: [
+      {
+        question: "What does 'NPC energy' refer to?",
+        options: [
+          "High energy levels",
+          "Predictable, unoriginal behavior",
+          "Gaming skills",
+          "Natural charisma"
+        ],
+        correct: 1,
+        explanation: "From video games - NPCs (Non-Player Characters) act predictably. 'NPC energy' means someone lacks originality."
+      },
+      {
+        question: "What does 'mid' mean when describing something?",
+        options: [
+          "Middle of the road, average",
+          "Excellent quality",
+          "Very small",
+          "Extremely large"
+        ],
+        correct: 0,
+        explanation: "'Mid' means mediocre or average. Not terrible, but not great either."
+      },
+      {
+        question: "If someone calls you 'sus', what do they mean?",
+        options: [
+          "Sustainable",
+          "Suspicious",
+          "Successful",
+          "Supportive"
+        ],
+        correct: 1,
+        explanation: "'Sus' is short for suspicious. Popularized by the game Among Us."
+      },
+      {
+        question: "What does 'simp' mean?",
+        options: [
+          "Simple person",
+          "Someone who exercises",
+          "Person who admires someone excessively",
+          "Short for simpatico"
+        ],
+        correct: 2,
+        explanation: "A 'simp' is someone who does too much for someone they're attracted to, often losing self-respect."
+      }
+    ],
+    advanced: [
+      {
+        question: "What does 'chapri' typically describe?",
+        options: [
+          "A type of Indian bread",
+          "Someone trying too hard to be cool",
+          "A small child",
+          "Traditional clothing"
+        ],
+        correct: 1,
+        explanation: "'Chapri' describes someone with tacky style who tries too hard to be cool, often with loud modifications."
+      },
+      {
+        question: "What is 'bhai scene'?",
+        options: [
+          "A movie scene with brothers",
+          "Asking what's happening",
+          "Brotherly love",
+          "Fight scene"
+        ],
+        correct: 1,
+        explanation: "'Bhai scene kya hai?' means 'Brother, what's the situation?' - asking what's happening or the plan."
+      },
+      {
+        question: "What does 'vibe check' mean?",
+        options: [
+          "Checking the atmosphere",
+          "Testing equipment",
+          "Asking for ID",
+          "Medical checkup"
+        ],
+        correct: 0,
+        explanation: "'Vibe check' means assessing the mood or atmosphere of a situation or person."
+      },
+      {
+        question: "What does 'main character energy' mean?",
+        options: [
+          "Being the protagonist of a story",
+          "Having confidence and standing out",
+          "Being self-centered",
+          "Good acting skills"
+        ],
+        correct: 1,
+        explanation: "Having 'main character energy' means carrying yourself with confidence like you're the star of your life."
+      }
+    ]
+  };
+</script>
+
+<script>
+  // Quiz page specific JavaScript
+  document.addEventListener('DOMContentLoaded', function() {
+    // Initialize leaderboard
+    initializeLeaderboard();
+    
+    // Quiz selection buttons
+    document.querySelectorAll('.start-quiz-btn, .special-quiz-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const quizType = this.getAttribute('data-quiz');
+        startQuiz(quizType);
+      });
+    });
+    
+    // Quiz control buttons
+    document.getElementById('quitQuizBtn').addEventListener('click', quitQuiz);
+    document.getElementById('retryQuizBtn').addEventListener('click', retryQuiz);
+    document.getElementById('newQuizBtn').addEventListener('click', newQuiz);
+    document.getElementById('shareResultsBtn').addEventListener('click', shareResults);
+    
+    // Navigation buttons
+    document.getElementById('prevQuestionBtn').addEventListener('click', prevQuestion);
+    document.getElementById('nextQuestionBtn').addEventListener('click', nextQuestion);
+    document.getElementById('hintBtn').addEventListener('click', showHint);
+    
+    // Suggestion link
+    document.getElementById('quizSuggestLink').addEventListener('click', function(e) {
+      e.preventDefault();
+      showQuestionSuggestionModal();
+    });
+    
+    // View answers link
+    document.getElementById('viewAnswersLink').addEventListener('click', function(e) {
+      e.preventDefault();
+      alert('Answer keys are provided after each quiz. Complete a quiz to see detailed explanations!');
+    });
+  });
+  
+  let currentQuiz = null;
+  let currentQuestionIndex = 0;
+  let userAnswers = [];
+  let quizScore = 0;
+  let correctStreak = 0;
+  let maxStreak = 0;
+  let startTime = null;
+  let timerInterval = null;
+  let timeRemaining = 600; // 10 minutes in seconds
+  let hintsRemaining = 3;
+  
+  function initializeLeaderboard() {
+    const leaderboardBody = document.getElementById('leaderboardBody');
+    
+    // Simulated leaderboard data
+    const leaders = [
+      { name: 'SlangMaster99', score: 98, time: '4:32', quiz: 'Advanced' },
+      { name: 'GenZExpert', score: 96, time: '5:10', quiz: 'Intermediate' },
+      { name: 'HindiFilmFan', score: 95, time: '6:45', quiz: 'Bollywood' },
+      { name: 'DelhiDude', score: 94, time: '4:55', quiz: 'Regional' },
+      { name: 'QuizQueen', score: 93, time: '7:20', quiz: 'Advanced' },
+      { name: 'MumbaiMaven', score: 92, time: '5:45', quiz: 'Intermediate' },
+      { name: 'ChennaiChamp', score: 91, time: '6:10', quiz: 'Beginner' },
+      { name: 'BangaloreBuddy', score: 90, time: '8:05', quiz: 'Workplace' }
+    ];
+    
+    leaderboardBody.innerHTML = leaders.map((leader, index) => `
+      <div class="table-row ${index < 3 ? 'top-three' : ''}">
+        <div class="table-cell rank">
+          ${index === 0 ? '🥇' : index === 1 ? '🥈' : index === 2 ? '🥉' : index + 1}
+        </div>
+        <div class="table-cell name">
+          <i class="fas fa-user"></i> ${leader.name}
+        </div>
+        <div class="table-cell score">${leader.score}%</div>
+        <div class="table-cell time">${leader.time}</div>
+        <div class="table-cell quiz">${leader.quiz}</div>
+      </div>
+    `).join('');
+  }
+  
+  function startQuiz(quizType) {
+    currentQuiz = quizType;
+    currentQuestionIndex = 0;
+    userAnswers = [];
+    quizScore = 0;
+    correctStreak = 0;
+    maxStreak = 0;
+    timeRemaining = quizType === 'intermediate' ? 480 : 600; // 8 min for intermediate, 10 for others
+    hintsRemaining = 3;
+    
+    // Hide selection, show active quiz
+    document.querySelector('.quiz-selection').style.display = 'none';
+    document.querySelector('.leaderboard').style.display = 'none';
+    document.getElementById('activeQuiz').style.display = 'block';
+    
+    // Set quiz title
+    const titleMap = {
+      'beginner': 'Slang Basics',
+      'intermediate': 'Gen-Z Slang Challenge',
+      'advanced': 'Slang Master',
+      'workplace': 'Workplace Slang',
+      'bollywood': 'Bollywood Slang',
+      'regional': 'Regional Slang',
+      'historical': 'Historical Slang'
+    };
+    
+    document.getElementById('quizTitle').textContent = titleMap[quizType] || 'Slang Quiz';
+    document.getElementById('quizDescription').textContent = getQuizDescription(quizType);
+    document.getElementById('totalQuestionsCount').textContent = quizDatabase[quizType]?.length || 10;
+    
+    // Start timer
+    startTime = Date.now();
+    startTimer();
+    
+    // Load first question
+    loadQuestion();
+    
+    // Update UI
+    updateProgress();
+    updateScoreDisplay();
+    updateStreakDisplay();
+    updateHintDisplay();
+  }
+  
+  function getQuizDescription(quizType) {
+    const descriptions = {
+      'beginner': 'Perfect for parents and beginners. Common terms you hear daily.',
+      'intermediate': 'Test your knowledge of trending internet slang used by youth.',
+      'advanced': 'For true slang experts. Regional terms and obscure references.',
+      'workplace': 'Office-appropriate terms and professional jargon.',
+      'bollywood': 'Slang from movies and celebrity culture.',
+      'regional': 'State-specific slang from across India.',
+      'historical': 'Old-school slang from 90s and 2000s.'
+    };
+    return descriptions[quizType] || 'Test your slang knowledge';
+  }
+  
+  function startTimer() {
+    updateTimerDisplay();
+    
+    timerInterval = setInterval(() => {
+      timeRemaining--;
+      updateTimerDisplay();
+      
+      if (timeRemaining <= 0) {
+        clearInterval(timerInterval);
+        finishQuiz();
+      }
+    }, 1000);
+  }
+  
+  function updateTimerDisplay() {
+    const minutes = Math.floor(timeRemaining / 60);
+    const seconds = timeRemaining % 60;
+    document.getElementById('timerValue').textContent = 
+      `${minutes}:${seconds.toString().padStart(2, '0')}`;
+  }
+  
+  function loadQuestion() {
+    const questions = quizDatabase[currentQuiz] || quizDatabase.beginner;
+    const question = questions[currentQuestionIndex];
+    
+    if (!question) {
+      finishQuiz();
+      return;
+    }
+    
+    // Update question text
+    document.getElementById('questionText').textContent = question.question;
+    
+    // Update options
+    const optionsContainer = document.getElementById('questionOptions');
+    optionsContainer.innerHTML = '';
+    
+    question.options.forEach((option, index) => {
+      const optionDiv = document.createElement('div');
+      optionDiv.className = 'option';
+      optionDiv.innerHTML = `
+        <div class="option-letter">${String.fromCharCode(65 + index)}</div>
+        <div class="option-text">${option}</div>
+      `;
+      
+      optionDiv.addEventListener('click', () => selectOption(index));
+      optionsContainer.appendChild(optionDiv);
+    });
+    
+    // Reset option selection
+    document.querySelectorAll('.option').forEach(opt => {
+      opt.classList.remove('selected', 'correct', 'wrong');
+    });
+    
+    // Update navigation buttons
+    document.getElementById('prevQuestionBtn').disabled = currentQuestionIndex === 0;
+    document.getElementById('nextQuestionBtn').disabled = true;
+    
+    // Update status
+    document.getElementById('statusText').textContent = 'Select an answer';
+    
+    // Check if already answered
+    if (userAnswers[currentQuestionIndex] !== undefined) {
+      const selectedIndex = userAnswers[currentQuestionIndex];
+      const options = document.querySelectorAll('.option');
+      options[selectedIndex].classList.add('selected');
+      
+      // Show correct/wrong
+      if (selectedIndex === question.correct) {
+        options[selectedIndex].classList.add('correct');
+      } else {
+        options[selectedIndex].classList.add('wrong');
+        options[question.correct].classList.add('correct');
+      }
+      
+      document.getElementById('nextQuestionBtn').disabled = false;
+      document.getElementById('statusText').textContent = 
+        selectedIndex === question.correct ? 'Correct!' : 'Incorrect';
+    }
+    
+    // Update progress
+    updateProgress();
+  }
+  
+  function selectOption(optionIndex) {
+    // Remove selection from all options
+    document.querySelectorAll('.option').forEach(opt => {
+      opt.classList.remove('selected');
+    });
+    
+    // Add selection to clicked option
+    const selectedOption = document.querySelectorAll('.option')[optionIndex];
+    selectedOption.classList.add('selected');
+    
+    // Store answer
+    userAnswers[currentQuestionIndex] = optionIndex;
+    
+    // Check answer
+    const questions = quizDatabase[currentQuiz] || quizDatabase.beginner;
+    const question = questions[currentQuestionIndex];
+    const isCorrect = optionIndex === question.correct;
+    
+    // Update score and streak
+    if (isCorrect) {
+      quizScore += 10;
+      correctStreak++;
+      if (correctStreak > maxStreak) maxStreak = correctStreak;
+    } else {
+      correctStreak = 0;
+    }
+    
+    // Show correct/wrong
+    if (isCorrect) {
+      selectedOption.classList.add('correct');
+      document.getElementById('statusText').textContent = 'Correct!';
+    } else {
+      selectedOption.classList.add('wrong');
+      document.querySelectorAll('.option')[question.correct].classList.add('correct');
+      document.getElementById('statusText').textContent = 'Incorrect';
+    }
+    
+    // Update displays
+    updateScoreDisplay();
+    updateStreakDisplay();
+    
+    // Enable next button
+    document.getElementById('nextQuestionBtn').disabled = false;
+  }
+  
+  function updateProgress() {
+    const questions = quizDatabase[currentQuiz] || quizDatabase.beginner;
+    const progress = ((currentQuestionIndex + 1) / questions.length) * 100;
+    document.getElementById('progressFill').style.width = `${progress}%`;
+    document.getElementById('currentQuestion').textContent = currentQuestionIndex + 1;
+  }
+  
+  function updateScoreDisplay() {
+    document.getElementById('scoreValue').textContent = quizScore;
+  }
+  
+  function updateStreakDisplay() {
+    document.getElementById('streakValue').textContent = correctStreak;
+  }
+  
+  function updateHintDisplay() {
+    document.getElementById('hintBtn').textContent = `Get Hint (${hintsRemaining} left)`;
+    document.getElementById('hintBtn').disabled = hintsRemaining <= 0;
+  }
+  
+  function prevQuestion() {
+    if (currentQuestionIndex > 0) {
+      currentQuestionIndex--;
+      loadQuestion();
+    }
+  }
+  
+  function nextQuestion() {
+    const questions = quizDatabase[currentQuiz] || quizDatabase.beginner;
+    
+    if (currentQuestionIndex < questions.length - 1) {
+      currentQuestionIndex++;
+      loadQuestion();
+    } else {
+      finishQuiz();
+    }
+  }
+  
+  function showHint() {
+    if (hintsRemaining <= 0) return;
+    
+    hintsRemaining--;
+    updateHintDisplay();
+    
+    const questions = quizDatabase[currentQuiz] || quizDatabase.beginner;
+    const question = questions[currentQuestionIndex];
+    
+    // Remove two wrong options (simplified hint)
+    const options = document.querySelectorAll('.option');
+    let wrongOptionsRemoved = 0;
+    
+    for (let i = 0; i < options.length; i++) {
+      if (i !== question.correct && wrongOptionsRemoved < 2) {
+        options[i].style.opacity = '0.3';
+        options[i].style.pointerEvents = 'none';
+        wrongOptionsRemoved++;
+      }
+    }
+    
+    document.getElementById('statusText').textContent = `Hint used! ${hintsRemaining} hints remaining`;
+  }
+  
+  function finishQuiz() {
+    clearInterval(timerInterval);
+    
+    // Calculate final score
+    const questions = quizDatabase[currentQuiz] || quizDatabase.beginner;
+    const totalQuestions = questions.length;
+    const correctAnswers = userAnswers.filter((answer, index) => 
+      answer === questions[index].correct
+    ).length;
+    
+    const percentage = Math.round((correctAnswers / totalQuestions) * 100);
+    const timeTaken = Math.floor((Date.now() - startTime) / 1000);
+    
+    // Hide active quiz, show results
+    document.getElementById('activeQuiz').style.display = 'none';
+    document.getElementById('quizResults').style.display = 'block';
+    
+    // Update results
+    document.getElementById('scorePercent').textContent = `${percentage}%`;
+    document.getElementById('correctCount').textContent = correctAnswers;
+    document.getElementById('incorrectCount').textContent = totalQuestions - correctAnswers;
+    document.getElementById('finalStreak').textContent = maxStreak;
+    
+    // Format time
+    const minutes = Math.floor(timeTaken / 60);
+    const seconds = timeTaken % 60;
+    document.getElementById('timeTaken').textContent = 
+      `${minutes}:${seconds.toString().padStart(2, '0')}`;
+    
+    // Set title based on score
+    let title = 'Novice';
+    let description = 'Keep practicing!';
+    
+    if (percentage >= 90) {
+      title = 'Slang Master';
+      description = 'You\'re a slang expert!';
+    } else if (percentage >= 70) {
+      title = 'Slang Savvy';
+      description = 'Great knowledge!';
+    } else if (percentage >= 50) {
+      title = 'Getting There';
+      description = 'Good effort!';
+    }
+    
+    document.getElementById('scoreTitle').textContent = title;
+    document.getElementById('scoreDescription').textContent = description;
+    document.getElementById('resultsSubtitle').textContent = description;
+    
+    // Load breakdown
+    loadBreakdown(questions);
+  }
+  
+  function loadBreakdown(questions) {
+    const breakdownList = document.getElementById('breakdownList');
+    breakdownList.innerHTML = '';
+    
+    questions.forEach((question, index) => {
+      const userAnswer = userAnswers[index];
+      const isCorrect = userAnswer === question.correct;
+      
+      const item = document.createElement('div');
+      item.className = `breakdown-item ${isCorrect ? 'correct' : 'incorrect'}`;
+      item.innerHTML = `
+        <div class="breakdown-question">
+          <span class="breakdown-number">Q${index + 1}</span>
+          <span class="breakdown-text">${question.question}</span>
+        </div>
+        <div class="breakdown-answer">
+          <span class="breakdown-label">Your answer:</span>
+          <span class="breakdown-value">${userAnswer !== undefined ? question.options[userAnswer] : 'Not answered'}</span>
+        </div>
+        <div class="breakdown-explanation">
+          ${question.explanation}
+        </div>
+      `;
+      
+      breakdownList.appendChild(item);
+    });
+  }
+  
+  function quitQuiz() {
+    if (confirm('Are you sure you want to quit? Your progress will be lost.')) {
+      clearInterval(timerInterval);
+      
+      // Show selection, hide active quiz
+      document.querySelector('.quiz-selection').style.display = 'block';
+      document.querySelector('.leaderboard').style.display = 'block';
+      document.getElementById('activeQuiz').style.display = 'none';
+      document.getElementById('quizResults').style.display = 'none';
+    }
+  }
+  
+  function retryQuiz() {
+    if (currentQuiz) {
+      startQuiz(currentQuiz);
+      document.getElementById('quizResults').style.display = 'none';
+    }
+  }
+  
+  function newQuiz() {
+    document.querySelector('.quiz-selection').style.display = 'block';
+    document.querySelector('.leaderboard').style.display = 'block';
+    document.getElementById('quizResults').style.display = 'none';
+  }
+  
+  function shareResults() {
+    const percentage = document.getElementById('scorePercent').textContent;
+    const title = document.getElementById('scoreTitle').textContent;
+    
+    const text = `I scored ${percentage} on the SlangAdda AI ${document.getElementById('quizTitle').textContent} quiz and earned the title "${title}"! Try it yourself: ${window.location.href}`;
+    
+    if (navigator.share) {
+      navigator.share({
+        title: 'My Slang Quiz Results',
+        text: text,
+        url: window.location.href
+      });
+    } else {
+      navigator.clipboard.writeText(text).then(() => {
+        alert('Results copied to clipboard! Share with your friends.');
+      });
+    }
+  }
+  
+  function showQuestionSuggestionModal() {
+    alert('To suggest a quiz question, please email us at: questions@slangadda.ai\n\nInclude:\n1. The question\n2. Multiple choice options\n3. Correct answer\n4. Explanation\n\nWe credit contributors!');
+  }
+</script>
+
+</body>
+</html>
