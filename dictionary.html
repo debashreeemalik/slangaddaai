@@ -22,19 +22,31 @@
       margin: auto;
       padding: 30px 20px;
     }
+    .search-box {
+      display: flex;
+      gap: 10px;
+    }
     input {
-      width: 100%;
+      flex: 1;
       padding: 14px;
       font-size: 16px;
       border-radius: 10px;
       border: 1px solid #ccc;
-      margin-bottom: 20px;
+    }
+    button {
+      padding: 14px 20px;
+      font-size: 16px;
+      border-radius: 10px;
+      border: none;
+      cursor: pointer;
+      background: #6366f1;
+      color: white;
     }
     .card {
       background: white;
       padding: 16px;
       border-radius: 12px;
-      margin-bottom: 15px;
+      margin-top: 15px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.05);
     }
     .card h3 {
@@ -49,47 +61,6 @@
       text-align: center;
     }
   </style>
-
-  <!-- Firebase module -->
-  <script type="module">
-    import { db } from "./firebase.js";
-    import { collection, getDocs } from
-      "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
-
-    let slangData = [];
-
-    async function loadSlang() {
-      const snapshot = await getDocs(collection(db, "slang"));
-      slangData = snapshot.docs.map(doc => doc.data());
-    }
-
-    window.searchSlang = function () {
-      const q = document.getElementById("searchInput").value.toLowerCase();
-      const resultsBox = document.getElementById("results");
-
-      const filtered = slangData.filter(item =>
-        item.word.toLowerCase().includes(q) ||
-        item.meaning.toLowerCase().includes(q) ||
-        item.category.toLowerCase().includes(q)
-      );
-
-      if (!filtered.length) {
-        resultsBox.innerHTML = "<p>No results found</p>";
-        return;
-      }
-
-      resultsBox.innerHTML = filtered.map(item => `
-        <div class="card">
-          <h3>${item.word}</h3>
-          <p><b>Meaning:</b> ${item.meaning}</p>
-          <p><b>Example:</b> ${item.example}</p>
-          <small>Category: ${item.category}</small>
-        </div>
-      `).join("");
-    };
-
-    loadSlang();
-  </script>
 </head>
 
 <body>
@@ -100,11 +71,14 @@
 </header>
 
 <div class="container">
-  <input
-    id="searchInput"
-    placeholder="Search slang (word / meaning / category)"
-    onkeyup="searchSlang()"
-  >
+
+  <div class="search-box">
+    <input
+      id="searchInput"
+      placeholder="Search slang (word / meaning / category)"
+    >
+    <button onclick="searchSlang()">Search</button>
+  </div>
 
   <div id="results"></div>
 
@@ -114,6 +88,51 @@
     <strong>UPI: slangadda@ptyes</strong>
   </div>
 </div>
+
+<script type="module">
+  import { db } from "./firebase.js";
+  import { collection, getDocs } from
+    "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+  let slangData = [];
+
+  async function loadSlang() {
+    const snapshot = await getDocs(collection(db, "slang"));
+    slangData = snapshot.docs.map(doc => doc.data());
+  }
+
+  window.searchSlang = function () {
+    const q = document.getElementById("searchInput").value.toLowerCase();
+    const resultsBox = document.getElementById("results");
+
+    if (!q) {
+      resultsBox.innerHTML = "";
+      return;
+    }
+
+    const filtered = slangData.filter(item =>
+      item.word.toLowerCase().includes(q) ||
+      item.meaning.toLowerCase().includes(q) ||
+      item.category.toLowerCase().includes(q)
+    );
+
+    if (!filtered.length) {
+      resultsBox.innerHTML = "<p>No results found</p>";
+      return;
+    }
+
+    resultsBox.innerHTML = filtered.map(item => `
+      <div class="card">
+        <h3>${item.word}</h3>
+        <p><b>Meaning:</b> ${item.meaning}</p>
+        <p><b>Example:</b> ${item.example}</p>
+        <small>Category: ${item.category}</small>
+      </div>
+    `).join("");
+  };
+
+  loadSlang();
+</script>
 
 </body>
 </html>
