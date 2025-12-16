@@ -142,4 +142,545 @@
 <footer>
   <div class="footer-content">
     <div class="footer-section">
-      <h3>SlangAdda<span>
+      <h3>SlangAdda<span>AI</span></h3>
+      <p class="footer-tagline">Free Indian slang decoder. No ads. No tracking. Just understanding.</p>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="dictionary.html">Dictionary</a>
+        <a href="quiz.html">Quiz</a>
+        <a href="index.html#donate">Support</a>
+      </div>
+    </div>
+    
+    <div class="footer-section">
+      <h4>Dictionary Info</h4>
+      <a href="#" id="dictionarySuggestLink">Suggest New Term</a>
+      <a href="#" id="reportErrorLink">Report Error</a>
+      <a href="#">Update History</a>
+      <a href="policies.html">Content Policy</a>
+    </div>
+    
+    <div class="footer-section">
+      <h4>Connect</h4>
+      <div class="social-links">
+        <a href="#"><i class="fab fa-twitter"></i> Twitter</a>
+        <a href="#"><i class="fab fa-instagram"></i> Instagram</a>
+        <a href="#"><i class="fab fa-github"></i> GitHub</a>
+        <a href="mailto:hello@slangadda.ai"><i class="fas fa-envelope"></i> Email</a>
+      </div>
+    </div>
+    
+    <div class="footer-section">
+      <h4>Quick Stats</h4>
+      <p><i class="fas fa-book"></i> 500+ Terms</p>
+      <p><i class="fas fa-users"></i> 10,000+ Users</p>
+      <p><i class="fas fa-search"></i> 50,000+ Searches</p>
+      <p><i class="fas fa-heart"></i> Community-Driven</p>
+    </div>
+  </div>
+  
+  <div class="footer-bottom">
+    <p>© 2025 SlangAdda AI · Made with ❤️ for India · Keeping knowledge free for everyone</p>
+    <p class="footer-note">
+      Dictionary updated daily. Help us grow by suggesting new terms!
+    </p>
+  </div>
+</footer>
+
+<!-- Term Details Modal -->
+<div class="modal" id="termModal">
+  <div class="modal-content term-modal">
+    <span class="close-modal">&times;</span>
+    <div class="modal-body" id="termModalBody">
+      <!-- Term details loaded here -->
+    </div>
+  </div>
+</div>
+
+<!-- Suggestion Modal -->
+<div class="modal" id="suggestionModal">
+  <div class="modal-content suggestion-modal">
+    <span class="close-modal">&times;</span>
+    <h3><i class="fas fa-lightbulb"></i> Suggest New Slang</h3>
+    <div class="suggestion-form">
+      <!-- Form loaded from main script -->
+    </div>
+  </div>
+</div>
+
+<!-- JavaScript -->
+<script src="script.js"></script>
+<script src="slang-database.js"></script>
+
+<script>
+  // Dictionary page specific JavaScript
+  document.addEventListener('DOMContentLoaded', function() {
+    // Initialize dictionary
+    initializeDictionary();
+    
+    // Set up search
+    document.getElementById('searchButton').addEventListener('click', performSearch);
+    document.getElementById('dictionarySearch').addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') performSearch();
+    });
+    
+    // Check URL for search parameter
+    const urlParams = new URLSearchParams(window.location.search);
+    const searchTerm = urlParams.get('search');
+    if (searchTerm) {
+      document.getElementById('dictionarySearch').value = searchTerm;
+      performSearch();
+    }
+    
+    // Filter buttons
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+        filterDictionary(this.getAttribute('data-filter'));
+      });
+    });
+    
+    // Sort dropdown
+    document.getElementById('sortSelect').addEventListener('change', function() {
+      sortDictionary(this.value);
+    });
+    
+    // Load more button
+    document.getElementById('loadMoreBtn').addEventListener('click', loadMoreTerms);
+    
+    // Suggestion links
+    document.getElementById('suggestTermLink').addEventListener('click', function(e) {
+      e.preventDefault();
+      showSuggestionModal();
+    });
+    
+    document.getElementById('dictionarySuggestLink').addEventListener('click', function(e) {
+      e.preventDefault();
+      showSuggestionModal();
+    });
+    
+    // Report error link
+    document.getElementById('reportErrorLink').addEventListener('click', function(e) {
+      e.preventDefault();
+      showReportModal();
+    });
+    
+    // Modal close buttons
+    document.querySelectorAll('.close-modal').forEach(btn => {
+      btn.addEventListener('click', function() {
+        this.closest('.modal').style.display = 'none';
+      });
+    });
+    
+    // Close modal when clicking outside
+    document.querySelectorAll('.modal').forEach(modal => {
+      modal.addEventListener('click', function(e) {
+        if (e.target === this) {
+          this.style.display = 'none';
+        }
+      });
+    });
+  });
+  
+  let allTerms = [];
+  let displayedTerms = [];
+  let currentFilter = 'all';
+  let currentSort = 'popularity';
+  let displayedCount = 20;
+  
+  function initializeDictionary() {
+    // Get all terms from database
+    allTerms = Object.entries(slangDatabase).map(([term, data]) => ({
+      term,
+      ...data,
+      popularity: Math.floor(Math.random() * 1000) + 100 // Simulated popularity
+    }));
+    
+    // Update stats
+    document.getElementById('totalTerms').textContent = allTerms.length;
+    
+    // Get most searched terms (simulated)
+    const mostSearched = [...allTerms]
+      .sort((a, b) => b.popularity - a.popularity)
+      .slice(0, 6);
+    
+    displayMostSearched(mostSearched);
+    
+    // Load initial terms
+    displayedTerms = [...allTerms];
+    sortDictionary('popularity');
+    displayTerms();
+  }
+  
+  function displayMostSearched(terms) {
+    const container = document.getElementById('mostSearchedGrid');
+    container.innerHTML = '';
+    
+    terms.forEach((item, index) => {
+      const card = document.createElement('div');
+      card.className = 'trending-card';
+      card.innerHTML = `
+        <div class="trending-rank">#${index + 1}</div>
+        <div class="trending-term">${item.term}</div>
+        <div class="trending-meaning">${item.meaning.substring(0, 60)}...</div>
+        <div class="trending-tags">
+          <span class="tag">${item.category}</span>
+          <span class="tag">${item.safety}</span>
+        </div>
+        <button class="view-details-btn" data-term="${item.term}">
+          <i class="fas fa-eye"></i> View Details
+        </button>
+      `;
+      container.appendChild(card);
+    });
+    
+    // Add event listeners to view details buttons
+    container.querySelectorAll('.view-details-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const term = this.getAttribute('data-term');
+        showTermDetails(term);
+      });
+    });
+  }
+  
+  function displayTerms() {
+    const container = document.getElementById('dictionaryGrid');
+    container.innerHTML = '';
+    
+    const termsToShow = displayedTerms.slice(0, displayedCount);
+    
+    termsToShow.forEach(item => {
+      const card = document.createElement('div');
+      card.className = 'dict-card';
+      card.setAttribute('data-category', item.category.toLowerCase());
+      card.innerHTML = `
+        <div class="dict-card-header">
+          <h3 class="dict-term">${item.term}</h3>
+          <span class="dict-rating">${item.rating}</span>
+        </div>
+        
+        <div class="dict-card-body">
+          <p class="dict-meaning">${item.meaning}</p>
+          
+          <div class="dict-meta">
+            <span class="meta-item">
+              <i class="fas fa-tag"></i> ${item.category}
+            </span>
+            <span class="meta-item safety-${item.safety.split(' ')[0].toLowerCase()}">
+              <i class="fas fa-shield-alt"></i> ${item.safety}
+            </span>
+          </div>
+          
+          <div class="dict-example">
+            <i class="fas fa-quote-left"></i>
+            <p>${item.example}</p>
+          </div>
+        </div>
+        
+        <div class="dict-card-footer">
+          <button class="dict-action-btn view-btn" data-term="${item.term}">
+            <i class="fas fa-expand-alt"></i> Full Details
+          </button>
+          <button class="dict-action-btn save-btn" data-term="${item.term}">
+            <i class="far fa-bookmark"></i> Save
+          </button>
+        </div>
+      `;
+      container.appendChild(card);
+    });
+    
+    // Update counts
+    document.getElementById('showingCount').textContent = Math.min(displayedCount, displayedTerms.length);
+    document.getElementById('totalCount').textContent = displayedTerms.length;
+    
+    // Update load more button
+    const loadMoreBtn = document.getElementById('loadMoreBtn');
+    if (displayedCount >= displayedTerms.length) {
+      loadMoreBtn.style.display = 'none';
+    } else {
+      loadMoreBtn.style.display = 'inline-flex';
+    }
+    
+    // Add event listeners
+    container.querySelectorAll('.view-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const term = this.getAttribute('data-term');
+        showTermDetails(term);
+      });
+    });
+    
+    container.querySelectorAll('.save-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const term = this.getAttribute('data-term');
+        this.innerHTML = '<i class="fas fa-bookmark"></i> Saved';
+        this.style.background = 'var(--success)';
+        
+        // Save to localStorage (simulated)
+        const saved = JSON.parse(localStorage.getItem('savedTerms') || '[]');
+        if (!saved.includes(term)) {
+          saved.push(term);
+          localStorage.setItem('savedTerms', JSON.stringify(saved));
+        }
+      });
+    });
+  }
+  
+  function showTermDetails(term) {
+    const item = slangDatabase[term];
+    if (!item) return;
+    
+    const modal = document.getElementById('termModal');
+    const modalBody = document.getElementById('termModalBody');
+    
+    // Safety color
+    let safetyColor = '#10b981';
+    if (item.safety === 'casual') safetyColor = '#f59e0b';
+    if (item.safety === 'avoid in professional settings') safetyColor = '#ef4444';
+    
+    modalBody.innerHTML = `
+      <div class="term-details">
+        <div class="term-header">
+          <h2>${term}</h2>
+          <div class="term-rating">${item.rating}</div>
+        </div>
+        
+        <div class="term-content">
+          <div class="detail-section">
+            <h4><i class="fas fa-info-circle"></i> Meaning</h4>
+            <p>${item.meaning}</p>
+          </div>
+          
+          <div class="detail-section">
+            <h4><i class="fas fa-comment"></i> Context & Usage</h4>
+            <p>${item.context}</p>
+          </div>
+          
+          <div class="detail-section">
+            <h4><i class="fas fa-shield-alt"></i> Safety & Appropriateness</h4>
+            <p style="color: ${safetyColor}; font-weight: 600;">
+              <i class="fas fa-${safetyColor === '#10b981' ? 'check-circle' : safetyColor === '#f59e0b' ? 'exclamation-circle' : 'times-circle'}"></i>
+              ${item.safety}
+            </p>
+            <p class="safety-note">
+              ${getSafetyNote(item.safety)}
+            </p>
+          </div>
+          
+          <div class="detail-section">
+            <h4><i class="fas fa-quote-right"></i> Example</h4>
+            <div class="example-box">
+              <p>"${item.example}"</p>
+            </div>
+          </div>
+          
+          <div class="detail-section">
+            <h4><i class="fas fa-history"></i> Origin</h4>
+            <p>${item.origin}</p>
+          </div>
+          
+          <div class="detail-section">
+            <h4><i class="fas fa-tags"></i> Category & Tags</h4>
+            <div class="term-tags">
+              <span class="term-tag category">${item.category}</span>
+              <span class="term-tag safety" style="background: ${safetyColor}20; color: ${safetyColor};">
+                ${item.safety}
+              </span>
+              <span class="term-tag rating">${item.rating}</span>
+            </div>
+          </div>
+          
+          <div class="detail-section">
+            <h4><i class="fas fa-chart-line"></i> Popularity</h4>
+            <div class="popularity-meter">
+              <div class="meter-bar" style="width: ${Math.min(100, Math.floor(Math.random() * 60) + 40)}%"></div>
+              <span class="meter-text">${Math.floor(Math.random() * 500) + 500} searches this month</span>
+            </div>
+          </div>
+          
+          <div class="detail-section similar-terms">
+            <h4><i class="fas fa-random"></i> Related Terms</h4>
+            <div class="similar-grid" id="similarTerms">
+              <!-- Similar terms will be loaded -->
+            </div>
+          </div>
+        </div>
+        
+        <div class="term-actions">
+          <button class="action-btn" onclick="shareTerm('${term}')">
+            <i class="fas fa-share-alt"></i> Share
+          </button>
+          <button class="action-btn" onclick="saveTerm('${term}')">
+            <i class="far fa-bookmark"></i> Save
+          </button>
+          <button class="action-btn report-btn" onclick="reportTerm('${term}')">
+            <i class="fas fa-flag"></i> Report
+          </button>
+        </div>
+        
+        <div class="term-footer">
+          <p><i class="fas fa-info-circle"></i> Last updated: Today | Verified by community</p>
+        </div>
+      </div>
+    `;
+    
+    // Load similar terms
+    loadSimilarTerms(term);
+    
+    modal.style.display = 'flex';
+  }
+  
+  function loadSimilarTerms(currentTerm) {
+    const similarTerms = Object.keys(slangDatabase)
+      .filter(term => term !== currentTerm)
+      .sort(() => Math.random() - 0.5)
+      .slice(0, 4);
+    
+    const container = document.getElementById('similarTerms');
+    if (!container) return;
+    
+    container.innerHTML = similarTerms.map(term => `
+      <div class="similar-term" onclick="showTermDetails('${term}')">
+        <span class="similar-term-text">${term}</span>
+        <i class="fas fa-chevron-right"></i>
+      </div>
+    `).join('');
+  }
+  
+  function getSafetyNote(safety) {
+    switch(safety) {
+      case 'office-safe':
+        return 'Safe to use in professional environments and with colleagues.';
+      case 'casual':
+        return 'Best used with friends and in informal settings.';
+      case 'avoid in professional settings':
+        return 'Avoid in workplaces. May be considered inappropriate or offensive.';
+      default:
+        return 'Use with caution. Consider your audience.';
+    }
+  }
+  
+  function performSearch() {
+    const searchTerm = document.getElementById('dictionarySearch').value.toLowerCase().trim();
+    
+    if (!searchTerm) {
+      displayedTerms = [...allTerms];
+      currentFilter = 'all';
+      document.querySelector('.filter-btn.active').classList.remove('active');
+      document.querySelector('[data-filter="all"]').classList.add('active');
+      displayedCount = 20;
+      sortDictionary(currentSort);
+      return;
+    }
+    
+    displayedTerms = allTerms.filter(item => 
+      item.term.toLowerCase().includes(searchTerm) ||
+      item.meaning.toLowerCase().includes(searchTerm) ||
+      item.context.toLowerCase().includes(searchTerm) ||
+      item.category.toLowerCase().includes(searchTerm)
+    );
+    
+    displayedCount = 20;
+    displayTerms();
+    
+    // Update showing count
+    document.getElementById('showingCount').textContent = Math.min(displayedCount, displayedTerms.length);
+    document.getElementById('totalCount').textContent = displayedTerms.length;
+  }
+  
+  function filterDictionary(filter) {
+    currentFilter = filter;
+    
+    if (filter === 'all') {
+      displayedTerms = [...allTerms];
+    } else {
+      displayedTerms = allTerms.filter(item => 
+        item.category.toLowerCase().includes(filter)
+      );
+    }
+    
+    displayedCount = 20;
+    sortDictionary(currentSort);
+  }
+  
+  function sortDictionary(sortBy) {
+    currentSort = sortBy;
+    
+    switch(sortBy) {
+      case 'popularity':
+        displayedTerms.sort((a, b) => b.popularity - a.popularity);
+        break;
+      case 'alphabetical':
+        displayedTerms.sort((a, b) => a.term.localeCompare(b.term));
+        break;
+      case 'newest':
+        // Simulated - in real app, you'd have dates
+        displayedTerms.sort(() => Math.random() - 0.5);
+        break;
+      case 'rating':
+        // Sort by star rating
+        displayedTerms.sort((a, b) => {
+          const aRating = (a.rating.match(/⭐/g) || []).length;
+          const bRating = (b.rating.match(/⭐/g) || []).length;
+          return bRating - aRating;
+        });
+        break;
+    }
+    
+    displayTerms();
+  }
+  
+  function loadMoreTerms() {
+    displayedCount += 20;
+    displayTerms();
+  }
+  
+  function showSuggestionModal() {
+    const modal = document.getElementById('suggestionModal');
+    modal.style.display = 'flex';
+  }
+  
+  function showReportModal() {
+    alert('To report an error or inappropriate content, please email us at: report@slangadda.ai\n\nWe review all reports within 24 hours.');
+  }
+  
+  // Global functions for term actions
+  function shareTerm(term) {
+    const url = window.location.origin + '/dictionary.html?search=' + encodeURIComponent(term);
+    const text = `Check out the meaning of "${term}" on SlangAdda AI:`;
+    
+    if (navigator.share) {
+      navigator.share({
+        title: `SlangAdda: ${term}`,
+        text: text,
+        url: url
+      });
+    } else {
+      navigator.clipboard.writeText(`${text} ${url}`).then(() => {
+        alert('Link copied to clipboard!');
+      });
+    }
+  }
+  
+  function saveTerm(term) {
+    const saved = JSON.parse(localStorage.getItem('savedTerms') || '[]');
+    if (!saved.includes(term)) {
+      saved.push(term);
+      localStorage.setItem('savedTerms', JSON.stringify(saved));
+      alert(`"${term}" saved to your bookmarks!`);
+    } else {
+      alert(`"${term}" is already saved.`);
+    }
+  }
+  
+  function reportTerm(term) {
+    const reason = prompt(`Why are you reporting "${term}"?\n\n1. Incorrect meaning\n2. Offensive content\n3. Spelling error\n4. Other\n\nPlease describe:`);
+    if (reason) {
+      alert(`Thank you for reporting "${term}". We'll review it within 24 hours.`);
+      // In real implementation, send to backend
+    }
+  }
+</script>
+
+</body>
+</html>
