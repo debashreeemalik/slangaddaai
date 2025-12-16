@@ -1,0 +1,175 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #0f172a, #020617);
+  color: #f8fafc;
+}
+
+/* NAVBAR */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 16px 40px;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
+.logo span {
+  color: #22d3ee;
+}
+
+.navbar nav a {
+  margin-right: 20px;
+  text-decoration: none;
+  color: #e5e7eb;
+}
+
+.login-btn {
+  background: #22d3ee;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+/* HERO */
+.hero {
+  text-align: center;
+  padding: 80px 20px;
+}
+
+.hero h1 {
+  font-size: 3rem;
+}
+
+.hero p {
+  margin-top: 10px;
+  opacity: 0.85;
+}
+
+.search-box {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.search-box input {
+  width: 320px;
+  padding: 14px;
+  border-radius: 30px;
+  border: none;
+}
+
+.search-box button {
+  padding: 14px 22px;
+  border-radius: 30px;
+  border: none;
+  background: #22d3ee;
+  cursor: pointer;
+}
+
+/* TRENDING */
+.trending {
+  padding: 40px;
+}
+
+.carousel {
+  display: flex;
+  gap: 15px;
+  overflow-x: auto;
+}
+
+.trend-item {
+  background: rgba(255,255,255,0.08);
+  padding: 12px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+/* RESULT */
+.result-section {
+  padding: 40px;
+}
+
+.result-card {
+  background: rgba(255,255,255,0.1);
+  padding: 24px;
+  border-radius: 20px;
+  animation: fadeIn 0.3s ease;
+}
+
+.hidden {
+  display: none;
+}
+
+.result-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.badge {
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+}
+
+.safe {
+  background: #16a34a;
+}
+
+.pro {
+  background: gold;
+  color: black;
+}
+
+.meaning {
+  margin-top: 12px;
+}
+
+.example {
+  margin-top: 8px;
+  opacity: 0.85;
+}
+
+.meta {
+  margin-top: 16px;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* ADS */
+.ad-slot {
+  margin-top: 30px;
+  text-align: center;
+  opacity: 0.6;
+}
+
+.ad-box {
+  margin-top: 10px;
+  padding: 20px;
+  border: 1px dashed #94a3b8;
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 30px;
+  opacity: 0.6;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
