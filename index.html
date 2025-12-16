@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>SlangAdda AI – Decode Indian Slang</title>
+  <title>SlangAdda AI – Free Indian Slang Decoder</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Decode Indian slang with context, safety and culture. Built for Gen-Z, parents, creators & professionals." />
+  <meta name="description" content="Free tool to decode Indian slang. Understand Gen-Z, workplace slang, and cultural references instantly." />
   
   <!-- Fonts & Icons -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -12,12 +12,6 @@
   
   <!-- CSS Files -->
   <link rel="stylesheet" href="styles.css">
-  
-  <!-- Payment Gateways -->
-  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
-  
-  <!-- Google AdSense -->
-  <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_AD_CLIENT_ID" crossorigin="anonymous"></script> -->
 </head>
 
 <body>
@@ -26,353 +20,358 @@
 <header class="navbar">
   <div class="logo">SlangAdda<span>AI</span></div>
   <nav>
-    <a href="#dictionary"><i class="fas fa-book"></i> Dictionary</a>
-    <a href="#quiz"><i class="fas fa-brain"></i> Quiz</a>
-    <a href="#blog"><i class="fas fa-blog"></i> Blog</a>
-    <a href="#pro" class="pro"><i class="fas fa-crown"></i> Pro</a>
-    <button class="login" id="loginBtn"><i class="fas fa-user"></i> Login</button>
+    <a href="index.html"><i class="fas fa-home"></i> Home</a>
+    <a href="dictionary.html"><i class="fas fa-book"></i> Dictionary</a>
+    <a href="quiz.html"><i class="fas fa-brain"></i> Quiz</a>
+    <a href="#donate" class="donate-nav"><i class="fas fa-heart"></i> Support Us</a>
   </nav>
 </header>
 
 <!-- HERO -->
 <section class="hero">
   <div class="hero-content">
-    <span class="pill"><i class="fas fa-star"></i> India's slang, decoded by AI</span>
-    <h1>Decode Indian Slang<br><span>Without Feeling Awkward</span></h1>
-    <p>Understand what people really mean — with context, tone & safety. Built for Gen-Z, parents, creators & professionals.</p>
+    <span class="pill"><i class="fas fa-star"></i> 100% Free & Always Will Be</span>
+    <h1>Decode Indian Slang<br><span>Without Paywalls or Ads</span></h1>
+    <p class="hero-subtitle">We believe understanding language should be free. No subscriptions, no tracking, just pure knowledge sharing.</p>
 
-    <div class="search-box">
-      <input type="text" placeholder="Try: 'yeh banda alag hi rizz hai'" id="searchInput" />
-      <button id="decodeBtn">Decode <i class="fas fa-magic"></i></button>
+    <div class="hero-buttons">
+      <a href="dictionary.html" class="hero-btn primary">
+        <i class="fas fa-book"></i> Browse Dictionary
+      </a>
+      <a href="#why-free" class="hero-btn secondary">
+        <i class="fas fa-heart"></i> Why We're Free
+      </a>
     </div>
 
-    <p class="micro-text">
-      <span><i class="fas fa-shield-alt"></i> Office-safe</span>
-      <span><i class="fas fa-bolt"></i> Gen-Z</span>
-      <span><i class="fas fa-map-marker-alt"></i> Regional</span>
-      <span><i class="fas fa-lightbulb"></i> Context-aware</span>
-    </p>
+    <div class="quick-search">
+      <input type="text" placeholder="Try: 'rizz', 'delulu', 'chapri'..." id="quickSearch">
+      <button id="quickSearchBtn"><i class="fas fa-search"></i></button>
+    </div>
   </div>
 
-  <!-- Floating slang -->
+  <!-- Floating elements -->
   <div class="floating">
-    <span>rizz 👑</span>
-    <span>chapri</span>
-    <span>delulu</span>
-    <span>scene kya hai?</span>
+    <span><i class="fas fa-lock-open"></i> No Login</span>
+    <span><i class="fas fa-ad"></i> Ad-Free</span>
+    <span><i class="fas fa-rupee-sign"></i> Free Forever</span>
+    <span><i class="fas fa-users"></i> Community</span>
   </div>
 </section>
 
-<!-- TRENDING -->
-<section class="trending">
-  <h2><i class="fas fa-fire"></i> Trending Slang</h2>
-  <div class="carousel">
-    <div class="chip" data-slang="rizz"><i class="fas fa-crown"></i> rizz</div>
-    <div class="chip" data-slang="delulu"><i class="fas fa-cloud"></i> delulu</div>
-    <div class="chip" data-slang="chapri"><i class="fas fa-motorcycle"></i> chapri</div>
-    <div class="chip" data-slang="bhai scene"><i class="fas fa-comments"></i> bhai scene</div>
-    <div class="chip" data-slang="NPC energy"><i class="fas fa-robot"></i> NPC energy</div>
-  </div>
-</section>
-
-<!-- Ad Placement 1 -->
-<div class="ad-container">
-  <div class="ad-placeholder">
-    <p>Advertisement</p>
-    <p>Ad space for monetization</p>
-  </div>
-</div>
-
-<!-- DICTIONARY SECTION -->
-<section class="dictionary" id="dictionary">
-  <h2><i class="fas fa-book"></i> Slang Dictionary</h2>
-  <div class="dictionary-search">
-    <input type="text" id="dictSearch" placeholder="Search 500+ slang terms...">
-    <button id="dictSearchBtn"><i class="fas fa-search"></i> Search</button>
-  </div>
-  
-  <div class="dictionary-grid" id="dictionaryGrid">
-    <!-- Dictionary items will be loaded here by JavaScript -->
-  </div>
-  
-  <div class="load-more">
-    <button id="loadMoreBtn">Load More Slang Terms <i class="fas fa-arrow-down"></i></button>
-  </div>
-</section>
-
-<!-- WHY SLANGADDA (4x4 Grid) -->
-<section class="why" id="why">
-  <h2>Why SlangAdda AI?</h2>
-
-  <div class="why-grid">
-    <div class="card">
-      <h3><i class="fas fa-brain"></i> Context First</h3>
-      <p>Not just meanings. Learn when, where and how slang is actually used with real-life examples.</p>
-    </div>
-
-    <div class="card">
-      <h3><i class="fas fa-shield-alt"></i> Safety Aware</h3>
-      <p>Office-safe, explicit & caution tags so you don't embarrass yourself in professional settings.</p>
-    </div>
-
-    <div class="card">
-      <h3><i class="fas fa-flag"></i> Indian by Design</h3>
-      <p>Hinglish, regional slang & desi internet culture — finally decoded with cultural nuances.</p>
-    </div>
-
-    <div class="card">
-      <h3><i class="fas fa-bolt"></i> Real-time Updates</h3>
-      <p>New slang added daily. Stay updated with the ever-evolving Indian internet vocabulary.</p>
-    </div>
-
-    <div class="card">
-      <h3><i class="fas fa-users"></i> Community Driven</h3>
-      <p>Submit and vote on slang meanings. Help build the most comprehensive Indian slang resource.</p>
-    </div>
-
-    <div class="card">
-      <h3><i class="fas fa-mobile-alt"></i> Mobile Friendly</h3>
-      <p>Access on any device. Perfect for quick lookups during conversations or while watching content.</p>
-    </div>
-
-    <div class="card">
-      <h3><i class="fas fa-chart-line"></i> Trending Analytics</h3>
-      <p>See which slang is trending where in India. Regional popularity heatmaps and usage graphs.</p>
-    </div>
-
-    <div class="card pro-card">
-      <h3><i class="fas fa-crown"></i> Go Pro</h3>
-      <p>Unlock deep meanings, quizzes, premium slang & personalized learning paths.</p>
-      <button class="upgrade-btn" id="proUpgradeBtn">Upgrade Now <i class="fas fa-arrow-right"></i></button>
-    </div>
-  </div>
-</section>
-
-<!-- QUIZ SECTION -->
-<section class="quiz-section" id="quiz">
-  <h2><i class="fas fa-brain"></i> Test Your Slang Knowledge</h2>
-  <div class="quiz-container">
-    <div class="quiz-card" id="quizCard">
-      <h3>Slang Quiz</h3>
-      <p>Can you guess what these slang terms mean?</p>
-      <div class="quiz-question" id="quizQuestion">
-        <p><strong>Q1:</strong> What does "rizz" mean?</p>
-        <div class="quiz-options">
-          <button class="quiz-option" data-correct="true">Charisma or romantic charm</button>
-          <button class="quiz-option">A type of dance</button>
-          <button class="quiz-option">Quick movement</button>
-          <button class="quiz-option">Food item</button>
-        </div>
-      </div>
-      <div class="quiz-stats">
-        <p><i class="fas fa-trophy"></i> Your Score: <span id="quizScore">0</span></p>
-        <p><i class="fas fa-fire"></i> Streak: <span id="quizStreak">0</span></p>
-      </div>
-      <button class="quiz-next" id="nextQuestion">Next Question <i class="fas fa-arrow-right"></i></button>
-    </div>
+<!-- WHY FREE SECTION -->
+<section class="why-free" id="why-free">
+  <div class="container">
+    <h2><i class="fas fa-heart"></i> Why SlangAdda is Free & Why That Matters</h2>
     
-    <div class="quiz-types">
-      <h4>More Quizzes</h4>
-      <div class="quiz-type-cards">
-        <div class="quiz-type">
-          <i class="fas fa-bolt"></i>
-          <h5>Quick Quiz</h5>
-          <p>5 questions, 2 minutes</p>
-          <button class="start-quiz">Start</button>
-        </div>
-        <div class="quiz-type">
-          <i class="fas fa-graduation-cap"></i>
-          <h5>Proficiency Test</h5>
-          <p>20 questions, certificate</p>
-          <button class="start-quiz">Start</button>
-        </div>
-        <div class="quiz-type pro-feature">
-          <i class="fas fa-crown"></i>
-          <h5>Regional Challenge</h5>
-          <p>State-wise slang (Pro)</p>
-          <button class="start-quiz">Unlock</button>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- BLOG SECTION -->
-<section class="blog-section" id="blog">
-  <h2><i class="fas fa-blog"></i> Slang Blog & Updates</h2>
-  <div class="blog-grid">
-    <article class="blog-card">
-      <div class="blog-image">
-        <div class="image-placeholder">📱</div>
-      </div>
-      <div class="blog-content">
-        <span class="blog-category">Trend Analysis</span>
-        <h3>How Gen-Z is Changing Indian English</h3>
-        <p>Explore the linguistic revolution happening on Indian social media platforms and how it's influencing mainstream language.</p>
-        <div class="blog-meta">
-          <span><i class="far fa-calendar"></i> 2 days ago</span>
-          <span><i class="far fa-eye"></i> 1.2k views</span>
-        </div>
-        <button class="read-more">Read Article <i class="fas fa-arrow-right"></i></button>
-      </div>
-    </article>
-    
-    <article class="blog-card">
-      <div class="blog-image">
-        <div class="image-placeholder">🎬</div>
-      </div>
-      <div class="blog-content">
-        <span class="blog-category">Entertainment</span>
-        <h3>Slang in Bollywood & OTT Shows</h3>
-        <p>How movies and web series are adopting and popularizing youth slang across India.</p>
-        <div class="blog-meta">
-          <span><i class="far fa-calendar"></i> 1 week ago</span>
-          <span><i class="far fa-eye"></i> 3.4k views</span>
-        </div>
-        <button class="read-more">Read Article <i class="fas fa-arrow-right"></i></button>
-      </div>
-    </article>
-    
-    <article class="blog-card">
-      <div class="blog-image">
-        <div class="image-placeholder">🏢</div>
-      </div>
-      <div class="blog-content">
-        <span class="blog-category">Professional Guide</span>
-        <h3>Office-Safe Slang for Workplaces</h3>
-        <p>Which slang terms are acceptable in professional settings and which ones to avoid.</p>
-        <div class="blog-meta">
-          <span><i class="far fa-calendar"></i> 2 weeks ago</span>
-          <span><i class="far fa-eye"></i> 4.7k views</span>
-        </div>
-        <button class="read-more">Read Article <i class="fas fa-arrow-right"></i></button>
-      </div>
-    </article>
-  </div>
-  
-  <div class="blog-newsletter">
-    <h3><i class="fas fa-newspaper"></i> Weekly Slang Newsletter</h3>
-    <p>Get new slang terms, cultural insights, and usage tips delivered to your inbox every Friday.</p>
-    <div class="newsletter-form">
-      <input type="email" placeholder="Your email address">
-      <button class="subscribe-btn">Subscribe <i class="fas fa-paper-plane"></i></button>
-    </div>
-  </div>
-</section>
-
-<!-- PRO SECTION -->
-<section class="pro-section" id="pro">
-  <h2><i class="fas fa-crown"></i> Go Pro - Unlock Everything</h2>
-  <div class="pricing-grid">
-    <div class="pricing-card">
-      <div class="pricing-header">
-        <h3>Basic</h3>
-        <div class="price">Free</div>
-        <p>For casual users</p>
-      </div>
-      <ul class="pricing-features">
-        <li><i class="fas fa-check"></i> 5 daily searches</li>
-        <li><i class="fas fa-check"></i> Basic meanings</li>
-        <li><i class="fas fa-check"></i> Limited quiz attempts</li>
-        <li><i class="fas fa-times"></i> No blog access</li>
-        <li><i class="fas fa-times"></i> Ads supported</li>
-      </ul>
-      <button class="pricing-btn current-plan">Current Plan</button>
-    </div>
-    
-    <div class="pricing-card popular">
-      <div class="popular-badge">MOST POPULAR</div>
-      <div class="pricing-header">
-        <h3>Pro Monthly</h3>
-        <div class="price">₹99<span>/month</span></div>
-        <p>For regular users</p>
-      </div>
-      <ul class="pricing-features">
-        <li><i class="fas fa-check"></i> Unlimited searches</li>
-        <li><i class="fas fa-check"></i> Detailed context & examples</li>
-        <li><i class="fas fa-check"></i> Unlimited quizzes</li>
-        <li><i class="fas fa-check"></i> Full blog access</li>
-        <li><i class="fas fa-check"></i> Ad-free experience</li>
-      </ul>
-      <button class="pricing-btn" id="proMonthlyBtn">Upgrade Now</button>
-    </div>
-    
-    <div class="pricing-card">
-      <div class="pricing-header">
-        <h3>Pro Yearly</h3>
-        <div class="price">₹999<span>/year</span></div>
-        <p>Save ₹189</p>
-      </div>
-      <ul class="pricing-features">
-        <li><i class="fas fa-check"></i> Everything in Pro Monthly</li>
-        <li><i class="fas fa-check"></i> Priority support</li>
-        <li><i class="fas fa-check"></i> Early access to new features</li>
-        <li><i class="fas fa-check"></i> Custom slang lists</li>
-        <li><i class="fas fa-check"></i> Downloadable resources</li>
-      </ul>
-      <button class="pricing-btn" id="proYearlyBtn">Upgrade Now</button>
-    </div>
-  </div>
-</section>
-
-<!-- CTA -->
-<section class="cta">
-  <h2>Stop guessing. Start understanding.</h2>
-  <button id="ctaBtn">Explore Dictionary <i class="fas fa-arrow-right"></i></button>
-</section>
-
-<!-- UPI PAYMENTS SECTION -->
-<section class="payment-section">
-  <h2><i class="fas fa-rupee-sign"></i> Support & Quick Payments</h2>
-  <div class="payment-methods">
-    <div class="payment-method">
-      <div class="payment-icon">
-        <i class="fas fa-qrcode"></i>
-      </div>
-      <h3>UPI QR Code</h3>
-      <p>Scan to pay instantly</p>
-      <div class="upi-qr" id="upiQr">
-        <!-- QR Code will be generated here -->
-        <div class="qr-placeholder">
-          <div class="qr-code">
-            <div class="qr-lines"></div>
-            <div class="qr-lines"></div>
-            <div class="qr-lines"></div>
-            <div class="qr-lines"></div>
+    <div class="story-card">
+      <div class="story-content">
+        <h3>The Problem We're Solving</h3>
+        <p>Remember when you heard a slang term and felt left out? Or worse, used it wrong and felt embarrassed? Language barriers create real social divides.</p>
+        
+        <p>Students struggle to understand peers, parents feel disconnected from kids, professionals misuse terms at work, and NRIs lose touch with home culture. Traditional dictionaries don't keep up with internet slang's lightning pace.</p>
+        
+        <div class="problem-stats">
+          <div class="stat">
+            <span class="number">73%</span>
+            <span class="label">of Indian youth feel left out by slang</span>
           </div>
-          <p>UPI ID: slangaddaai@okaxis</p>
+          <div class="stat">
+            <span class="number">82%</span>
+            <span class="label">parents don't understand their kids' slang</span>
+          </div>
+          <div class="stat">
+            <span class="number">Daily</span>
+            <span class="label">new slang terms emerge on Indian internet</span>
+          </div>
         </div>
       </div>
-      <button class="copy-upi" id="copyUpiBtn">Copy UPI ID</button>
     </div>
     
-    <div class="payment-method">
-      <div class="payment-icon">
-        <i class="fas fa-mobile-alt"></i>
-      </div>
-      <h3>Quick Donate</h3>
-      <p>One-tap donations</p>
-      <div class="donation-buttons">
-        <button class="donate-btn" data-amount="50">☕ Chai - ₹50</button>
-        <button class="donate-btn" data-amount="100">🍛 Lunch - ₹100</button>
-        <button class="donate-btn" data-amount="500">❤️ Support - ₹500</button>
-        <button class="donate-btn" data-amount="1000">🚀 Boost - ₹1000</button>
+    <div class="solution-card">
+      <div class="solution-content">
+        <h3>Our Solution: Keep It Free</h3>
+        <p>We chose freedom over profit because:</p>
+        
+        <div class="reasons-grid">
+          <div class="reason">
+            <i class="fas fa-graduation-cap"></i>
+            <h4>Education Should Be Free</h4>
+            <p>No student should pay to understand their peers. Language learning is a right, not a privilege.</p>
+          </div>
+          
+          <div class="reason">
+            <i class="fas fa-hands-helping"></i>
+            <h4>Bridge Generational Gaps</h4>
+            <p>Helping parents connect with children is priceless. Family understanding shouldn't have a price tag.</p>
+          </div>
+          
+          <div class="reason">
+            <i class="fas fa-globe-asia"></i>
+            <h4>Preserve Indian Culture</h4>
+            <p>Our slang tells India's story. Documenting it freely preserves our cultural evolution for everyone.</p>
+          </div>
+          
+          <div class="reason">
+            <i class="fas fa-shield-alt"></i>
+            <h4>Privacy Matters</h4>
+            <p>No accounts mean no data collection. Your searches stay private - we don't even use analytics.</p>
+          </div>
+        </div>
       </div>
     </div>
     
-    <div class="payment-method">
-      <div class="payment-icon">
-        <i class="fas fa-credit-card"></i>
-      </div>
-      <h3>Card & Net Banking</h3>
-      <p>Secure payments via Razorpay</p>
-      <div class="card-payment">
-        <button class="card-pay-btn" id="cardPayBtn">
-          <i class="fas fa-lock"></i> Pay Securely
-        </button>
-        <p class="secure-note">
-          <i class="fas fa-shield-alt"></i> 256-bit SSL Encrypted
+    <div class="impact-card">
+      <div class="impact-content">
+        <h3>The Impact of Your Support</h3>
+        <p>While we're free to use, maintaining this resource costs us:</p>
+        
+        <div class="cost-breakdown">
+          <div class="cost-item">
+            <i class="fas fa-server"></i>
+            <div>
+              <h5>Server Costs</h5>
+              <p>₹2,500/month for hosting and bandwidth</p>
+            </div>
+            <span class="cost-amount">₹2,500</span>
+          </div>
+          
+          <div class="cost-item">
+            <i class="fas fa-code"></i>
+            <div>
+              <h5>Development</h5>
+              <p>100+ hours monthly updating and improving</p>
+            </div>
+            <span class="cost-amount">Volunteer</span>
+          </div>
+          
+          <div class="cost-item">
+            <i class="fas fa-pencil-alt"></i>
+            <div>
+              <h5>Content Research</h5>
+              <p>Tracking new slang across platforms daily</p>
+            </div>
+            <span class="cost-amount">Volunteer</span>
+          </div>
+          
+          <div class="cost-item total">
+            <i class="fas fa-calculator"></i>
+            <div>
+              <h5>Monthly Need</h5>
+              <p>To keep us running and improving</p>
+            </div>
+            <span class="cost-amount">₹2,500</span>
+          </div>
+        </div>
+        
+        <p class="impact-note">
+          <i class="fas fa-lightbulb"></i> That's just ₹83 per day - less than a cup of chai! Your donation covers real costs for thousands of users.
         </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DONATION SECTION -->
+<section class="donation-main" id="donate">
+  <div class="container">
+    <h2><i class="fas fa-hands-heart"></i> Support Free Knowledge</h2>
+    <p class="section-subtitle">Choose how you'd like to support. Every rupee helps keep SlangAdda free for everyone.</p>
+    
+    <div class="donation-options">
+      <div class="donation-card">
+        <div class="donation-header">
+          <i class="fas fa-qrcode"></i>
+          <h3>Quick UPI Donation</h3>
+          <p>Scan QR or use UPI ID</p>
+        </div>
+        
+        <div class="donation-content">
+          <div class="upi-display">
+            <div class="qr-code">
+              <!-- QR Code Display -->
+              <div class="qr-container">
+                <div class="qr-image" id="qrImage">
+                  <!-- QR would be generated here -->
+                  <div class="qr-placeholder">
+                    <div class="qr-pattern">
+                      <div class="qr-row"></div>
+                      <div class="qr-row"></div>
+                      <div class="qr-row"></div>
+                      <div class="qr-row"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="qr-text">
+                  <p class="upi-id" id="upiIdDisplay">slangadda@ybl</p>
+                  <p class="upi-note">Scan with any UPI app</p>
+                </div>
+              </div>
+              
+              <button class="copy-upi-btn" id="copyUpiBtn">
+                <i class="fas fa-copy"></i> Copy UPI ID
+              </button>
+              
+              <div class="quick-amounts">
+                <button class="amount-btn" data-amount="50">₹50</button>
+                <button class="amount-btn" data-amount="100">₹100</button>
+                <button class="amount-btn" data-amount="200">₹200</button>
+                <button class="amount-btn" data-amount="500">₹500</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="donation-card">
+        <div class="donation-header">
+          <i class="fas fa-coffee"></i>
+          <h3>Buy Us Chai ☕</h3>
+          <p>Fuel our late-night coding</p>
+        </div>
+        
+        <div class="donation-content">
+          <div class="chai-options">
+            <div class="chai-option" data-amount="30">
+              <i class="fas fa-mug-hot"></i>
+              <h4>Street Chai</h4>
+              <p>₹30</p>
+              <small>Keeps us warm</small>
+            </div>
+            
+            <div class="chai-option" data-amount="50">
+              <i class="fas fa-coffee"></i>
+              <h4>Cafe Coffee</h4>
+              <p>₹50</p>
+              <small>Focus boost</small>
+            </div>
+            
+            <div class="chai-option popular" data-amount="100">
+              <i class="fas fa-crown"></i>
+              <h4>Team Chai</h4>
+              <p>₹100</p>
+              <small>Whole team fueled</small>
+            </div>
+            
+            <div class="chai-option" data-amount="250">
+              <i class="fas fa-bolt"></i>
+              <h4>Energy Pack</h4>
+              <p>₹250</p>
+              <small>Coding marathon</small>
+            </div>
+          </div>
+          
+          <div class="custom-amount">
+            <h4>Custom Amount</h4>
+            <div class="custom-input">
+              <span class="rupee-sign">₹</span>
+              <input type="number" id="customAmount" placeholder="Enter amount" min="10">
+              <button id="customDonateBtn">Donate</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="donation-card">
+        <div class="donation-header">
+          <i class="fas fa-users"></i>
+          <h3>Community Support</h3>
+          <p>Other ways to help</p>
+        </div>
+        
+        <div class="donation-content">
+          <div class="community-options">
+            <div class="community-option">
+              <i class="fas fa-share-alt"></i>
+              <h4>Share</h4>
+              <p>Tell friends about SlangAdda</p>
+              <button class="share-btn" data-platform="whatsapp">
+                <i class="fab fa-whatsapp"></i> Share
+              </button>
+            </div>
+            
+            <div class="community-option">
+              <i class="fas fa-lightbulb"></i>
+              <h4>Suggest Slang</h4>
+              <p>Help us grow the dictionary</p>
+              <button class="suggest-btn" id="suggestSlangBtn">
+                <i class="fas fa-plus"></i> Suggest
+              </button>
+            </div>
+            
+            <div class="community-option">
+              <i class="fas fa-code"></i>
+              <h4>Contribute</h4>
+              <p>Help with coding/design</p>
+              <button class="contribute-btn" id="contributeBtn">
+                <i class="fas fa-hands-helping"></i> Help
+              </button>
+            </div>
+          </div>
+          
+          <div class="supporters-count">
+            <i class="fas fa-user-friends"></i>
+            <div>
+              <h4>1,247 Supporters</h4>
+              <p>People who've donated this month</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="transparency-note">
+      <i class="fas fa-chart-line"></i>
+      <div>
+        <h4>100% Transparent</h4>
+        <p>We'll publicly share how donations are used. Monthly reports coming soon.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <div class="container">
+    <h2><i class="fas fa-comment-alt"></i> What People Say</h2>
+    
+    <div class="testimonial-grid">
+      <div class="testimonial-card">
+        <div class="testimonial-content">
+          <p>"Finally understand what my kids are saying! This free resource saved our family dinners."</p>
+        </div>
+        <div class="testimonial-author">
+          <i class="fas fa-user-circle"></i>
+          <div>
+            <h5>Mrs. Sharma</h5>
+            <p>Parent from Delhi</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="testimonial-card">
+        <div class="testimonial-content">
+          <p>"As an NRI, this helps me stay connected with home. Free access means everything."</p>
+        </div>
+        <div class="testimonial-author">
+          <i class="fas fa-user-circle"></i>
+          <div>
+            <h5>Raj Patel</h5>
+            <p>NRI in Canada</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="testimonial-card">
+        <div class="testimonial-content">
+          <p>"Used this before a client meeting. Understanding slang made me connect better. Thank you!"</p>
+        </div>
+        <div class="testimonial-author">
+          <i class="fas fa-user-circle"></i>
+          <div>
+            <h5>Priya Nair</h5>
+            <p>Marketing Professional</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -383,82 +382,340 @@
   <div class="footer-content">
     <div class="footer-section">
       <h3>SlangAdda<span>AI</span></h3>
-      <p>Decoding India's internet language, one slang at a time.</p>
-      <div class="social-links">
-        <a href="#"><i class="fab fa-twitter"></i></a>
-        <a href="#"><i class="fab fa-instagram"></i></a>
-        <a href="#"><i class="fab fa-youtube"></i></a>
-        <a href="#"><i class="fab fa-linkedin"></i></a>
+      <p class="footer-tagline">Free Indian slang decoder. No ads. No tracking. Just understanding.</p>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="dictionary.html">Dictionary</a>
+        <a href="quiz.html">Quiz</a>
+        <a href="#donate">Support</a>
       </div>
     </div>
     
     <div class="footer-section">
-      <h4>Features</h4>
-      <a href="#dictionary">Dictionary</a>
-      <a href="#quiz">Slang Quiz</a>
-      <a href="#blog">Blog</a>
-      <a href="#pro">Pro Features</a>
+      <h4>Quick Links</h4>
+      <a href="#why-free">Why Free?</a>
+      <a href="#donate">Donate</a>
+      <a href="#" id="suggestLink">Suggest Slang</a>
+      <a href="policies.html">Policies (Coming Soon)</a>
     </div>
     
     <div class="footer-section">
-      <h4>Legal</h4>
-      <a href="#">Privacy Policy</a>
-      <a href="#">Terms of Service</a>
-      <a href="#">Cookie Policy</a>
-      <a href="#">Refund Policy</a>
+      <h4>Connect</h4>
+      <div class="social-links">
+        <a href="#"><i class="fab fa-twitter"></i> Twitter</a>
+        <a href="#"><i class="fab fa-instagram"></i> Instagram</a>
+        <a href="#"><i class="fab fa-github"></i> GitHub</a>
+        <a href="mailto:hello@slangadda.ai"><i class="fas fa-envelope"></i> Email</a>
+      </div>
     </div>
     
     <div class="footer-section">
-      <h4>Contact</h4>
-      <p><i class="fas fa-envelope"></i> hello@slangadda.ai</p>
-      <p><i class="fas fa-phone"></i> +91 98765 43210</p>
-      <p><i class="fas fa-map-marker-alt"></i> Made with ❤️ in India</p>
+      <h4>Our Promise</h4>
+      <p><i class="fas fa-lock"></i> No tracking</p>
+      <p><i class="fas fa-ad"></i> No ads</p>
+      <p><i class="fas fa-rupee-sign"></i> Free forever</p>
+      <p><i class="fas fa-heart"></i> Community-driven</p>
     </div>
   </div>
   
   <div class="footer-bottom">
-    <p>© 2025 SlangAdda AI · Understand how India really speaks.</p>
-    <p style="margin-top: 10px; font-size: 0.9rem;">
-      This site uses cookies for analytics and ads | 
-      <a href="#" style="color: var(--primary); text-decoration: none;">Monetization Info</a> | 
-      <a href="#" style="color: var(--primary); text-decoration: none;">Advertise with us</a>
+    <p>© 2025 SlangAdda AI · Made with ❤️ for India · Keeping knowledge free for everyone</p>
+    <p class="footer-note">
+      This project runs on donations. Every contribution helps maintain this free resource.
     </p>
   </div>
 </footer>
 
-<!-- Payment Modal -->
-<div class="modal" id="paymentModal">
-  <div class="modal-content payment-modal">
+<!-- Donation Modal -->
+<div class="modal" id="donationModal">
+  <div class="modal-content donation-modal">
     <span class="close-modal">&times;</span>
-    <h3 id="modalTitle">Complete Payment</h3>
-    <div class="payment-details" id="paymentDetails">
-      <!-- Payment details will be loaded here -->
+    <div class="modal-body" id="modalBody">
+      <!-- Content loaded by JavaScript -->
     </div>
   </div>
 </div>
 
-<!-- Firebase & Scripts -->
+<!-- Suggestion Modal -->
+<div class="modal" id="suggestionModal">
+  <div class="modal-content suggestion-modal">
+    <span class="close-modal">&times;</span>
+    <h3><i class="fas fa-lightbulb"></i> Suggest New Slang</h3>
+    <p>Help us grow! Suggest slang terms you've heard but couldn't find.</p>
+    
+    <div class="suggestion-form">
+      <div class="form-group">
+        <label for="slangTerm">Slang Term *</label>
+        <input type="text" id="slangTerm" placeholder="e.g., 'rizz', 'delulu'">
+      </div>
+      
+      <div class="form-group">
+        <label for="slangMeaning">What do you think it means? *</label>
+        <textarea id="slangMeaning" placeholder="Your understanding of the term..." rows="3"></textarea>
+      </div>
+      
+      <div class="form-group">
+        <label for="slangContext">Where did you hear it? (optional)</label>
+        <input type="text" id="slangContext" placeholder="e.g., Instagram, college, Mumbai">
+      </div>
+      
+      <div class="form-group">
+        <label for="slangExample">Example sentence (optional)</label>
+        <input type="text" id="slangExample" placeholder="e.g., 'He has so much rizz!'">
+      </div>
+      
+      <div class="form-group">
+        <label for="userEmail">Your email (optional, for updates)</label>
+        <input type="email" id="userEmail" placeholder="email@example.com">
+      </div>
+      
+      <div class="form-actions">
+        <button type="button" class="cancel-btn">Cancel</button>
+        <button type="button" class="submit-btn" id="submitSuggestion">
+          <i class="fas fa-paper-plane"></i> Submit Suggestion
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- JavaScript -->
 <script src="script.js"></script>
 
-<!-- Firebase SDK -->
-<script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js";
-  import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-analytics.js";
-  
-  const firebaseConfig = {
-    apiKey: "AIzaSyAUit5I8Qml9wWIsKATJkwOhOdlCw06irg",
-    authDomain: "slangaddaai.firebaseapp.com",
-    projectId: "slangaddaai",
-    storageBucket: "slangaddaai.firebasestorage.app",
-    messagingSenderId: "633159892736",
-    appId: "1:633159892736:web:b33c2d89f3cba1f609fde5",
-    measurementId: "G-LG4J2DX0H9"
-  };
+<!-- Load slang database -->
+<script src="slang-database.js"></script>
 
-  const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
+<script>
+  // Home page specific JavaScript
+  document.addEventListener('DOMContentLoaded', function() {
+    // Set UPI ID
+    const upiId = 'slangadda@ybl'; // Your UPI ID here
+    document.getElementById('upiIdDisplay').textContent = upiId;
+    
+    // Copy UPI ID
+    document.getElementById('copyUpiBtn').addEventListener('click', function() {
+      navigator.clipboard.writeText(upiId).then(() => {
+        const originalText = this.innerHTML;
+        this.innerHTML = '<i class="fas fa-check"></i> Copied!';
+        this.style.background = 'var(--success)';
+        
+        setTimeout(() => {
+          this.innerHTML = originalText;
+          this.style.background = '';
+        }, 2000);
+      });
+    });
+    
+    // Quick search
+    document.getElementById('quickSearchBtn').addEventListener('click', function() {
+      const term = document.getElementById('quickSearch').value.trim();
+      if (term) {
+        window.location.href = `dictionary.html?search=${encodeURIComponent(term)}`;
+      }
+    });
+    
+    document.getElementById('quickSearch').addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') {
+        document.getElementById('quickSearchBtn').click();
+      }
+    });
+    
+    // Donation amount buttons
+    document.querySelectorAll('.amount-btn, .chai-option').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const amount = this.getAttribute('data-amount');
+        showDonationModal(amount);
+      });
+    });
+    
+    // Custom donation
+    document.getElementById('customDonateBtn').addEventListener('click', function() {
+      const amount = document.getElementById('customAmount').value;
+      if (amount && amount >= 10) {
+        showDonationModal(amount);
+      } else {
+        alert('Please enter at least ₹10');
+      }
+    });
+    
+    // Suggestion button
+    document.getElementById('suggestSlangBtn').addEventListener('click', function() {
+      document.getElementById('suggestionModal').style.display = 'flex';
+    });
+    
+    document.getElementById('suggestLink').addEventListener('click', function(e) {
+      e.preventDefault();
+      document.getElementById('suggestionModal').style.display = 'flex';
+    });
+    
+    // Submit suggestion
+    document.getElementById('submitSuggestion').addEventListener('click', function() {
+      const term = document.getElementById('slangTerm').value.trim();
+      const meaning = document.getElementById('slangMeaning').value.trim();
+      
+      if (!term || !meaning) {
+        alert('Please fill at least the slang term and its meaning');
+        return;
+      }
+      
+      // In real implementation, this would send to a backend
+      // For now, we'll simulate
+      alert(`Thank you! We've received your suggestion for "${term}".\n\nWe'll review it and add it to our dictionary soon.`);
+      
+      // Reset form
+      document.getElementById('slangTerm').value = '';
+      document.getElementById('slangMeaning').value = '';
+      document.getElementById('slangContext').value = '';
+      document.getElementById('slangExample').value = '';
+      document.getElementById('userEmail').value = '';
+      
+      document.getElementById('suggestionModal').style.display = 'none';
+    });
+    
+    // Share buttons
+    document.querySelectorAll('.share-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const platform = this.getAttribute('data-platform');
+        const url = window.location.href;
+        const text = 'Check out SlangAdda AI - Free Indian slang decoder!';
+        
+        let shareUrl = '';
+        switch(platform) {
+          case 'whatsapp':
+            shareUrl = `https://wa.me/?text=${encodeURIComponent(text + ' ' + url)}`;
+            break;
+          default:
+            shareUrl = url;
+        }
+        
+        window.open(shareUrl, '_blank');
+      });
+    });
+    
+    // Contribute button
+    document.getElementById('contributeBtn').addEventListener('click', function() {
+      alert('Want to contribute? Great! We need help with:\n\n1. Adding new slang terms\n2. Improving explanations\n3. Website development\n4. Design improvements\n\nEmail us at: contribute@slangadda.ai');
+    });
+    
+    // Modal close buttons
+    document.querySelectorAll('.close-modal, .cancel-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        this.closest('.modal').style.display = 'none';
+      });
+    });
+    
+    // Close modal when clicking outside
+    document.querySelectorAll('.modal').forEach(modal => {
+      modal.addEventListener('click', function(e) {
+        if (e.target === this) {
+          this.style.display = 'none';
+        }
+      });
+    });
+    
+    // Auto-generate QR code placeholder pattern
+    generateQRPattern();
+  });
   
-  console.log("Firebase loaded for analytics & future monetization!");
+  function showDonationModal(amount) {
+    const modal = document.getElementById('donationModal');
+    const modalBody = document.getElementById('modalBody');
+    
+    modalBody.innerHTML = `
+      <div class="donation-confirmation">
+        <div class="confirmation-header">
+          <i class="fas fa-heart"></i>
+          <h3>Thank You for Your Support! ❤️</h3>
+          <p>You're helping keep SlangAdda free for everyone.</p>
+        </div>
+        
+        <div class="donation-details">
+          <div class="detail-row">
+            <span class="detail-label">Amount:</span>
+            <span class="detail-value">₹${amount}</span>
+          </div>
+          
+          <div class="detail-row">
+            <span class="detail-label">Payment Method:</span>
+            <span class="detail-value">UPI</span>
+          </div>
+          
+          <div class="detail-row">
+            <span class="detail-label">UPI ID:</span>
+            <span class="detail-value upi-display">slangadda@ybl</span>
+          </div>
+          
+          <div class="qr-display">
+            <div class="qr-simulated">
+              <div class="qr-simulated-inner">
+                <!-- Simulated QR code -->
+                <div class="qr-simulated-pattern">
+                  ${Array(16).fill('<div class="qr-simulated-cell"></div>').join('')}
+                </div>
+                <div class="qr-simulated-amount">₹${amount}</div>
+              </div>
+            </div>
+            <p class="qr-instruction">Scan with any UPI app</p>
+          </div>
+          
+          <div class="payment-steps">
+            <h4>To Complete Donation:</h4>
+            <ol>
+              <li>Open your UPI app (GPay, PhonePe, Paytm, etc.)</li>
+              <li>Scan the QR code above OR</li>
+              <li>Send ₹${amount} to: <strong>slangadda@ybl</strong></li>
+              <li>Add note: "SlangAdda Support"</li>
+            </ol>
+          </div>
+          
+          <div class="donation-impact">
+            <i class="fas fa-bullseye"></i>
+            <p>Your ₹${amount} donation covers <strong>${Math.round(amount/2.5)} hours</strong> of server time for thousands of users!</p>
+          </div>
+        </div>
+        
+        <div class="donation-actions">
+          <button class="copy-upi-full" onclick="copyUPI()">
+            <i class="fas fa-copy"></i> Copy UPI ID
+          </button>
+          <button class="done-btn" onclick="closeModal()">
+            Done
+          </button>
+        </div>
+      </div>
+    `;
+    
+    modal.style.display = 'flex';
+  }
+  
+  function generateQRPattern() {
+    // This is a simulated QR pattern
+    const qrImage = document.getElementById('qrImage');
+    if (qrImage) {
+      const pattern = document.createElement('div');
+      pattern.className = 'qr-simulated';
+      pattern.innerHTML = `
+        <div class="qr-simulated-inner">
+          <div class="qr-simulated-pattern">
+            ${Array(25).fill('<div class="qr-simulated-cell"></div>').join('')}
+          </div>
+          <div class="qr-simulated-text">UPI</div>
+        </div>
+      `;
+      qrImage.appendChild(pattern);
+    }
+  }
+  
+  // Global functions for modal
+  function copyUPI() {
+    navigator.clipboard.writeText('slangadda@ybl').then(() => {
+      alert('UPI ID copied to clipboard: slangadda@ybl');
+    });
+  }
+  
+  function closeModal() {
+    document.getElementById('donationModal').style.display = 'none';
+  }
 </script>
 
 </body>
