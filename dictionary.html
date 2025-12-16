@@ -61,6 +61,9 @@
       text-align: center;
     }
   </style>
+
+  <!-- LOAD SLANG DATA -->
+  <script src="slang-database.js"></script>
 </head>
 
 <body>
@@ -87,33 +90,19 @@
 </div>
 
 <script>
-  let slangData = [];
-
-  async function loadSlang() {
-    const res = await fetch(
-      "https://firestore.googleapis.com/v1/projects/slangaddaai/databases/(default)/documents/slang?key=AIzaSyAUit5I8Qml9wWIsKATJkwOhOdlCw06irg"
-    );
-    const data = await res.json();
-
-    slangData = data.documents.map(doc => {
-      const f = doc.fields;
-      return {
-        word: f.word.stringValue,
-        meaning: f.meaning.stringValue,
-        example: f.example.stringValue,
-        category: f.category.stringValue
-      };
-    });
-  }
-
   function searchSlang() {
     const q = document.getElementById("searchInput").value.toLowerCase();
     const box = document.getElementById("results");
 
-    const filtered = slangData.filter(s =>
-      s.word.toLowerCase().includes(q) ||
-      s.meaning.toLowerCase().includes(q) ||
-      s.category.toLowerCase().includes(q)
+    if (!q) {
+      box.innerHTML = "";
+      return;
+    }
+
+    const filtered = window.SLANG_DATA.filter(item =>
+      item.word.toLowerCase().includes(q) ||
+      item.meaning.toLowerCase().includes(q) ||
+      item.category.toLowerCase().includes(q)
     );
 
     if (!filtered.length) {
@@ -121,17 +110,15 @@
       return;
     }
 
-    box.innerHTML = filtered.map(s => `
+    box.innerHTML = filtered.map(item => `
       <div class="card">
-        <h3>${s.word}</h3>
-        <p><b>Meaning:</b> ${s.meaning}</p>
-        <p><b>Example:</b> ${s.example}</p>
-        <small>Category: ${s.category}</small>
+        <h3>${item.word}</h3>
+        <p><b>Meaning:</b> ${item.meaning}</p>
+        <p><b>Example:</b> ${item.example}</p>
+        <small>Category: ${item.category}</small>
       </div>
     `).join("");
   }
-
-  loadSlang();
 </script>
 
 </body>
