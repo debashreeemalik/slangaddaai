@@ -89,10 +89,24 @@
   </div>
 </div>
 
+<!-- 🔥 FIREBASE + SEARCH LOGIC (INLINE, STABLE) -->
 <script type="module">
-  import { db } from "./firebase.js";
-  import { collection, getDocs } from
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+  import { getFirestore, collection, getDocs } from
     "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyAUit5I8Qml9wWIsKATJkwOhOdlCw06irg",
+    authDomain: "slangaddaai.firebaseapp.com",
+    projectId: "slangaddaai",
+    storageBucket: "slangaddaai.firebasestorage.app",
+    messagingSenderId: "633159892736",
+    appId: "1:633159892736:web:b33c2d89f3cba1f609fde5",
+    measurementId: "G-LG4J2DX0H9"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
 
   let slangData = [];
 
@@ -104,11 +118,6 @@
   window.searchSlang = function () {
     const q = document.getElementById("searchInput").value.toLowerCase();
     const resultsBox = document.getElementById("results");
-
-    if (!q) {
-      resultsBox.innerHTML = "";
-      return;
-    }
 
     const filtered = slangData.filter(item =>
       item.word.toLowerCase().includes(q) ||
