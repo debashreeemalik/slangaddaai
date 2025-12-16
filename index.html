@@ -4,86 +4,110 @@
   <meta charset="UTF-8" />
   <title>SlangAdda AI – Decode Indian Slang</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="SlangAdda AI helps you decode Indian slang with context, safety and culture." />
+  <meta name="description" content="Decode Indian slang with context, safety and culture. Built for Gen-Z, parents, creators & professionals." />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
   <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
 
-  <!-- HEADER -->
-  <header class="navbar">
-    <div class="logo">SlangAdda<span>AI</span></div>
-    <nav>
-      <a href="#">Dictionary</a>
-      <a href="#">Quiz</a>
-      <a href="#" class="pro-link">👑 Pro</a>
-      <button class="login-btn">Login</button>
-    </nav>
-  </header>
+<!-- NAVBAR -->
+<header class="navbar">
+  <div class="logo">SlangAdda<span>AI</span></div>
+  <nav>
+    <a href="#">Dictionary</a>
+    <a href="#">Quiz</a>
+    <a href="#" class="pro">👑 Pro</a>
+    <button class="login">Login</button>
+  </nav>
+</header>
 
-  <!-- HERO -->
-  <section class="hero">
-    <h1>Decode Indian Slang</h1>
-    <p>Understand how India really speaks — context, culture & safety included.</p>
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <span class="pill">India’s slang, decoded by AI</span>
+    <h1>Decode Indian Slang<br><span>Without Feeling Awkward</span></h1>
+    <p>Understand what people really mean — with context, tone & safety.</p>
 
     <div class="search-box">
-      <input id="searchInput" type="text" placeholder="Type a word or sentence… ‘alag hi rizz hai’" />
-      <button onclick="searchSlang()">Decode</button>
-    </div>
-  </section>
-
-  <!-- TRENDING SLANG -->
-  <section class="trending">
-    <h2>🔥 Trending Slang</h2>
-    <div class="carousel" id="trendingCarousel">
-      <!-- JS injects -->
-    </div>
-  </section>
-
-  <!-- APP RESULT -->
-  <section class="result-section" id="resultSection">
-    <div class="result-card hidden" id="resultCard">
-      <div class="result-header">
-        <h3 id="slangWord">rizz</h3>
-        <span class="badge safe">Office Safe</span>
-        <span class="badge pro">👑 Pro</span>
-      </div>
-
-      <p class="meaning" id="slangMeaning">
-        Natural charm or confidence, especially while talking to someone you like.
-      </p>
-
-      <p class="example" id="slangExample">
-        “Bro has insane rizz, no effort needed.”
-      </p>
-
-      <div class="meta">
-        <span>Origin: Internet / Gen-Z</span>
-        <button onclick="playAudio()">🔊 Pronounce</button>
-      </div>
+      <input type="text" placeholder="Try: ‘yeh banda alag hi rizz hai’" />
+      <button>Decode</button>
     </div>
 
-    <!-- AD SLOT -->
-    <div class="ad-slot">
-      <p>Sponsored</p>
-      <div class="ad-box">Ad will appear here</div>
-    </div>
-  </section>
+    <p class="micro-text">Office-safe • Gen-Z • Regional • Context-aware</p>
+  </div>
 
-  <!-- FOOTER -->
-  <footer>
-    <p>© 2025 SlangAdda AI · Understand how India really speaks.</p>
-    <div class="footer-links">
-      <a href="#">Privacy</a>
-      <a href="#">Terms</a>
-      <a href="#">Contact</a>
-    </div>
-  </footer>
+  <!-- Floating slang -->
+  <div class="floating">
+    <span>rizz</span>
+    <span>chapri</span>
+    <span>delulu</span>
+    <span>scene kya hai?</span>
+  </div>
+</section>
 
-  <script src="app.js"></script>
+<!-- TRENDING -->
+<section class="trending">
+  <h2>🔥 Trending Slang</h2>
+  <div class="carousel">
+    <div class="chip">rizz 👑</div>
+    <div class="chip">delulu</div>
+    <div class="chip">chapri</div>
+    <div class="chip">bhai scene</div>
+    <div class="chip">NPC energy</div>
+  </div>
+</section>
+
+<!-- WHY SLANGADDA -->
+<section class="why">
+  <h2>Why SlangAdda AI?</h2>
+
+  <div class="why-grid">
+    <div class="card">
+      <h3>🧠 Context First</h3>
+      <p>Not just meanings. Learn when, where and how slang is actually used.</p>
+    </div>
+
+    <div class="card">
+      <h3>🛡️ Safety Aware</h3>
+      <p>Office-safe, explicit & caution tags so you don’t embarrass yourself.</p>
+    </div>
+
+    <div class="card">
+      <h3>🇮🇳 Indian by Design</h3>
+      <p>Hinglish, regional slang & desi internet culture — finally decoded.</p>
+    </div>
+
+    <div class="card pro-card">
+      <h3>👑 Go Pro</h3>
+      <p>Unlock deep meanings, quizzes & premium slang.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHO IS THIS FOR -->
+<section class="audience">
+  <h2>Built for Everyone Who Hears Slang</h2>
+  <div class="audience-row">
+    <span>🎓 Students</span>
+    <span>👨‍👩‍👧 Parents</span>
+    <span>🎥 Creators</span>
+    <span>💼 Professionals</span>
+    <span>🌍 NRIs</span>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <h2>Stop guessing. Start understanding.</h2>
+  <button>Decode Slang Now</button>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2025 SlangAdda AI · Understand how India really speaks.</p>
+</footer>
+
 </body>
 </html>
