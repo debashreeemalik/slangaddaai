@@ -1,6 +1,55 @@
 // SlangAdda AI - Enhanced Shared JavaScript Functions
 // This file contains functions used across all pages
 
+// AD MANAGEMENT FUNCTIONS
+function initializeAds() {
+  // Load ad scripts (example for Google AdSense)
+  /*
+  const adScript = document.createElement('script');
+  adScript.async = true;
+  adScript.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX';
+  adScript.crossOrigin = 'anonymous';
+  document.head.appendChild(adScript);
+  */
+  
+  // Placeholder for ad loading
+  loadPlaceholderAds();
+}
+
+function loadPlaceholderAds() {
+  // This function loads placeholder ads
+  // In production, replace with actual ad network code
+  document.querySelectorAll('.ad-unit').forEach((ad, index) => {
+    setTimeout(() => {
+      if (ad.classList.contains('horizontal')) {
+        ad.innerHTML = `
+          <div style="background: white; padding: 10px; border-radius: 8px; text-align: center;">
+            <strong style="color: var(--primary);">Ad Space Available</strong>
+            <p style="margin: 5px 0; font-size: 0.8rem;">Contact: ads@slangadda.ai</p>
+            <small>Advertisement supports free access</small>
+          </div>
+        `;
+      } else {
+        ad.innerHTML = `
+          <div style="background: white; padding: 15px; border-radius: 8px; text-align: center;">
+            <strong style="color: var(--primary); display: block; margin-bottom: 10px;">Sponsored</strong>
+            <p style="margin: 10px 0; font-size: 0.9rem;">Your ad here reaches 50K+ monthly users</p>
+            <button style="background: var(--primary); color: white; border: none; padding: 8px 16px; border-radius: 20px; cursor: pointer; margin-top: 10px;">
+              Learn More
+            </button>
+          </div>
+        `;
+      }
+    }, index * 500);
+  });
+}
+
+// Update initializeCommonFeatures function
+function initializeCommonFeatures() {
+  
+  // Initialize ads
+  initializeAds();
+}
 // Global state
 let currentHeroTitleIndex = 0;
 let heroRotationInterval;
