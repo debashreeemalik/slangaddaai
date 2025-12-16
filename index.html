@@ -18,15 +18,686 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   
-  <!-- Firebase -->
-  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-storage-compat.js"></script>
-  
-  <!-- CSS Files -->
-  <link rel="stylesheet" href="styles.css">
   <style>
+    /* MERGED AND SIMPLIFIED STYLES */
+    :root {
+      --primary: #6366f1;
+      --primary-dark: #4f46e5;
+      --secondary: #f59e0b;
+      --dark: #1e293b;
+      --light: #f8fafc;
+      --gray: #64748b;
+      --gray-light: #e2e8f0;
+      --success: #10b981;
+      --warning: #f59e0b;
+      --danger: #ef4444;
+      --gradient: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+      --gradient-secondary: linear-gradient(135deg, #f59e0b 0%, #f97316 100%);
+      --shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+      --shadow-lg: 0 20px 40px rgba(99, 102, 241, 0.1);
+      --radius: 16px;
+      --transition: all 0.3s ease;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Outfit', 'Poppins', sans-serif;
+      line-height: 1.6;
+      color: var(--dark);
+      background-color: #fefefe;
+      overflow-x: hidden;
+    }
+    
+    .container {
+      width: 100%;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    
+    /* NAVBAR */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      background-color: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    }
+    
+    .logo {
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--dark);
+    }
+    
+    .logo span {
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      font-weight: 800;
+    }
+    
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+    
+    nav a {
+      text-decoration: none;
+      color: var(--gray);
+      font-weight: 500;
+      transition: var(--transition);
+      position: relative;
+    }
+    
+    nav a:hover {
+      color: var(--primary);
+    }
+    
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--gradient);
+      transition: var(--transition);
+    }
+    
+    nav a:hover::after {
+      width: 100%;
+    }
+    
+    nav .support-nav {
+      background: var(--gradient);
+      color: white;
+      padding: 8px 16px;
+      border-radius: 50px;
+      font-weight: 600;
+    }
+    
+    nav .support-nav:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow);
+      color: white;
+    }
+    
+    /* HERO */
+    .hero {
+      padding: 180px 40px 100px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+      border-radius: 0 0 40px 40px;
+    }
+    
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><path fill="%236366f1" opacity="0.05" d="M0,0 L100,0 L100,100 Z" /></svg>');
+      background-size: 300px;
+      z-index: 0;
+    }
+    
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .pill {
+      display: inline-block;
+      background: rgba(99, 102, 241, 0.1);
+      color: var(--primary);
+      padding: 10px 20px;
+      border-radius: 50px;
+      font-weight: 600;
+      margin-bottom: 24px;
+      border: 1px solid rgba(99, 102, 241, 0.2);
+    }
+    
+    h1 {
+      font-size: 3.5rem;
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 20px;
+      color: var(--dark);
+    }
+    
+    h1 span {
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    
+    .hero-subtitle {
+      font-size: 1.2rem;
+      color: var(--gray);
+      margin-bottom: 40px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .hero-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+    
+    .hero-btn {
+      padding: 16px 32px;
+      border-radius: var(--radius);
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: var(--transition);
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+    
+    .hero-btn.primary {
+      background: var(--gradient);
+      color: white;
+    }
+    
+    .hero-btn.secondary {
+      background: white;
+      color: var(--primary);
+      border: 2px solid var(--gray-light);
+    }
+    
+    .hero-btn.tertiary {
+      background: transparent;
+      color: var(--primary);
+      border: 2px solid var(--primary);
+    }
+    
+    .hero-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-lg);
+    }
+    
+    .hero-features {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+    }
+    
+    .feature {
+      padding: 12px 24px;
+      background: white;
+      border-radius: 50px;
+      font-weight: 600;
+      box-shadow: var(--shadow);
+      cursor: pointer;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border: 2px solid transparent;
+    }
+    
+    .feature:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--primary);
+    }
+    
+    .quick-search {
+      max-width: 600px;
+      margin: 30px auto;
+      background: white;
+      border-radius: var(--radius);
+      padding: 6px;
+      box-shadow: var(--shadow-lg);
+      border: 1px solid var(--gray-light);
+      display: flex;
+      position: relative;
+    }
+    
+    .quick-search input {
+      flex: 1;
+      padding: 20px 24px;
+      border: none;
+      outline: none;
+      font-size: 1rem;
+      border-radius: var(--radius);
+    }
+    
+    .quick-search button {
+      background: var(--gradient);
+      color: white;
+      border: none;
+      padding: 0 32px;
+      border-radius: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    
+    .quick-search button:hover {
+      transform: translateY(-2px);
+    }
+    
+    .hidden {
+      display: none;
+    }
+    
+    /* Floating elements */
+    .floating {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+    }
+    
+    .float-item {
+      position: absolute;
+      background: white;
+      padding: 12px 24px;
+      border-radius: 50px;
+      font-weight: 600;
+      box-shadow: var(--shadow);
+      animation: float 6s ease-in-out infinite;
+      border: 1px solid var(--gray-light);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .float-item:nth-child(1) {
+      top: 20%;
+      left: 5%;
+      animation-delay: 0s;
+      background: rgba(99, 102, 241, 0.1);
+      color: var(--primary);
+    }
+    
+    .float-item:nth-child(2) {
+      top: 60%;
+      left: 10%;
+      animation-delay: 1s;
+      background: rgba(245, 158, 11, 0.1);
+      color: var(--secondary);
+    }
+    
+    .float-item:nth-child(3) {
+      top: 30%;
+      right: 10%;
+      animation-delay: 2s;
+      background: rgba(239, 68, 68, 0.1);
+      color: var(--danger);
+    }
+    
+    .float-item:nth-child(4) {
+      top: 70%;
+      right: 5%;
+      animation-delay: 3s;
+      background: rgba(16, 185, 129, 0.1);
+      color: var(--success);
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-20px) rotate(5deg); }
+    }
+    
+    /* LIVE STATS */
+    .stats-section {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 30px;
+      margin: -40px auto 60px;
+      position: relative;
+      z-index: 2;
+    }
+    
+    .stat-box {
+      background: white;
+      padding: 30px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      text-align: center;
+      transition: var(--transition);
+      border: 2px solid transparent;
+    }
+    
+    .stat-box:hover {
+      transform: translateY(-10px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--primary);
+    }
+    
+    .stat-box i {
+      font-size: 2.5rem;
+      color: var(--primary);
+      margin-bottom: 15px;
+    }
+    
+    .stat-box h3 {
+      font-size: 2.5rem;
+      color: var(--dark);
+      margin-bottom: 10px;
+    }
+    
+    .stat-box p {
+      color: var(--gray);
+      font-weight: 500;
+    }
+    
+    /* ADVERTISEMENT */
+    .ad-container {
+      margin: 40px auto;
+      text-align: center;
+    }
+    
+    .ad-label {
+      font-size: 0.8rem;
+      color: var(--gray);
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    
+    .ad-unit {
+      background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+      border: 2px dashed var(--gray-light);
+      border-radius: var(--radius);
+      padding: 40px 20px;
+      color: var(--gray);
+    }
+    
+    .ad-unit.horizontal {
+      padding: 30px 20px;
+    }
+    
+    .ad-unit i {
+      font-size: 2rem;
+      margin-bottom: 15px;
+      color: var(--primary);
+    }
+    
+    /* TRENDING TERMS */
+    .trending-terms {
+      margin: 80px auto;
+      text-align: center;
+    }
+    
+    h2 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 20px;
+      color: var(--dark);
+    }
+    
+    .section-subtitle {
+      font-size: 1.1rem;
+      color: var(--gray);
+      margin-bottom: 40px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .terms-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+    
+    .term-card {
+      background: white;
+      padding: 30px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      text-align: left;
+      transition: var(--transition);
+      cursor: pointer;
+      border: 2px solid transparent;
+    }
+    
+    .term-card:hover {
+      transform: translateY(-10px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--primary);
+    }
+    
+    .term-card .term {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 10px;
+    }
+    
+    .term-card .meaning {
+      color: var(--gray);
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+    
+    /* WHY FREE SECTION */
+    .why-free {
+      padding: 80px 0;
+      background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+      border-radius: 40px;
+      margin: 40px 20px;
+    }
+    
+    .story-card, .solution-card {
+      background: white;
+      padding: 40px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      margin: 30px 0;
+      border: 2px solid transparent;
+      transition: var(--transition);
+    }
+    
+    .story-card:hover, .solution-card:hover {
+      border-color: var(--primary);
+      transform: translateY(-5px);
+    }
+    
+    .problem-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 30px;
+      margin: 30px 0;
+    }
+    
+    .stat {
+      text-align: center;
+      padding: 20px;
+      background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+      border-radius: var(--radius);
+    }
+    
+    .stat .number {
+      display: block;
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin-bottom: 10px;
+    }
+    
+    .stat .label {
+      color: var(--gray);
+      font-size: 0.9rem;
+      line-height: 1.4;
+    }
+    
+    .reasons-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      margin: 30px 0;
+    }
+    
+    .reason {
+      background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+      padding: 30px;
+      border-radius: var(--radius);
+      transition: var(--transition);
+    }
+    
+    .reason:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow);
+    }
+    
+    .reason i {
+      font-size: 2.5rem;
+      color: var(--primary);
+      margin-bottom: 20px;
+    }
+    
+    /* SUBMIT SLANG SECTION */
+    .submit-slang {
+      padding: 80px 0;
+      text-align: center;
+    }
+    
+    .submit-form-container {
+      max-width: 800px;
+      margin: 40px auto;
+      background: white;
+      padding: 40px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+    
+    .form-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+    
+    .form-group {
+      text-align: left;
+    }
+    
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+      color: var(--dark);
+    }
+    
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 15px;
+      border: 2px solid var(--gray-light);
+      border-radius: var(--radius);
+      font-family: 'Outfit', sans-serif;
+      font-size: 1rem;
+      transition: var(--transition);
+    }
+    
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--primary);
+    }
+    
+    .form-actions {
+      margin-top: 30px;
+    }
+    
+    .form-note {
+      margin-top: 15px;
+      color: var(--gray);
+      font-size: 0.9rem;
+    }
+    
+    /* SUPPORT SECTION */
+    .support-section {
+      padding: 80px 0;
+      background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+      border-radius: 40px;
+      margin: 40px 20px;
+    }
+    
+    .mission-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 30px;
+      margin: 40px 0;
+    }
+    
+    .mission-stat {
+      text-align: center;
+      background: white;
+      padding: 30px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+    
+    .contribute-options {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin: 40px 0;
+    }
+    
+    .contribute-card {
+      background: white;
+      padding: 30px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      text-align: center;
+      transition: var(--transition);
+      border: 2px solid transparent;
+    }
+    
+    .contribute-card:hover {
+      transform: translateY(-10px);
+      border-color: var(--primary);
+      box-shadow: var(--shadow-lg);
+    }
+    
+    .contribute-icon i {
+      font-size: 3rem;
+      color: var(--primary);
+      margin-bottom: 20px;
+    }
+    
     /* QR Code Display */
     .qr-real {
       width: 200px;
@@ -45,24 +716,207 @@
       object-fit: contain;
     }
     
-    /* Live Stats Animation */
-    @keyframes countUp {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
+    .support-actions {
+      margin: 20px 0;
     }
     
-    .counting {
-      animation: countUp 0.5s ease-out;
-    }
-    
-    /* Ad Click Tracking */
-    .ad-trackable {
+    .support-btn {
+      background: var(--gradient);
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 50px;
+      font-weight: 600;
       cursor: pointer;
-      transition: transform 0.3s;
+      transition: var(--transition);
+      width: 100%;
+      margin-bottom: 10px;
     }
     
-    .ad-trackable:hover {
-      transform: scale(1.02);
+    .quick-amounts {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 15px;
+    }
+    
+    .amount-chip {
+      padding: 10px 20px;
+      background: var(--gray-light);
+      border: none;
+      border-radius: 50px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    
+    .amount-chip:hover {
+      background: var(--primary);
+      color: white;
+    }
+    
+    .community-actions {
+      margin: 20px 0;
+    }
+    
+    .action-btn {
+      width: 100%;
+      padding: 15px;
+      margin: 10px 0;
+      background: white;
+      border: 2px solid var(--gray-light);
+      border-radius: var(--radius);
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+    
+    .action-btn:hover {
+      border-color: var(--primary);
+      transform: translateY(-3px);
+    }
+    
+    .impact-meter {
+      margin: 30px 0 0;
+    }
+    
+    .meter-bar {
+      height: 10px;
+      background: var(--gray-light);
+      border-radius: 5px;
+      overflow: hidden;
+      margin: 10px 0;
+    }
+    
+    .meter-fill {
+      height: 100%;
+      background: var(--gradient);
+      border-radius: 5px;
+      transition: width 1s ease;
+    }
+    
+    /* TESTIMONIALS */
+    .testimonials {
+      padding: 80px 0;
+      text-align: center;
+    }
+    
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+    
+    .testimonial-card {
+      background: white;
+      padding: 30px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      text-align: left;
+      border: 2px solid transparent;
+      transition: var(--transition);
+    }
+    
+    .testimonial-card:hover {
+      border-color: var(--primary);
+      transform: translateY(-5px);
+    }
+    
+    .testimonial-content {
+      margin-bottom: 20px;
+      font-style: italic;
+      color: var(--gray);
+    }
+    
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+    
+    .testimonial-author i {
+      font-size: 2.5rem;
+      color: var(--primary);
+    }
+    
+    /* FOOTER */
+    footer {
+      background: var(--dark);
+      color: white;
+      padding: 60px 40px 30px;
+      margin-top: 80px;
+    }
+    
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+    
+    .footer-section h3, .footer-section h4 {
+      color: white;
+      margin-bottom: 20px;
+    }
+    
+    .footer-section a {
+      display: block;
+      color: var(--gray-light);
+      text-decoration: none;
+      margin-bottom: 10px;
+      transition: var(--transition);
+    }
+    
+    .footer-section a:hover {
+      color: white;
+      transform: translateX(5px);
+    }
+    
+    .footer-bottom {
+      text-align: center;
+      padding-top: 30px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      color: var(--gray-light);
+      font-size: 0.9rem;
+    }
+    
+    /* MODALS */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 10000;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .modal-content {
+      background: white;
+      padding: 40px;
+      border-radius: var(--radius);
+      max-width: 500px;
+      width: 90%;
+      max-height: 90vh;
+      overflow-y: auto;
+      position: relative;
+    }
+    
+    .close-modal {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: var(--gray);
     }
     
     /* Submission Success */
@@ -83,6 +937,106 @@
     @keyframes slideIn {
       from { transform: translateX(100%); opacity: 0; }
       to { transform: translateX(0); opacity: 1; }
+    }
+    
+    /* RESPONSIVE */
+    @media (max-width: 992px) {
+      h1 {
+        font-size: 2.8rem;
+      }
+      
+      h2 {
+        font-size: 2.2rem;
+      }
+      
+      .hero {
+        padding: 150px 20px 80px;
+      }
+      
+      .navbar {
+        padding: 20px 24px;
+      }
+      
+      nav {
+        gap: 20px;
+      }
+      
+      .stats-section {
+        margin: -20px auto 40px;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2.2rem;
+      }
+      
+      h2 {
+        font-size: 1.8rem;
+      }
+      
+      .hero, .trending-terms, .why-free, .support-section, .testimonials {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+      
+      .why-free, .support-section {
+        margin-left: 10px;
+        margin-right: 10px;
+      }
+      
+      nav {
+        display: none;
+      }
+      
+      .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .hero-btn {
+        width: 100%;
+        max-width: 300px;
+        justify-content: center;
+      }
+      
+      .float-item {
+        transform: scale(0.8);
+      }
+      
+      .submit-form-container {
+        padding: 20px;
+      }
+      
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .hero {
+        padding: 130px 15px 60px;
+      }
+      
+      h1 {
+        font-size: 1.8rem;
+      }
+      
+      .float-item {
+        display: none;
+      }
+      
+      .contribute-options {
+        grid-template-columns: 1fr;
+      }
+      
+      .terms-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .reasons-grid {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
@@ -159,7 +1113,6 @@
     <div class="quick-search hidden" id="quickSearchContainer">
       <input type="text" placeholder="Type any slang term..." id="quickSearch">
       <button id="quickSearchBtn"><i class="fas fa-arrow-right"></i></button>
-      <div class="search-suggestions" id="searchSuggestions"></div>
     </div>
   </div>
 
@@ -217,7 +1170,7 @@
     <p class="section-subtitle">The most searched terms by our users. Click to learn more.</p>
     
     <div class="terms-grid" id="trendingTerms">
-      <!-- Loaded dynamically -->
+      <!-- Loaded with JavaScript -->
     </div>
   </div>
 </div>
@@ -383,7 +1336,6 @@
         
         <!-- Real QR Code -->
         <div class="qr-real">
-          <!-- Replace with your actual QR code image -->
           <div style="background: white; padding: 10px; border-radius: 5px; text-align: center;">
             <div style="width: 180px; height: 180px; background: #f0f0f0; margin: 0 auto; display: flex; align-items: center; justify-content: center; color: #666; font-size: 12px;">
               [Your QR Code Here]
@@ -597,74 +1549,15 @@
   </div>
 </footer>
 
-<!-- Support Modal -->
-<div class="modal" id="supportModal">
-  <div class="modal-content support-modal">
-    <span class="close-modal">&times;</span>
-    <div class="modal-body" id="modalBody">
-      <!-- Content loaded by JavaScript -->
-    </div>
-  </div>
-</div>
-
-<!-- Suggestion Modal -->
-<div class="modal" id="suggestionModal">
-  <div class="modal-content suggestion-modal">
-    <span class="close-modal">&times;</span>
-    <h3><i class="fas fa-lightbulb"></i> Suggest New Slang</h3>
-    <p>Help us grow! Suggest slang terms you've heard but couldn't find.</p>
-    
-    <div class="suggestion-form">
-      <div class="form-group">
-        <label for="slangTerm">Slang Term *</label>
-        <input type="text" id="slangTerm" placeholder="e.g., 'rizz', 'delulu'">
-      </div>
-      
-      <div class="form-group">
-        <label for="slangMeaning">What do you think it means? *</label>
-        <textarea id="slangMeaning" placeholder="Your understanding of the term..." rows="3"></textarea>
-      </div>
-      
-      <div class="form-group">
-        <label for="slangContext">Where did you hear it? (optional)</label>
-        <input type="text" id="slangContext" placeholder="e.g., Instagram, college, Mumbai">
-      </div>
-      
-      <div class="form-group">
-        <label for="slangExample">Example sentence (optional)</label>
-        <input type="text" id="slangExample" placeholder="e.g., 'He has so much rizz!'">
-      </div>
-      
-      <div class="form-group">
-        <label for="userEmail">Your email (optional, for updates)</label>
-        <input type="email" id="userEmail" placeholder="email@example.com">
-      </div>
-      
-      <div class="form-actions">
-        <button type="button" class="cancel-btn">Cancel</button>
-        <button type="button" class="submit-btn" id="submitSuggestion">
-          <i class="fas fa-paper-plane"></i> Submit Suggestion
-        </button>
-      </div>
-    </div>
-  </div>
-</div>
-
 <!-- JavaScript -->
-<script src="firebase-config.js"></script>
-<script src="script.js"></script>
-
 <script>
   // Enhanced home page specific JavaScript
   document.addEventListener('DOMContentLoaded', function() {
-    // Load live stats
-    loadLiveStats();
-    
     // Load trending terms
     loadTrendingTerms();
     
-    // Setup search suggestions
-    setupSearchSuggestions();
+    // Setup search functionality
+    setupSearch();
     
     // Setup ad tracking
     setupAdTracking();
@@ -674,153 +1567,82 @@
     
     // Initialize animations
     initializeHomeAnimations();
+    
+    // Setup feature clicks
+    setupFeatureClicks();
+    
+    // Setup support buttons
+    setupSupportButtons();
   });
-  
-  function loadLiveStats() {
-    // Get stats from Firestore
-    if (window.firestoreDB) {
-      firestoreDB.collection('stats').doc('global').get()
-        .then(doc => {
-          if (doc.exists) {
-            const data = doc.data();
-            document.getElementById('statTerms').textContent = data.totalTerms + '+';
-            document.getElementById('statUsers').textContent = data.monthlyUsers + '+';
-            document.getElementById('statSearches').textContent = data.totalSearches + '+';
-            
-            // Add counting animation
-            document.querySelectorAll('#liveStats h3').forEach(el => {
-              el.classList.add('counting');
-            });
-          }
-        })
-        .catch(error => {
-          console.log('Stats not loaded, using defaults');
-        });
-    }
-  }
   
   function loadTrendingTerms() {
     const container = document.getElementById('trendingTerms');
     
-    // Default trending terms
+    // Default trending terms - You can update these manually
     const defaultTerms = [
-      {term: 'rizz', meaning: 'Charisma or romantic charm'},
-      {term: 'delulu', meaning: 'Delusional, especially romantically'},
-      {term: 'chapri', meaning: 'Trying too hard to be cool'},
-      {term: 'savage', meaning: 'Extremely cool or ruthless'}
+      {term: 'rizz', meaning: 'Charisma or romantic charm, ability to attract people'},
+      {term: 'delulu', meaning: 'Being delusional, especially about romantic situations'},
+      {term: 'chapri', meaning: 'Someone trying too hard to be cool in a cringey way'},
+      {term: 'savage', meaning: 'Extremely cool, ruthless, or brutally honest'},
+      {term: 'NPC energy', meaning: 'Acting like a background character with no personality'},
+      {term: 'ghosting', meaning: 'Suddenly cutting off all communication without explanation'},
+      {term: 'sus', meaning: 'Suspicious or shady behavior'},
+      {term: 'vibe check', meaning: 'Assessing someone\'s energy or mood'}
     ];
     
-    // Try to get from Firestore
-    if (window.firestoreDB) {
-      firestoreDB.collection('slang_terms')
-        .where('trending', '==', true)
-        .limit(4)
-        .get()
-        .then(snapshot => {
-          if (!snapshot.empty) {
-            container.innerHTML = '';
-            snapshot.forEach(doc => {
-              const data = doc.data();
-              container.innerHTML += `
-                <div class="term-card" data-term="${data.term}" onclick="window.location.href='dictionary.html?search=${data.term}'">
-                  <div class="term">${data.term}</div>
-                  <div class="meaning">${data.meaning.substring(0, 40)}...</div>
-                </div>
-              `;
-            });
-          } else {
-            loadDefaultTerms();
-          }
-        })
-        .catch(() => {
-          loadDefaultTerms();
-        });
-    } else {
-      loadDefaultTerms();
+    container.innerHTML = defaultTerms.map(term => `
+      <div class="term-card" data-term="${term.term}" onclick="window.location.href='dictionary.html?search=${term.term}'">
+        <div class="term">${term.term}</div>
+        <div class="meaning">${term.meaning}</div>
+      </div>
+    `).join('');
+  }
+  
+  function setupSearch() {
+    const searchToggle = document.getElementById('quick-search-toggle');
+    const searchContainer = document.getElementById('quickSearchContainer');
+    const searchInput = document.getElementById('quickSearch');
+    const searchBtn = document.getElementById('quickSearchBtn');
+    
+    // Toggle search bar
+    if (searchToggle && searchContainer) {
+      searchToggle.addEventListener('click', function() {
+        searchContainer.classList.toggle('hidden');
+        if (!searchContainer.classList.contains('hidden')) {
+          searchInput.focus();
+        }
+      });
     }
     
-    function loadDefaultTerms() {
-      container.innerHTML = defaultTerms.map(term => `
-        <div class="term-card" data-term="${term.term}" onclick="window.location.href='dictionary.html?search=${term.term}'">
-          <div class="term">${term.term}</div>
-          <div class="meaning">${term.meaning}</div>
-        </div>
-      `).join('');
+    // Search button click
+    if (searchBtn) {
+      searchBtn.addEventListener('click', performSearch);
+    }
+    
+    // Enter key in search
+    if (searchInput) {
+      searchInput.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+          performSearch();
+        }
+      });
     }
   }
   
-  function setupSearchSuggestions() {
-    const searchInput = document.getElementById('quickSearch');
-    const suggestionsContainer = document.getElementById('searchSuggestions');
-    
-    if (!searchInput || !suggestionsContainer) return;
-    
-    searchInput.addEventListener('input', function() {
-      const query = this.value.trim().toLowerCase();
-      
-      if (query.length < 2) {
-        suggestionsContainer.innerHTML = '';
-        suggestionsContainer.style.display = 'none';
-        return;
-      }
-      
-      // Get suggestions from Firestore
-      if (window.firestoreDB) {
-        firestoreDB.collection('slang_terms')
-          .where('term', '>=', query)
-          .where('term', '<=', query + '\uf8ff')
-          .limit(5)
-          .get()
-          .then(snapshot => {
-            if (!snapshot.empty) {
-              suggestionsContainer.innerHTML = '';
-              snapshot.forEach(doc => {
-                const data = doc.data();
-                const div = document.createElement('div');
-                div.className = 'suggestion-item';
-                div.textContent = data.term;
-                div.onclick = function() {
-                  searchInput.value = data.term;
-                  suggestionsContainer.innerHTML = '';
-                  suggestionsContainer.style.display = 'none';
-                  performSearch();
-                };
-                suggestionsContainer.appendChild(div);
-              });
-              suggestionsContainer.style.display = 'block';
-            } else {
-              suggestionsContainer.innerHTML = '<div class="suggestion-item">No matches found</div>';
-              suggestionsContainer.style.display = 'block';
-            }
-          })
-          .catch(() => {
-            suggestionsContainer.style.display = 'none';
-          });
-      }
-    });
-    
-    // Hide suggestions when clicking outside
-    document.addEventListener('click', function(e) {
-      if (!searchInput.contains(e.target) && !suggestionsContainer.contains(e.target)) {
-        suggestionsContainer.style.display = 'none';
-      }
-    });
+  function performSearch() {
+    const term = document.getElementById('quickSearch').value.trim();
+    if (term) {
+      window.location.href = `dictionary.html?search=${encodeURIComponent(term)}`;
+    } else {
+      alert('Please enter a slang term to search!');
+    }
   }
   
   function setupAdTracking() {
     document.querySelectorAll('.ad-trackable').forEach(ad => {
       ad.addEventListener('click', function() {
         const adId = this.getAttribute('data-ad-id');
-        
-        // Track ad click in Firestore
-        if (window.firestoreDB) {
-          firestoreDB.collection('ad_clicks').add({
-            adId: adId,
-            timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-            page: 'index.html',
-            userAgent: navigator.userAgent
-          });
-        }
+        console.log(`Ad clicked: ${adId}`);
         
         // Open ad link in new tab (replace with actual ad URL)
         window.open('https://slangadda.ai/advertise.html', '_blank');
@@ -847,37 +1669,38 @@
         return;
       }
       
-      // Create anonymous user session
-      firebaseAuth.signInAnonymously()
-        .then(() => {
-          // Submit to Firestore
-          return firestoreDB.collection('slang_submissions').add({
-            term: term.toLowerCase(),
-            meaning: meaning,
-            example: example,
-            category: category,
-            context: context,
-            email: email,
-            status: 'pending',
-            submittedAt: firebase.firestore.FieldValue.serverTimestamp(),
-            ip: 'anonymous' // In production, get actual IP
-          });
-        })
-        .then(() => {
-          // Show success
-          showSuccessMessage('Thank you! Your submission is under review.');
-          
-          // Reset form
-          form.reset();
-          
-          // Send email notification (optional)
-          sendSubmissionNotification(term, meaning, email);
-        })
-        .catch(error => {
-          console.error('Submission error:', error);
-          showSuccessMessage('Error submitting. Please try again.', 'error');
-        });
+      // Create submission object
+      const submission = {
+        term: term.toLowerCase(),
+        meaning: meaning,
+        example: example,
+        category: category,
+        context: context,
+        email: email,
+        status: 'pending',
+        submittedAt: new Date().toISOString()
+      };
+      
+      // In a real app, you would send this to your backend
+      // For now, we'll just show a success message
+      console.log('New slang submission:', submission);
+      
+      // Show success
+      showSuccessMessage('Thank you! Your submission has been recorded. We\'ll review it soon.');
+      
+      // Reset form
+      form.reset();
+      
+      // You could also save to localStorage for manual review
+      saveSubmission(submission);
     });
+  }
+  
+  function saveSubmission(submission) {
+    // Save to localStorage for manual review
+    const submissions = JSON.parse(localStorage.getItem('slangSubmissions') || '[]');
+    submissions.push(submission);
+    localStorage.setItem('slangSubmissions', JSON.stringify(submissions));
   }
   
   function showSuccessMessage(message, type = 'success') {
@@ -893,14 +1716,8 @@
     }, 5000);
   }
   
-  function sendSubmissionNotification(term, meaning, email) {
-    // This would be implemented with a backend function
-    // For now, just log it
-    console.log(`New submission: ${term} - ${meaning} from ${email}`);
-  }
-  
   function initializeHomeAnimations() {
-    // Initialize any home-specific animations
+    // Initialize intersection observer for animations
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -910,22 +1727,67 @@
     }, { threshold: 0.1 });
     
     // Observe elements
-    document.querySelectorAll('.stat-box, .term-card, .testimonial-card').forEach(el => {
+    document.querySelectorAll('.stat-box, .term-card, .testimonial-card, .reason').forEach(el => {
       observer.observe(el);
+    });
+    
+    // Add counting animation to stats
+    setTimeout(() => {
+      document.querySelectorAll('#liveStats h3').forEach(el => {
+        el.classList.add('counting');
+      });
+    }, 500);
+  }
+  
+  function setupFeatureClicks() {
+    // Feature clicks for quick search
+    document.querySelectorAll('.feature.interactive').forEach(feature => {
+      feature.addEventListener('click', function() {
+        const term = this.getAttribute('data-term');
+        window.location.href = `dictionary.html?search=${term}`;
+      });
     });
   }
   
-  // Make functions globally available
-  window.performSearch = function() {
-    const term = document.getElementById('quickSearch').value.trim();
-    if (term) {
-      window.location.href = `dictionary.html?search=${encodeURIComponent(term)}`;
+  function setupSupportButtons() {
+    // Copy UPI ID
+    const copyUpiBtn = document.querySelector('.copy-upi');
+    if (copyUpiBtn) {
+      copyUpiBtn.addEventListener('click', function() {
+        navigator.clipboard.writeText('slangadda@ptyes')
+          .then(() => {
+            showSuccessMessage('UPI ID copied to clipboard!');
+          })
+          .catch(() => {
+            showSuccessMessage('Failed to copy UPI ID', 'error');
+          });
+      });
     }
-  };
+    
+    // Amount chips
+    document.querySelectorAll('.amount-chip').forEach(chip => {
+      chip.addEventListener('click', function() {
+        const amount = this.getAttribute('data-amount');
+        alert(`Thank you for wanting to support with ₹${amount}! In a real implementation, this would open a payment gateway.`);
+      });
+    });
+    
+    // Share button
+    const shareBtn = document.querySelector('.share-action');
+    if (shareBtn && navigator.share) {
+      shareBtn.addEventListener('click', function() {
+        navigator.share({
+          title: 'SlangAdda AI',
+          text: 'Check out this free Indian slang dictionary!',
+          url: window.location.href
+        });
+      });
+    }
+  }
   
+  // Make functions globally available
   window.showSuggestionModal = function() {
-    const modal = document.getElementById('suggestionModal');
-    if (modal) modal.style.display = 'flex';
+    alert('📝 Want to suggest new slang?\n\nYou can:\n1. Use the form above to submit slang\n2. Email us: suggestions@slangadda.ai\n3. Message us on social media\n\nWe add new terms daily!');
   };
   
   window.showContributeModal = function() {
@@ -934,10 +1796,7 @@
   
   window.showSupportModal = function() {
     const amount = document.getElementById('customSupport').value || '100';
-    // Implementation from script.js
-    if (window.SlangAdda && window.SlangAdda.showSupportModal) {
-      window.SlangAdda.showSupportModal(amount);
-    }
+    alert(`Thank you for wanting to support with ₹${amount}!\n\nIn a real implementation, this would open a payment gateway.\n\nFor now, you can use UPI ID: slangadda@ptyes`);
   };
 </script>
 
