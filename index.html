@@ -23,7 +23,7 @@
     <a href="index.html"><i class="fas fa-home"></i> Home</a>
     <a href="dictionary.html"><i class="fas fa-book"></i> Dictionary</a>
     <a href="quiz.html"><i class="fas fa-brain"></i> Quiz</a>
-    <a href="#donate" class="donate-nav"><i class="fas fa-heart"></i> Support Us</a>
+    <a href="#support" class="support-nav"><i class="fas fa-heart"></i> Join Movement</a>
   </nav>
 </header>
 
@@ -31,30 +31,68 @@
 <section class="hero">
   <div class="hero-content">
     <span class="pill"><i class="fas fa-star"></i> 100% Free & Always Will Be</span>
-    <h1>Decode Indian Slang<br><span>Without Paywalls or Ads</span></h1>
-    <p class="hero-subtitle">We believe understanding language should be free. No subscriptions, no tracking, just pure knowledge sharing.</p>
+    <h1 id="dynamic-title">Decode Indian Slang<br><span class="typing-text">Without Paywalls or Ads</span></h1>
+    <p class="hero-subtitle" id="dynamic-subtitle">We believe understanding language should be free. No subscriptions, no tracking, just pure knowledge sharing.</p>
 
     <div class="hero-buttons">
-      <a href="dictionary.html" class="hero-btn primary">
-        <i class="fas fa-book"></i> Browse Dictionary
+      <a href="dictionary.html" class="hero-btn primary" id="dict-btn">
+        <i class="fas fa-book"></i> <span>Browse Dictionary</span>
       </a>
-      <a href="#why-free" class="hero-btn secondary">
-        <i class="fas fa-heart"></i> Why We're Free
+      <a href="#why-free" class="hero-btn secondary" id="why-btn">
+        <i class="fas fa-heart"></i> <span>Why We're Free</span>
+      </a>
+      <a href="#support" class="hero-btn tertiary" id="support-btn">
+        <i class="fas fa-hands-helping"></i> <span>Join Movement</span>
       </a>
     </div>
 
-    <div class="quick-search">
-      <input type="text" placeholder="Try: 'rizz', 'delulu', 'chapri'..." id="quickSearch">
-      <button id="quickSearchBtn"><i class="fas fa-search"></i></button>
+    <div class="hero-features">
+      <div class="feature interactive" data-term="rizz">
+        <i class="fas fa-bolt"></i>
+        <span>Try: 'rizz'</span>
+      </div>
+      <div class="feature interactive" data-term="delulu">
+        <i class="fas fa-brain"></i>
+        <span>Try: 'delulu'</span>
+      </div>
+      <div class="feature interactive" data-term="chapri">
+        <i class="fas fa-motorcycle"></i>
+        <span>Try: 'chapri'</span>
+      </div>
+      <div class="feature" id="quick-search-toggle">
+        <i class="fas fa-search"></i>
+        <span>Quick Search</span>
+      </div>
+    </div>
+
+    <div class="quick-search hidden" id="quickSearchContainer">
+      <input type="text" placeholder="Type any slang term..." id="quickSearch">
+      <button id="quickSearchBtn"><i class="fas fa-arrow-right"></i></button>
+      <div class="suggestions">
+        <span>Trending:</span>
+        <a href="#" class="suggestion-tag" data-term="rizz">rizz</a>
+        <a href="#" class="suggestion-tag" data-term="delulu">delulu</a>
+        <a href="#" class="suggestion-tag" data-term="chapri">chapri</a>
+        <a href="#" class="suggestion-tag" data-term="savage">savage</a>
+      </div>
     </div>
   </div>
 
   <!-- Floating elements -->
   <div class="floating">
-    <span><i class="fas fa-lock-open"></i> No Login</span>
-    <span><i class="fas fa-ad"></i> Ad-Free</span>
-    <span><i class="fas fa-rupee-sign"></i> Free Forever</span>
-    <span><i class="fas fa-users"></i> Community</span>
+    <span class="float-item" data-text="No Login Required"><i class="fas fa-lock-open"></i> No Login</span>
+    <span class="float-item" data-text="Zero Ads Ever"><i class="fas fa-ad"></i> Ad-Free</span>
+    <span class="float-item" data-text="Free Forever Promise"><i class="fas fa-rupee-sign"></i> Free Forever</span>
+    <span class="float-item" data-text="Community Powered"><i class="fas fa-users"></i> Community</span>
+  </div>
+
+  <!-- Animated background elements -->
+  <div class="hero-bg-elements">
+    <div class="bg-element" style="top: 20%; left: 5%;">🫂</div>
+    <div class="bg-element" style="top: 60%; right: 10%;">💬</div>
+    <div class="bg-element" style="top: 30%; right: 5%;">✨</div>
+    <div class="bg-element" style="bottom: 20%; left: 15%;">🔥</div>
+    <div class="bg-element" style="bottom: 40%; right: 20%;">🌟</div>
   </div>
 </section>
 
@@ -119,201 +157,141 @@
         </div>
       </div>
     </div>
-    
-    <div class="impact-card">
-      <div class="impact-content">
-        <h3>The Impact of Your Support</h3>
-        <p>While we're free to use, maintaining this resource costs us:</p>
-        
-        <div class="cost-breakdown">
-          <div class="cost-item">
-            <i class="fas fa-server"></i>
-            <div>
-              <h5>Server Costs</h5>
-              <p>₹2,500/month for hosting and bandwidth</p>
-            </div>
-            <span class="cost-amount">₹2,500</span>
-          </div>
-          
-          <div class="cost-item">
-            <i class="fas fa-code"></i>
-            <div>
-              <h5>Development</h5>
-              <p>100+ hours monthly updating and improving</p>
-            </div>
-            <span class="cost-amount">Volunteer</span>
-          </div>
-          
-          <div class="cost-item">
-            <i class="fas fa-pencil-alt"></i>
-            <div>
-              <h5>Content Research</h5>
-              <p>Tracking new slang across platforms daily</p>
-            </div>
-            <span class="cost-amount">Volunteer</span>
-          </div>
-          
-          <div class="cost-item total">
-            <i class="fas fa-calculator"></i>
-            <div>
-              <h5>Monthly Need</h5>
-              <p>To keep us running and improving</p>
-            </div>
-            <span class="cost-amount">₹2,500</span>
-          </div>
-        </div>
-        
-        <p class="impact-note">
-          <i class="fas fa-lightbulb"></i> That's just ₹83 per day - less than a cup of chai! Your donation covers real costs for thousands of users.
-        </p>
-      </div>
-    </div>
   </div>
 </section>
 
-<!-- DONATION SECTION -->
-<section class="donation-main" id="donate">
+<!-- SUPPORT SECTION (Redesigned - More Positive) -->
+<section class="support-section" id="support">
   <div class="container">
-    <h2><i class="fas fa-hands-heart"></i> Support Free Knowledge</h2>
-    <p class="section-subtitle">Choose how you'd like to support. Every rupee helps keep SlangAdda free for everyone.</p>
+    <div class="support-header">
+      <h2><i class="fas fa-users"></i> Join the Free Knowledge Movement</h2>
+      <p class="section-subtitle">Help us keep SlangAdda free forever. Choose how you'd like to contribute to this community mission.</p>
+    </div>
     
-    <div class="donation-options">
-      <div class="donation-card">
-        <div class="donation-header">
+    <div class="mission-stats">
+      <div class="mission-stat">
+        <i class="fas fa-user-graduate"></i>
+        <h3>25,000+</h3>
+        <p>Students helped monthly</p>
+      </div>
+      <div class="mission-stat">
+        <i class="fas fa-search"></i>
+        <h3>500k+</h3>
+        <p>Terms searched monthly</p>
+      </div>
+      <div class="mission-stat">
+        <i class="fas fa-heart"></i>
+        <h3>1,247</h3>
+        <p>Community supporters</p>
+      </div>
+      <div class="mission-stat">
+        <i class="fas fa-handshake"></i>
+        <h3>₹83/day</h3>
+        <p>Our running cost</p>
+      </div>
+    </div>
+    
+    <div class="contribute-options">
+      <div class="contribute-card">
+        <div class="contribute-icon">
           <i class="fas fa-qrcode"></i>
-          <h3>Quick UPI Donation</h3>
-          <p>Scan QR or use UPI ID</p>
         </div>
-        
-        <div class="donation-content">
-          <div class="upi-display">
-            <div class="qr-code">
-              <!-- QR Code Display -->
-              <div class="qr-container">
-                <div class="qr-image" id="qrImage">
-                  <!-- QR would be generated here -->
-                  <div class="qr-placeholder">
-                    <div class="qr-pattern">
-                      <div class="qr-row"></div>
-                      <div class="qr-row"></div>
-                      <div class="qr-row"></div>
-                      <div class="qr-row"></div>
-                    </div>
-                  </div>
-                </div>
-                <div class="qr-text">
-                  <p class="upi-id" id="upiIdDisplay">slangadda@ybl</p>
-                  <p class="upi-note">Scan with any UPI app</p>
-                </div>
-              </div>
-              
-              <button class="copy-upi-btn" id="copyUpiBtn">
-                <i class="fas fa-copy"></i> Copy UPI ID
-              </button>
-              
-              <div class="quick-amounts">
-                <button class="amount-btn" data-amount="50">₹50</button>
-                <button class="amount-btn" data-amount="100">₹100</button>
-                <button class="amount-btn" data-amount="200">₹200</button>
-                <button class="amount-btn" data-amount="500">₹500</button>
-              </div>
+        <h3>Quick Support</h3>
+        <p>Scan or use UPI ID</p>
+        <div class="support-qr">
+          <div class="qr-placeholder">
+            <div class="qr-dots">
+              <!-- QR pattern dots will be generated by JS -->
             </div>
+            <div class="qr-text">
+              <p><strong>slangadda@ybl</strong></p>
+              <small>Any UPI app</small>
+            </div>
+          </div>
+        </div>
+        <div class="support-actions">
+          <button class="support-btn copy-upi">
+            <i class="fas fa-copy"></i> Copy UPI ID
+          </button>
+          <div class="quick-amounts">
+            <button class="amount-chip" data-amount="50">₹50</button>
+            <button class="amount-chip" data-amount="100">₹100</button>
+            <button class="amount-chip" data-amount="200">₹200</button>
           </div>
         </div>
       </div>
       
-      <div class="donation-card">
-        <div class="donation-header">
-          <i class="fas fa-coffee"></i>
-          <h3>Buy Us Chai ☕</h3>
-          <p>Fuel our late-night coding</p>
+      <div class="contribute-card">
+        <div class="contribute-icon">
+          <i class="fas fa-hands-helping"></i>
+        </div>
+        <h3>Community Power</h3>
+        <p>Other ways to make impact</p>
+        
+        <div class="community-actions">
+          <button class="action-btn share-action">
+            <i class="fas fa-share-alt"></i>
+            <span>Share with friends</span>
+          </button>
+          <button class="action-btn suggest-action">
+            <i class="fas fa-lightbulb"></i>
+            <span>Suggest slang</span>
+          </button>
+          <button class="action-btn contribute-action">
+            <i class="fas fa-code"></i>
+            <span>Contribute skills</span>
+          </button>
         </div>
         
-        <div class="donation-content">
-          <div class="chai-options">
-            <div class="chai-option" data-amount="30">
-              <i class="fas fa-mug-hot"></i>
-              <h4>Street Chai</h4>
-              <p>₹30</p>
-              <small>Keeps us warm</small>
-            </div>
-            
-            <div class="chai-option" data-amount="50">
-              <i class="fas fa-coffee"></i>
-              <h4>Cafe Coffee</h4>
-              <p>₹50</p>
-              <small>Focus boost</small>
-            </div>
-            
-            <div class="chai-option popular" data-amount="100">
-              <i class="fas fa-crown"></i>
-              <h4>Team Chai</h4>
-              <p>₹100</p>
-              <small>Whole team fueled</small>
-            </div>
-            
-            <div class="chai-option" data-amount="250">
-              <i class="fas fa-bolt"></i>
-              <h4>Energy Pack</h4>
-              <p>₹250</p>
-              <small>Coding marathon</small>
-            </div>
+        <div class="impact-meter">
+          <div class="meter-label">
+            <span>Monthly Goal: ₹2,500</span>
+            <span id="goal-percentage">42%</span>
           </div>
-          
-          <div class="custom-amount">
-            <h4>Custom Amount</h4>
-            <div class="custom-input">
-              <span class="rupee-sign">₹</span>
-              <input type="number" id="customAmount" placeholder="Enter amount" min="10">
-              <button id="customDonateBtn">Donate</button>
-            </div>
+          <div class="meter-bar">
+            <div class="meter-fill" id="meter-fill" style="width: 42%"></div>
           </div>
+          <p class="meter-note"><i class="fas fa-bolt"></i> ₹1,050 raised this month</p>
         </div>
       </div>
       
-      <div class="donation-card">
-        <div class="donation-header">
-          <i class="fas fa-users"></i>
-          <h3>Community Support</h3>
-          <p>Other ways to help</p>
+      <div class="contribute-card">
+        <div class="contribute-icon">
+          <i class="fas fa-seedling"></i>
         </div>
+        <h3>Sustain the Project</h3>
+        <p>Help us grow sustainably</p>
         
-        <div class="donation-content">
-          <div class="community-options">
-            <div class="community-option">
-              <i class="fas fa-share-alt"></i>
-              <h4>Share</h4>
-              <p>Tell friends about SlangAdda</p>
-              <button class="share-btn" data-platform="whatsapp">
-                <i class="fab fa-whatsapp"></i> Share
-              </button>
-            </div>
-            
-            <div class="community-option">
-              <i class="fas fa-lightbulb"></i>
-              <h4>Suggest Slang</h4>
-              <p>Help us grow the dictionary</p>
-              <button class="suggest-btn" id="suggestSlangBtn">
-                <i class="fas fa-plus"></i> Suggest
-              </button>
-            </div>
-            
-            <div class="community-option">
-              <i class="fas fa-code"></i>
-              <h4>Contribute</h4>
-              <p>Help with coding/design</p>
-              <button class="contribute-btn" id="contributeBtn">
-                <i class="fas fa-hands-helping"></i> Help
-              </button>
-            </div>
-          </div>
-          
-          <div class="supporters-count">
-            <i class="fas fa-user-friends"></i>
+        <div class="sustain-options">
+          <div class="sustain-option">
+            <i class="fas fa-coffee"></i>
             <div>
-              <h4>1,247 Supporters</h4>
-              <p>People who've donated this month</p>
+              <h4>Monthly Supporter</h4>
+              <p>₹100/month · Sustains servers</p>
             </div>
+          </div>
+          <div class="sustain-option">
+            <i class="fas fa-server"></i>
+            <div>
+              <h4>Infrastructure Help</h4>
+              <p>One-time · Covers hosting</p>
+            </div>
+          </div>
+          <div class="sustain-option">
+            <i class="fas fa-graduation-cap"></i>
+            <div>
+              <h4>Education Sponsor</h4>
+              <p>₹500+ · Helps students</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="custom-support">
+          <h4>Custom Support</h4>
+          <div class="custom-input">
+            <span>₹</span>
+            <input type="number" placeholder="Enter amount" min="10" id="customSupport">
+            <button class="support-now">Support Now</button>
           </div>
         </div>
       </div>
@@ -322,8 +300,8 @@
     <div class="transparency-note">
       <i class="fas fa-chart-line"></i>
       <div>
-        <h4>100% Transparent</h4>
-        <p>We'll publicly share how donations are used. Monthly reports coming soon.</p>
+        <h4>Complete Transparency</h4>
+        <p>We share monthly reports showing exactly how funds are used to keep SlangAdda free.</p>
       </div>
     </div>
   </div>
@@ -387,14 +365,14 @@
         <a href="index.html">Home</a>
         <a href="dictionary.html">Dictionary</a>
         <a href="quiz.html">Quiz</a>
-        <a href="#donate">Support</a>
+        <a href="#support">Join Movement</a>
       </div>
     </div>
     
     <div class="footer-section">
       <h4>Quick Links</h4>
       <a href="#why-free">Why Free?</a>
-      <a href="#donate">Donate</a>
+      <a href="#support">Support</a>
       <a href="#" id="suggestLink">Suggest Slang</a>
       <a href="policies.html">Policies (Coming Soon)</a>
     </div>
@@ -421,14 +399,14 @@
   <div class="footer-bottom">
     <p>© 2025 SlangAdda AI · Made with ❤️ for India · Keeping knowledge free for everyone</p>
     <p class="footer-note">
-      This project runs on donations. Every contribution helps maintain this free resource.
+      A community-powered project. Every contribution helps maintain this free resource.
     </p>
   </div>
 </footer>
 
-<!-- Donation Modal -->
-<div class="modal" id="donationModal">
-  <div class="modal-content donation-modal">
+<!-- Support Modal -->
+<div class="modal" id="supportModal">
+  <div class="modal-content support-modal">
     <span class="close-modal">&times;</span>
     <div class="modal-body" id="modalBody">
       <!-- Content loaded by JavaScript -->
@@ -488,13 +466,136 @@
 <script>
   // Home page specific JavaScript
   document.addEventListener('DOMContentLoaded', function() {
-    // Set UPI ID
-    const upiId = 'slangadda@ybl'; // Your UPI ID here
-    document.getElementById('upiIdDisplay').textContent = upiId;
+    // Initialize interactive hero
+    initInteractiveHero();
+    
+    // Initialize support section
+    initSupportSection();
+    
+    // Initialize modals
+    initModals();
+  });
+  
+  function initInteractiveHero() {
+    // Dynamic title rotation
+    const titles = [
+      "Decode Indian Slang",
+      "Understand Gen-Z Language",
+      "Bridge Cultural Gaps",
+      "Master Internet Lingo"
+    ];
+    
+    const subtitles = [
+      "No subscriptions, no tracking, just pure knowledge sharing.",
+      "Free forever. Because understanding shouldn't have a price tag.",
+      "Join thousands who've unlocked the secret language of India.",
+      "From 'rizz' to 'delulu' - we've got you covered."
+    ];
+    
+    let titleIndex = 0;
+    const titleElement = document.getElementById('dynamic-title');
+    const subtitleElement = document.getElementById('dynamic-subtitle');
+    
+    // Rotate title every 5 seconds
+    setInterval(() => {
+      titleIndex = (titleIndex + 1) % titles.length;
+      titleElement.style.opacity = '0';
+      subtitleElement.style.opacity = '0';
+      
+      setTimeout(() => {
+        titleElement.innerHTML = titles[titleIndex] + '<br><span class="typing-text">Without Paywalls or Ads</span>';
+        subtitleElement.textContent = subtitles[titleIndex];
+        titleElement.style.opacity = '1';
+        subtitleElement.style.opacity = '1';
+        
+        // Trigger typing animation
+        const typingText = document.querySelector('.typing-text');
+        typingText.classList.remove('typing-text');
+        void typingText.offsetWidth; // Trigger reflow
+        typingText.classList.add('typing-text');
+      }, 500);
+    }, 5000);
+    
+    // Interactive feature buttons
+    document.querySelectorAll('.feature.interactive').forEach(feature => {
+      feature.addEventListener('click', function() {
+        const term = this.getAttribute('data-term');
+        window.location.href = `dictionary.html?search=${encodeURIComponent(term)}`;
+      });
+      
+      // Hover effect
+      feature.addEventListener('mouseenter', function() {
+        this.style.transform = 'translateY(-5px)';
+        this.style.boxShadow = '0 10px 20px rgba(0, 0, 0, 0.1)';
+      });
+      
+      feature.addEventListener('mouseleave', function() {
+        this.style.transform = 'translateY(0)';
+        this.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.05)';
+      });
+    });
+    
+    // Quick search toggle
+    const quickSearchToggle = document.getElementById('quick-search-toggle');
+    const quickSearchContainer = document.getElementById('quickSearchContainer');
+    
+    quickSearchToggle.addEventListener('click', function() {
+      quickSearchContainer.classList.toggle('hidden');
+      if (!quickSearchContainer.classList.contains('hidden')) {
+        document.getElementById('quickSearch').focus();
+      }
+    });
+    
+    // Quick search functionality
+    document.getElementById('quickSearchBtn').addEventListener('click', performSearch);
+    document.getElementById('quickSearch').addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') performSearch();
+    });
+    
+    // Suggestion tags
+    document.querySelectorAll('.suggestion-tag').forEach(tag => {
+      tag.addEventListener('click', function(e) {
+        e.preventDefault();
+        const term = this.getAttribute('data-term');
+        window.location.href = `dictionary.html?search=${encodeURIComponent(term)}`;
+      });
+    });
+    
+    // Floating items hover effect
+    document.querySelectorAll('.float-item').forEach(item => {
+      item.addEventListener('mouseenter', function() {
+        const text = this.getAttribute('data-text');
+        this.setAttribute('data-tooltip', text);
+      });
+    });
+    
+    // Hero button animations
+    const heroButtons = document.querySelectorAll('.hero-btn');
+    heroButtons.forEach(btn => {
+      btn.addEventListener('mouseenter', function() {
+        this.style.transform = 'scale(1.05)';
+      });
+      
+      btn.addEventListener('mouseleave', function() {
+        this.style.transform = 'scale(1)';
+      });
+    });
+  }
+  
+  function performSearch() {
+    const term = document.getElementById('quickSearch').value.trim();
+    if (term) {
+      window.location.href = `dictionary.html?search=${encodeURIComponent(term)}`;
+    }
+  }
+  
+  function initSupportSection() {
+    // Generate QR pattern
+    generateQRPattern();
     
     // Copy UPI ID
-    document.getElementById('copyUpiBtn').addEventListener('click', function() {
-      navigator.clipboard.writeText(upiId).then(() => {
+    document.querySelector('.copy-upi').addEventListener('click', function() {
+      navigator.clipboard.writeText('slangadda@ybl').then(() => {
         const originalText = this.innerHTML;
         this.innerHTML = '<i class="fas fa-check"></i> Copied!';
         this.style.background = 'var(--success)';
@@ -506,97 +607,153 @@
       });
     });
     
-    // Quick search
-    document.getElementById('quickSearchBtn').addEventListener('click', function() {
-      const term = document.getElementById('quickSearch').value.trim();
-      if (term) {
-        window.location.href = `dictionary.html?search=${encodeURIComponent(term)}`;
-      }
-    });
-    
-    document.getElementById('quickSearch').addEventListener('keypress', function(e) {
-      if (e.key === 'Enter') {
-        document.getElementById('quickSearchBtn').click();
-      }
-    });
-    
-    // Donation amount buttons
-    document.querySelectorAll('.amount-btn, .chai-option').forEach(btn => {
-      btn.addEventListener('click', function() {
+    // Amount chips
+    document.querySelectorAll('.amount-chip').forEach(chip => {
+      chip.addEventListener('click', function() {
         const amount = this.getAttribute('data-amount');
-        showDonationModal(amount);
+        showSupportModal(amount);
       });
     });
     
-    // Custom donation
-    document.getElementById('customDonateBtn').addEventListener('click', function() {
-      const amount = document.getElementById('customAmount').value;
+    // Custom support
+    document.querySelector('.support-now').addEventListener('click', function() {
+      const amount = document.getElementById('customSupport').value;
       if (amount && amount >= 10) {
-        showDonationModal(amount);
+        showSupportModal(amount);
       } else {
         alert('Please enter at least ₹10');
       }
     });
     
-    // Suggestion button
-    document.getElementById('suggestSlangBtn').addEventListener('click', function() {
+    // Community actions
+    document.querySelector('.share-action').addEventListener('click', function() {
+      const url = window.location.href;
+      const text = 'Join me in supporting SlangAdda AI - Free Indian slang decoder!';
+      window.open(`https://wa.me/?text=${encodeURIComponent(text + ' ' + url)}`, '_blank');
+    });
+    
+    document.querySelector('.suggest-action').addEventListener('click', function() {
       document.getElementById('suggestionModal').style.display = 'flex';
     });
     
-    document.getElementById('suggestLink').addEventListener('click', function(e) {
-      e.preventDefault();
-      document.getElementById('suggestionModal').style.display = 'flex';
+    document.querySelector('.contribute-action').addEventListener('click', function() {
+      alert('Want to contribute your skills? Awesome! We need help with:\n\n• Adding new slang terms\n• Improving explanations\n• Website development\n• Design improvements\n\nEmail us at: contribute@slangadda.ai');
     });
     
-    // Submit suggestion
-    document.getElementById('submitSuggestion').addEventListener('click', function() {
-      const term = document.getElementById('slangTerm').value.trim();
-      const meaning = document.getElementById('slangMeaning').value.trim();
+    // Animate progress meter
+    setTimeout(() => {
+      const meterFill = document.getElementById('meter-fill');
+      const goalPercentage = document.getElementById('goal-percentage');
+      const targetWidth = 42; // Current percentage
       
-      if (!term || !meaning) {
-        alert('Please fill at least the slang term and its meaning');
-        return;
-      }
-      
-      // In real implementation, this would send to a backend
-      // For now, we'll simulate
-      alert(`Thank you! We've received your suggestion for "${term}".\n\nWe'll review it and add it to our dictionary soon.`);
-      
-      // Reset form
-      document.getElementById('slangTerm').value = '';
-      document.getElementById('slangMeaning').value = '';
-      document.getElementById('slangContext').value = '';
-      document.getElementById('slangExample').value = '';
-      document.getElementById('userEmail').value = '';
-      
-      document.getElementById('suggestionModal').style.display = 'none';
-    });
-    
-    // Share buttons
-    document.querySelectorAll('.share-btn').forEach(btn => {
-      btn.addEventListener('click', function() {
-        const platform = this.getAttribute('data-platform');
-        const url = window.location.href;
-        const text = 'Check out SlangAdda AI - Free Indian slang decoder!';
-        
-        let shareUrl = '';
-        switch(platform) {
-          case 'whatsapp':
-            shareUrl = `https://wa.me/?text=${encodeURIComponent(text + ' ' + url)}`;
-            break;
-          default:
-            shareUrl = url;
+      let width = 0;
+      const interval = setInterval(() => {
+        if (width >= targetWidth) {
+          clearInterval(interval);
+          return;
         }
+        width++;
+        meterFill.style.width = width + '%';
+        goalPercentage.textContent = width + '%';
+      }, 20);
+    }, 1000);
+  }
+  
+  function generateQRPattern() {
+    const qrDots = document.querySelector('.qr-dots');
+    if (!qrDots) return;
+    
+    // Create 8x8 grid of dots
+    for (let i = 0; i < 64; i++) {
+      const dot = document.createElement('div');
+      dot.className = 'qr-dot';
+      // Randomly make some dots filled (simulating QR pattern)
+      if (Math.random() > 0.5) {
+        dot.classList.add('filled');
+      }
+      qrDots.appendChild(dot);
+    }
+  }
+  
+  function showSupportModal(amount) {
+    const modal = document.getElementById('supportModal');
+    const modalBody = document.getElementById('modalBody');
+    
+    const impactMessages = {
+      50: "₹50 helps keep SlangAdda running for 5 hours",
+      100: "₹100 supports 10+ student searches",
+      200: "₹200 covers a day of server costs",
+      500: "₹500 helps us add 50+ new terms"
+    };
+    
+    const impactMessage = impactMessages[amount] || `₹${amount} helps keep SlangAdda free for everyone`;
+    
+    modalBody.innerHTML = `
+      <div class="support-confirmation">
+        <div class="confirmation-header">
+          <i class="fas fa-heart"></i>
+          <h3>Amazing! You're Supporting Free Knowledge 🌟</h3>
+          <p>${impactMessage}</p>
+        </div>
         
-        window.open(shareUrl, '_blank');
-      });
-    });
+        <div class="support-details">
+          <div class="detail-card">
+            <div class="detail-label">Support Amount</div>
+            <div class="detail-value">₹${amount}</div>
+          </div>
+          
+          <div class="detail-card">
+            <div class="detail-label">Payment Method</div>
+            <div class="detail-value">UPI (Recommended)</div>
+          </div>
+          
+          <div class="qr-display">
+            <div class="qr-simulated">
+              <div class="qr-simulated-inner">
+                <div class="qr-pattern">
+                  ${Array(25).fill('<div class="qr-cell"></div>').join('')}
+                </div>
+                <div class="qr-amount">₹${amount}</div>
+              </div>
+            </div>
+            <p class="qr-instruction">Scan with any UPI app</p>
+          </div>
+          
+          <div class="upi-info">
+            <p><strong>Or send directly to:</strong></p>
+            <div class="upi-id-display">
+              <code>slangadda@ybl</code>
+              <button class="copy-btn-small" onclick="copyUPIId()">
+                <i class="fas fa-copy"></i>
+              </button>
+            </div>
+          </div>
+          
+          <div class="impact-statement">
+            <i class="fas fa-seedling"></i>
+            <p>Your support directly helps students, parents, and professionals understand each other better.</p>
+          </div>
+        </div>
+        
+        <div class="support-actions">
+          <button class="action-btn primary" onclick="copyUPIId()">
+            <i class="fas fa-copy"></i> Copy UPI ID
+          </button>
+          <button class="action-btn secondary" onclick="closeSupportModal()">
+            I'll Support Later
+          </button>
+        </div>
+        
+        <div class="thank-you-note">
+          <p><i class="fas fa-hands-heart"></i> Thank you for being part of this movement!</p>
+        </div>
+      </div>
+    `;
     
-    // Contribute button
-    document.getElementById('contributeBtn').addEventListener('click', function() {
-      alert('Want to contribute? Great! We need help with:\n\n1. Adding new slang terms\n2. Improving explanations\n3. Website development\n4. Design improvements\n\nEmail us at: contribute@slangadda.ai');
-    });
-    
+    modal.style.display = 'flex';
+  }
+  
+  function initModals() {
     // Modal close buttons
     document.querySelectorAll('.close-modal, .cancel-btn').forEach(btn => {
       btn.addEventListener('click', function() {
@@ -613,108 +770,38 @@
       });
     });
     
-    // Auto-generate QR code placeholder pattern
-    generateQRPattern();
-  });
-  
-  function showDonationModal(amount) {
-    const modal = document.getElementById('donationModal');
-    const modalBody = document.getElementById('modalBody');
-    
-    modalBody.innerHTML = `
-      <div class="donation-confirmation">
-        <div class="confirmation-header">
-          <i class="fas fa-heart"></i>
-          <h3>Thank You for Your Support! ❤️</h3>
-          <p>You're helping keep SlangAdda free for everyone.</p>
-        </div>
-        
-        <div class="donation-details">
-          <div class="detail-row">
-            <span class="detail-label">Amount:</span>
-            <span class="detail-value">₹${amount}</span>
-          </div>
-          
-          <div class="detail-row">
-            <span class="detail-label">Payment Method:</span>
-            <span class="detail-value">UPI</span>
-          </div>
-          
-          <div class="detail-row">
-            <span class="detail-label">UPI ID:</span>
-            <span class="detail-value upi-display">slangadda@ybl</span>
-          </div>
-          
-          <div class="qr-display">
-            <div class="qr-simulated">
-              <div class="qr-simulated-inner">
-                <!-- Simulated QR code -->
-                <div class="qr-simulated-pattern">
-                  ${Array(16).fill('<div class="qr-simulated-cell"></div>').join('')}
-                </div>
-                <div class="qr-simulated-amount">₹${amount}</div>
-              </div>
-            </div>
-            <p class="qr-instruction">Scan with any UPI app</p>
-          </div>
-          
-          <div class="payment-steps">
-            <h4>To Complete Donation:</h4>
-            <ol>
-              <li>Open your UPI app (GPay, PhonePe, Paytm, etc.)</li>
-              <li>Scan the QR code above OR</li>
-              <li>Send ₹${amount} to: <strong>slangadda@ybl</strong></li>
-              <li>Add note: "SlangAdda Support"</li>
-            </ol>
-          </div>
-          
-          <div class="donation-impact">
-            <i class="fas fa-bullseye"></i>
-            <p>Your ₹${amount} donation covers <strong>${Math.round(amount/2.5)} hours</strong> of server time for thousands of users!</p>
-          </div>
-        </div>
-        
-        <div class="donation-actions">
-          <button class="copy-upi-full" onclick="copyUPI()">
-            <i class="fas fa-copy"></i> Copy UPI ID
-          </button>
-          <button class="done-btn" onclick="closeModal()">
-            Done
-          </button>
-        </div>
-      </div>
-    `;
-    
-    modal.style.display = 'flex';
-  }
-  
-  function generateQRPattern() {
-    // This is a simulated QR pattern
-    const qrImage = document.getElementById('qrImage');
-    if (qrImage) {
-      const pattern = document.createElement('div');
-      pattern.className = 'qr-simulated';
-      pattern.innerHTML = `
-        <div class="qr-simulated-inner">
-          <div class="qr-simulated-pattern">
-            ${Array(25).fill('<div class="qr-simulated-cell"></div>').join('')}
-          </div>
-          <div class="qr-simulated-text">UPI</div>
-        </div>
-      `;
-      qrImage.appendChild(pattern);
-    }
-  }
-  
-  // Global functions for modal
-  function copyUPI() {
-    navigator.clipboard.writeText('slangadda@ybl').then(() => {
-      alert('UPI ID copied to clipboard: slangadda@ybl');
+    // Suggestion form submission
+    document.getElementById('submitSuggestion').addEventListener('click', function() {
+      const term = document.getElementById('slangTerm').value.trim();
+      const meaning = document.getElementById('slangMeaning').value.trim();
+      
+      if (!term || !meaning) {
+        alert('Please fill at least the slang term and its meaning');
+        return;
+      }
+      
+      alert(`Thank you! We've received your suggestion for "${term}".\n\nWe'll review it and add it to our dictionary soon.`);
+      
+      // Reset form
+      document.getElementById('slangTerm').value = '';
+      document.getElementById('slangMeaning').value = '';
+      document.getElementById('slangContext').value = '';
+      document.getElementById('slangExample').value = '';
+      document.getElementById('userEmail').value = '';
+      
+      document.getElementById('suggestionModal').style.display = 'none';
     });
   }
   
-  function closeModal() {
-    document.getElementById('donationModal').style.display = 'none';
+  // Global modal functions
+  function copyUPIId() {
+    navigator.clipboard.writeText('slangadda@ybl').then(() => {
+      alert('UPI ID copied: slangadda@ybl');
+    });
+  }
+  
+  function closeSupportModal() {
+    document.getElementById('supportModal').style.display = 'none';
   }
 </script>
 
