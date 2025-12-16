@@ -328,7 +328,106 @@ const slangDatabase = {
     rating: "⭐⭐⭐",
     category: "Social Media"
   },
-  
+
+"ghoomna": {
+  meaning: "To wander or roam around aimlessly, often for fun or leisure",
+  context: "Common in North India, especially Delhi and Punjab",
+  safety: "casual",
+  example: "Let's go ghoomna in Connaught Place this evening.",
+  origin: "Hindi word meaning 'to roam'",
+  rating: "⭐⭐⭐⭐",
+  category: "Hindi/Urdu"
+},
+
+"bakra": {
+  meaning: "Someone who is being fooled or taken advantage of",
+  context: "Often used in friendly teasing or scams",
+  safety: "casual",
+  example: "Don't be a bakra and fall for that scam.",
+  origin: "Hindi word meaning 'goat', used metaphorically",
+  rating: "⭐⭐⭐",
+  category: "Hindi/Urdu"
+},
+
+"timepass": {
+  meaning: "Something done to pass time, not serious",
+  context: "Casual entertainment or activity",
+  safety: "office-safe",
+  example: "This movie is just timepass, nothing great.",
+  origin: "Hinglish (Hindi+English)",
+  rating: "⭐⭐⭐⭐",
+  category: "Hinglish"
+},
+
+"jugaadu": {
+  meaning: "Someone who is resourceful and finds creative solutions",
+  context: "Positive term for innovative problem-solving",
+  safety: "office-safe",
+  example: "He's a real jugaadu - fixed the car with just a wire!",
+  origin: "Hindi word 'jugaad' meaning 'innovative fix'",
+  rating: "⭐⭐⭐⭐⭐",
+  category: "Indian Innovation"
+},
+
+"panga": {
+  meaning: "Trouble or conflict",
+  context: "Warning someone not to create problems",
+  safety: "casual",
+  example: "Don't take panga with him, he's connected.",
+  origin: "Hindi word popularized in movies",
+  rating: "⭐⭐⭐",
+  category: "Bollywood"
+},
+
+"bindass": {
+  meaning: "Carefree, without worries, bold",
+  context: "Describing someone's attitude or personality",
+  safety: "casual",
+  example: "She lives a bindass life, no stress at all.",
+  origin: "Hindi word meaning 'without tension'",
+  rating: "⭐⭐⭐⭐",
+  category: "Personality"
+},
+
+"chill maar": {
+  meaning: "To relax or take it easy",
+  context: "Telling someone to calm down or relax",
+  safety: "casual",
+  example: "Chill maar yaar, everything will be fine.",
+  origin: "Hinglish (chill + Hindi maar)",
+  rating: "⭐⭐⭐⭐",
+  category: "Hinglish"
+},
+
+"full-on": {
+  meaning: "Intense, complete, or total",
+  context: "Emphasizing something is extreme or complete",
+  safety: "casual",
+  example: "The party was full-on madness last night!",
+  origin: "Indian English slang",
+  rating: "⭐⭐⭐⭐",
+  category: "Indian English"
+},
+
+"masti": {
+  meaning: "Fun, enjoyment, mischief",
+  context: "Having a good time or playing around",
+  safety: "casual",
+  example: "We had so much masti at the picnic yesterday.",
+  origin: "Hindi/Urdu word meaning 'fun'",
+  rating: "⭐⭐⭐⭐⭐",
+  category: "Hindi/Urdu"
+},
+
+"scene": {
+  meaning: "Situation or what's happening",
+  context: "Asking about or describing a situation",
+  safety: "casual",
+  example: "What's the scene for tonight's party?",
+  origin: "Indian English adaptation",
+  rating: "⭐⭐⭐⭐",
+  category: "Indian English"
+}
   "cancel": {
     meaning: "To stop supporting someone due to problematic behavior",
     context: "Internet call-out culture",
