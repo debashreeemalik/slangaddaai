@@ -1,27 +1,83 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Dictionary – SlangAdda AI</title>
+  <meta charset="UTF-8">
+  <title>Indian Slang Dictionary – SlangAdda AI</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- BASIC STYLING (BUILT-IN, NO CSS FILE NEEDED) -->
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f8fafc;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: linear-gradient(135deg, #6366f1, #8b5cf6);
+      color: white;
+      padding: 40px 20px;
+      text-align: center;
+    }
+    .container {
+      max-width: 900px;
+      margin: auto;
+      padding: 20px;
+    }
+    input {
+      width: 100%;
+      padding: 14px;
+      font-size: 16px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      margin-bottom: 20px;
+    }
+    .card {
+      background: white;
+      padding: 15px;
+      border-radius: 10px;
+      margin-bottom: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    }
+    .card h3 {
+      margin: 0 0 5px;
+      color: #4f46e5;
+    }
+    .support {
+      margin-top: 40px;
+      padding: 20px;
+      background: #fff7ed;
+      border-radius: 10px;
+      text-align: center;
+    }
+  </style>
+
+  <!-- FIREBASE -->
   <script type="module" src="firebase.js"></script>
 </head>
 
 <body>
-  <h1>Indian Slang Dictionary</h1>
 
+<header>
+  <h1>Indian Slang Dictionary</h1>
+  <p>Search Indian & Gen-Z slang meanings</p>
+</header>
+
+<div class="container">
   <input
     id="searchInput"
     placeholder="Search slang (word / meaning / category)"
     onkeyup="searchSlang()"
-    style="padding:10px;width:100%;max-width:400px"
   >
 
-  <div id="results" style="margin-top:20px"></div>
+  <div id="results"></div>
 
-  <hr>
-
-  <h3>Support SlangAdda AI ❤️</h3>
-  <p>Your support keeps the dictionary free forever.</p>
-  <b>UPI:</b> slangadda@ptyes
+  <div class="support">
+    <h3>Support SlangAdda AI ❤️</h3>
+    <p>Your support keeps the dictionary free forever.</p>
+    <strong>UPI: slangadda@ptyes</strong>
+  </div>
+</div>
 
 <script type="module">
   import { collection, getDocs } from
@@ -50,7 +106,7 @@
     }
 
     box.innerHTML = filtered.map(s => `
-      <div style="border:1px solid #ccc;padding:10px;margin-bottom:10px">
+      <div class="card">
         <h3>${s.word}</h3>
         <p><b>Meaning:</b> ${s.meaning}</p>
         <p><b>Example:</b> ${s.example}</p>
@@ -61,5 +117,6 @@
 
   loadSlang();
 </script>
+
 </body>
 </html>
