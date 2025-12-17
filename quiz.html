@@ -2,16 +2,684 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Slang Quiz - Test Your Knowledge - SlangAdda AI</title>
+  <title>Slang Quiz - Coming Soon | SlangAdda AI</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Test your knowledge of Indian slang with our interactive quiz. Multiple difficulty levels, instant feedback." />
+  <meta name="description" content="Test your knowledge of Indian slang with interactive quizzes. Coming soon to SlangAdda AI." />
+  <meta name="keywords" content="Indian slang quiz, slang test, language quiz, Indian English quiz, coming soon" />
+  <meta name="author" content="SlangAdda AI" />
   
   <!-- Fonts & Icons -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   
-  <!-- CSS Files -->
-  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* ===== DICTIONARY STYLES (MERGED) ===== */
+    :root {
+      --primary: #6366f1;
+      --primary-dark: #4f46e5;
+      --secondary: #f59e0b;
+      --dark: #1e293b;
+      --light: #f8fafc;
+      --gray: #64748b;
+      --gray-light: #e2e8f0;
+      --success: #10b981;
+      --warning: #f59e0b;
+      --danger: #ef4444;
+      --gradient: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+      --shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+      --shadow-lg: 0 20px 40px rgba(99, 102, 241, 0.1);
+      --radius: 16px;
+      --transition: all 0.3s ease;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Outfit', 'Poppins', sans-serif;
+      line-height: 1.6;
+      color: var(--dark);
+      background-color: #fefefe;
+      overflow-x: hidden;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .container {
+      width: 100%;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    
+    /* NAVBAR */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      background-color: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    }
+    
+    .logo {
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--dark);
+    }
+    
+    .logo span {
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      font-weight: 800;
+    }
+    
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+    
+    nav a {
+      text-decoration: none;
+      color: var(--gray);
+      font-weight: 500;
+      transition: var(--transition);
+      position: relative;
+    }
+    
+    nav a:hover {
+      color: var(--primary);
+    }
+    
+    nav a.active {
+      color: var(--primary);
+      font-weight: 600;
+    }
+    
+    nav a.active::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: var(--gradient);
+    }
+    
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--gradient);
+      transition: var(--transition);
+    }
+    
+    nav a:hover::after {
+      width: 100%;
+    }
+    
+    nav .support-nav {
+      background: var(--gradient);
+      color: white;
+      padding: 8px 16px;
+      border-radius: 50px;
+      font-weight: 600;
+    }
+    
+    nav .support-nav:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow);
+      color: white;
+    }
+    
+    /* COMING SOON HERO */
+    .coming-soon-hero {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 160px 40px 80px;
+      text-align: center;
+      background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .coming-soon-hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><path fill="%236366f1" opacity="0.05" d="M0,0 L100,0 L100,100 Z" /></svg>');
+      background-size: 300px;
+      z-index: 0;
+    }
+    
+    .coming-soon-content {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .coming-soon-icon {
+      width: 120px;
+      height: 120px;
+      background: var(--gradient);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 30px;
+      box-shadow: var(--shadow-lg);
+      animation: pulse 2s infinite ease-in-out;
+    }
+    
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.4);
+      }
+      70% {
+        transform: scale(1.05);
+        box-shadow: 0 0 0 20px rgba(99, 102, 241, 0);
+      }
+      100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(99, 102, 241, 0);
+      }
+    }
+    
+    .coming-soon-icon i {
+      font-size: 50px;
+      color: white;
+    }
+    
+    .coming-soon-badge {
+      display: inline-block;
+      background: rgba(99, 102, 241, 0.1);
+      color: var(--primary);
+      padding: 10px 20px;
+      border-radius: 50px;
+      font-weight: 600;
+      margin-bottom: 24px;
+      border: 1px solid rgba(99, 102, 241, 0.2);
+    }
+    
+    .coming-soon-hero h1 {
+      font-size: 3.5rem;
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 20px;
+      color: var(--dark);
+    }
+    
+    .coming-soon-hero h1 span {
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    
+    .coming-soon-hero p {
+      font-size: 1.2rem;
+      color: var(--gray);
+      max-width: 600px;
+      margin: 0 auto 40px;
+      line-height: 1.6;
+    }
+    
+    /* FEATURES PREVIEW */
+    .features-preview {
+      padding: 80px 40px;
+      background: white;
+    }
+    
+    .features-preview h2 {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 50px;
+      color: var(--dark);
+    }
+    
+    .features-preview h2 span {
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+    
+    .feature-card {
+      background: white;
+      border-radius: var(--radius);
+      padding: 40px 30px;
+      box-shadow: var(--shadow);
+      border: 2px solid transparent;
+      transition: var(--transition);
+      text-align: center;
+    }
+    
+    .feature-card:hover {
+      transform: translateY(-10px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--primary);
+    }
+    
+    .feature-icon {
+      width: 80px;
+      height: 80px;
+      background: var(--gradient);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 25px;
+      color: white;
+      font-size: 30px;
+    }
+    
+    .feature-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+      color: var(--dark);
+    }
+    
+    .feature-card p {
+      color: var(--gray);
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+    
+    /* COUNTDOWN TIMER */
+    .countdown-container {
+      background: var(--gradient);
+      color: white;
+      padding: 60px 40px;
+      border-radius: var(--radius);
+      margin: 40px auto;
+      max-width: 800px;
+      text-align: center;
+      box-shadow: var(--shadow-lg);
+    }
+    
+    .countdown-container h3 {
+      font-size: 1.8rem;
+      margin-bottom: 30px;
+      color: white;
+    }
+    
+    .countdown {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    
+    .countdown-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .countdown-value {
+      width: 80px;
+      height: 80px;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      backdrop-filter: blur(10px);
+    }
+    
+    .countdown-label {
+      font-size: 0.9rem;
+      opacity: 0.9;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    
+    /* NOTIFY FORM */
+    .notify-form {
+      max-width: 500px;
+      margin: 40px auto;
+      text-align: center;
+    }
+    
+    .notify-form h3 {
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+      color: var(--dark);
+    }
+    
+    .notify-form p {
+      color: var(--gray);
+      margin-bottom: 30px;
+      line-height: 1.6;
+    }
+    
+    .notify-box {
+      display: flex;
+      background: white;
+      border-radius: var(--radius);
+      padding: 6px;
+      box-shadow: var(--shadow-lg);
+      border: 2px solid var(--gray-light);
+      max-width: 500px;
+      margin: 0 auto;
+    }
+    
+    .notify-box input {
+      flex: 1;
+      padding: 20px 24px;
+      border: none;
+      outline: none;
+      font-size: 1rem;
+      border-radius: 12px;
+    }
+    
+    .notify-box button {
+      background: var(--gradient);
+      color: white;
+      border: none;
+      padding: 0 40px;
+      border-radius: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .notify-box button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(99, 102, 241, 0.3);
+    }
+    
+    /* PROGRESS SECTION */
+    .progress-section {
+      padding: 80px 40px;
+      background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+    }
+    
+    .progress-container {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    
+    .progress-container h2 {
+      font-size: 2.5rem;
+      margin-bottom: 50px;
+      color: var(--dark);
+    }
+    
+    .progress-container h2 span {
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    
+    .progress-bar {
+      height: 20px;
+      background: var(--gray-light);
+      border-radius: 10px;
+      margin: 40px 0;
+      overflow: hidden;
+      position: relative;
+    }
+    
+    .progress-fill {
+      height: 100%;
+      background: var(--gradient);
+      border-radius: 10px;
+      width: 75%;
+      position: relative;
+      animation: progressAnimation 2s ease-out;
+    }
+    
+    @keyframes progressAnimation {
+      0% {
+        width: 0%;
+      }
+      100% {
+        width: 75%;
+      }
+    }
+    
+    .progress-text {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 10px;
+      color: var(--gray);
+      font-weight: 600;
+    }
+    
+    /* FOOTER */
+    footer {
+      background: var(--dark);
+      color: white;
+      padding: 60px 40px 30px;
+      margin-top: 80px;
+    }
+    
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+    
+    .footer-section h3, .footer-section h4 {
+      color: white;
+      margin-bottom: 20px;
+    }
+    
+    .footer-section h3 span {
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      font-weight: 800;
+    }
+    
+    .footer-tagline {
+      color: var(--gray-light);
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+    
+    .footer-section a {
+      display: block;
+      color: var(--gray-light);
+      text-decoration: none;
+      margin-bottom: 10px;
+      transition: var(--transition);
+    }
+    
+    .footer-section a:hover {
+      color: white;
+      transform: translateX(5px);
+    }
+    
+    .social-links a {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .footer-bottom {
+      text-align: center;
+      padding-top: 30px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      color: var(--gray-light);
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+    
+    .footer-note {
+      margin-top: 10px;
+      font-size: 0.85rem;
+      opacity: 0.8;
+    }
+    
+    /* BUTTON STYLES */
+    .hero-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 15px 30px;
+      background: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: var(--transition);
+      text-decoration: none;
+      box-shadow: var(--shadow);
+    }
+    
+    .hero-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-lg);
+      background: var(--primary-dark);
+    }
+    
+    .hero-btn.secondary {
+      background: white;
+      color: var(--primary);
+    }
+    
+    .hero-btn.secondary:hover {
+      background: #f8fafc;
+    }
+    
+    /* RESPONSIVE STYLES */
+    @media (max-width: 992px) {
+      .navbar, .coming-soon-hero, .features-preview, .progress-section {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+      
+      .coming-soon-hero h1 {
+        font-size: 2.8rem;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .coming-soon-hero h1 {
+        font-size: 2.2rem;
+      }
+      
+      .coming-soon-hero {
+        padding: 140px 20px 60px;
+      }
+      
+      .features-preview h2,
+      .progress-container h2 {
+        font-size: 2rem;
+      }
+      
+      .notify-box {
+        flex-direction: column;
+        gap: 10px;
+        padding: 20px;
+      }
+      
+      .notify-box input, .notify-box button {
+        width: 100%;
+      }
+      
+      .notify-box button {
+        padding: 15px;
+        justify-content: center;
+      }
+      
+      .countdown {
+        gap: 15px;
+      }
+      
+      .countdown-value {
+        width: 70px;
+        height: 70px;
+        font-size: 1.8rem;
+      }
+      
+      nav {
+        display: none;
+      }
+      
+      .footer-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .coming-soon-hero h1 {
+        font-size: 1.8rem;
+      }
+      
+      .coming-soon-icon {
+        width: 100px;
+        height: 100px;
+      }
+      
+      .coming-soon-icon i {
+        font-size: 40px;
+      }
+      
+      .features-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .feature-card {
+        padding: 30px 20px;
+      }
+      
+      .countdown-value {
+        width: 60px;
+        height: 60px;
+        font-size: 1.5rem;
+      }
+      
+      .countdown-label {
+        font-size: 0.8rem;
+      }
+    }
+  </style>
 </head>
 
 <body>
@@ -23,379 +691,155 @@
     <a href="index.html"><i class="fas fa-home"></i> Home</a>
     <a href="dictionary.html"><i class="fas fa-book"></i> Dictionary</a>
     <a href="quiz.html" class="active"><i class="fas fa-brain"></i> Quiz</a>
-    <a href="index.html#donate" class="donate-nav"><i class="fas fa-heart"></i> Support</a>
+    <a href="blog.html"><i class="fas fa-blog"></i> Blog</a>
+    <a href="index.html#support" class="support-nav"><i class="fas fa-heart"></i> Support</a>
   </nav>
 </header>
 
-<!-- QUIZ HEADER -->
-<section class="quiz-header">
-  <div class="container">
-    <h1><i class="fas fa-brain"></i> Test Your Slang Knowledge</h1>
-    <p class="subtitle">How well do you understand Indian slang? Take our quiz and find out!</p>
+<!-- COMING SOON HERO -->
+<section class="coming-soon-hero">
+  <div class="coming-soon-content">
+    <div class="coming-soon-icon">
+      <i class="fas fa-brain"></i>
+    </div>
     
-    <div class="quiz-stats">
-      <div class="stat">
-        <span class="number" id="totalQuizzes">10,000+</span>
-        <span class="label">Quizzes Taken</span>
+    <span class="coming-soon-badge"><i class="fas fa-hourglass-half"></i> Coming Soon</span>
+    <h1>SlangAdda <span>Quiz</span> Platform</h1>
+    <p>Get ready to test your knowledge of Indian slang with our interactive quiz platform. Challenge yourself, compete with friends, and master the art of Indian slang like never before.</p>
+    
+    <div class="countdown-container">
+      <h3>Launching In</h3>
+      <div class="countdown" id="countdown">
+        <div class="countdown-item">
+          <div class="countdown-value" id="days">30</div>
+          <div class="countdown-label">Days</div>
+        </div>
+        <div class="countdown-item">
+          <div class="countdown-value" id="hours">12</div>
+          <div class="countdown-label">Hours</div>
+        </div>
+        <div class="countdown-item">
+          <div class="countdown-value" id="minutes">45</div>
+          <div class="countdown-label">Minutes</div>
+        </div>
+        <div class="countdown-item">
+          <div class="countdown-value" id="seconds">30</div>
+          <div class="countdown-label">Seconds</div>
+        </div>
       </div>
-      <div class="stat">
-        <span class="number" id="averageScore">72%</span>
-        <span class="label">Average Score</span>
-      </div>
-      <div class="stat">
-        <span class="number" id="totalQuestions">500+</span>
-        <span class="label">Questions</span>
-      </div>
-      <div class="stat">
-        <span class="number">Free</span>
-        <span class="label">Always Free</span>
+    </div>
+    
+    <div class="notify-form">
+      <h3>Get Notified When We Launch</h3>
+      <p>Be the first to know when our quiz platform goes live. Enter your email below and we'll notify you.</p>
+      
+      <div class="notify-box">
+        <input type="email" id="notifyEmail" placeholder="Your email address">
+        <button id="notifyBtn">
+          <i class="fas fa-bell"></i> Notify Me
+        </button>
       </div>
     </div>
   </div>
 </section>
 
-<!-- QUIZ SELECTION -->
-<section class="quiz-selection">
+<!-- FEATURES PREVIEW -->
+<section class="features-preview">
   <div class="container">
-    <h2><i class="fas fa-gamepad"></i> Choose Your Quiz</h2>
-    <p class="section-subtitle">Select a quiz based on your interest and difficulty level.</p>
+    <h2>What's <span>Coming</span> in Our Quiz Platform</h2>
     
-    <div class="quiz-grid">
-      <div class="quiz-card beginner">
-        <div class="quiz-card-header">
-          <div class="difficulty">
-            <span class="difficulty-badge">Beginner</span>
-            <div class="stars">
-              <i class="fas fa-star"></i>
-              <i class="far fa-star"></i>
-              <i class="far fa-star"></i>
-            </div>
-          </div>
-          <i class="fas fa-seedling"></i>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">
+          <i class="fas fa-gamepad"></i>
         </div>
-        
-        <div class="quiz-card-body">
-          <h3>Slang Basics</h3>
-          <p>Perfect for parents and beginners. Common terms you hear daily.</p>
-          <ul class="quiz-features">
-            <li><i class="fas fa-check"></i> 10 questions</li>
-            <li><i class="fas fa-check"></i> Multiple choice</li>
-            <li><i class="fas fa-check"></i> Instant feedback</li>
-            <li><i class="fas fa-check"></i> Basic explanations</li>
-          </ul>
-        </div>
-        
-        <div class="quiz-card-footer">
-          <button class="start-quiz-btn" data-quiz="beginner">
-            Start Quiz <i class="fas fa-play"></i>
-          </button>
-          <span class="completion-rate">85% completion rate</span>
-        </div>
+        <h3>Interactive Quizzes</h3>
+        <p>Test your knowledge with fun, interactive quizzes covering all categories of Indian slang - from Gen-Z to Bollywood.</p>
       </div>
       
-      <div class="quiz-card intermediate popular">
-        <div class="popular-badge">MOST POPULAR</div>
-        <div class="quiz-card-header">
-          <div class="difficulty">
-            <span class="difficulty-badge">Intermediate</span>
-            <div class="stars">
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="far fa-star"></i>
-            </div>
-          </div>
-          <i class="fas fa-bolt"></i>
+      <div class="feature-card">
+        <div class="feature-icon">
+          <i class="fas fa-trophy"></i>
         </div>
-        
-        <div class="quiz-card-body">
-          <h3>Gen-Z Slang Challenge</h3>
-          <p>Test your knowledge of trending internet slang used by youth.</p>
-          <ul class="quiz-features">
-            <li><i class="fas fa-check"></i> 15 questions</li>
-            <li><i class="fas fa-check"></i> Timed questions</li>
-            <li><i class="fas fa-check"></i> Detailed explanations</li>
-            <li><i class="fas fa-check"></i> Performance tracking</li>
-          </ul>
-        </div>
-        
-        <div class="quiz-card-footer">
-          <button class="start-quiz-btn" data-quiz="intermediate">
-            Start Quiz <i class="fas fa-play"></i>
-          </button>
-          <span class="completion-rate">78% completion rate</span>
-        </div>
+        <h3>Leaderboards & Rewards</h3>
+        <p>Compete with friends, climb leaderboards, and earn badges and rewards for your slang expertise.</p>
       </div>
       
-      <div class="quiz-card advanced">
-        <div class="quiz-card-header">
-          <div class="difficulty">
-            <span class="difficulty-badge">Advanced</span>
-            <div class="stars">
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-            </div>
-          </div>
-          <i class="fas fa-crown"></i>
+      <div class="feature-card">
+        <div class="feature-icon">
+          <i class="fas fa-users"></i>
         </div>
-        
-        <div class="quiz-card-body">
-          <h3>Slang Master</h3>
-          <p>For true slang experts. Regional terms, niche references, and obscure slang.</p>
-          <ul class="quiz-features">
-            <li><i class="fas fa-check"></i> 20 questions</li>
-            <li><i class="fas fa-check"></i> Mixed formats</li>
-            <li><i class="fas fa-check"></i> Regional focus</li>
-            <li><i class="fas fa-check"></i> Certificate on completion</li>
-          </ul>
-        </div>
-        
-        <div class="quiz-card-footer">
-          <button class="start-quiz-btn" data-quiz="advanced">
-            Start Quiz <i class="fas fa-play"></i>
-          </button>
-          <span class="completion-rate">62% completion rate</span>
-        </div>
+        <h3>Multiplayer Challenges</h3>
+        <p>Challenge your friends in real-time multiplayer quiz battles. See who truly knows their Indian slang.</p>
       </div>
-    </div>
-    
-    <div class="special-quizzes">
-      <h3><i class="fas fa-gem"></i> Special Quizzes</h3>
-      <div class="special-grid">
-        <div class="special-card">
-          <i class="fas fa-briefcase"></i>
-          <h4>Workplace Slang</h4>
-          <p>Office-appropriate terms and professional jargon</p>
-          <button class="special-quiz-btn" data-quiz="workplace">
-            Try Now
-          </button>
+      
+      <div class="feature-card">
+        <div class="feature-icon">
+          <i class="fas fa-chart-line"></i>
         </div>
-        
-        <div class="special-card">
-          <i class="fas fa-film"></i>
-          <h4>Bollywood Slang</h4>
-          <p>Slang from movies and celebrity culture</p>
-          <button class="special-quiz-btn" data-quiz="bollywood">
-            Try Now
-          </button>
+        <h3>Progress Tracking</h3>
+        <p>Track your learning journey with detailed analytics, progress reports, and personalized recommendations.</p>
+      </div>
+      
+      <div class="feature-card">
+        <div class="feature-icon">
+          <i class="fas fa-mobile-alt"></i>
         </div>
-        
-        <div class="special-card">
-          <i class="fas fa-map-marker-alt"></i>
-          <h4>Regional Slang</h4>
-          <p>State-specific slang from across India</p>
-          <button class="special-quiz-btn" data-quiz="regional">
-            Try Now
-          </button>
+        <h3>Mobile Friendly</h3>
+        <p>Play quizzes on any device - desktop, tablet, or mobile. Perfect for on-the-go learning and entertainment.</p>
+      </div>
+      
+      <div class="feature-card">
+        <div class="feature-icon">
+          <i class="fas fa-graduation-cap"></i>
         </div>
-        
-        <div class="special-card">
-          <i class="fas fa-history"></i>
-          <h4>Historical Slang</h4>
-          <p>Old-school slang from 90s and 2000s</p>
-          <button class="special-quiz-btn" data-quiz="historical">
-            Try Now
-          </button>
-        </div>
+        <h3>Learning Mode</h3>
+        <p>Not just testing - learn as you play with detailed explanations and context for every answer.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ACTIVE QUIZ SECTION (Hidden by default) -->
-<section class="active-quiz" id="activeQuiz" style="display: none;">
+<!-- PROGRESS SECTION -->
+<section class="progress-section">
   <div class="container">
-    <div class="quiz-container">
-      <div class="quiz-header-bar">
-        <div class="quiz-info">
-          <h2 id="quizTitle">Slang Quiz</h2>
-          <p id="quizDescription">Test your knowledge</p>
-        </div>
-        
-        <div class="quiz-controls">
-          <div class="quiz-timer" id="quizTimer">
-            <i class="fas fa-clock"></i> <span id="timerValue">10:00</span>
-          </div>
-          <button class="quit-quiz-btn" id="quitQuizBtn">
-            <i class="fas fa-times"></i> Quit
-          </button>
-        </div>
+    <div class="progress-container">
+      <h2>Development <span>Progress</span></h2>
+      
+      <div class="progress-bar">
+        <div class="progress-fill"></div>
       </div>
       
-      <div class="quiz-progress">
-        <div class="progress-bar">
-          <div class="progress-fill" id="progressFill" style="width: 0%"></div>
-        </div>
-        <div class="progress-text">
-          Question <span id="currentQuestion">1</span> of <span id="totalQuestionsCount">10</span>
-        </div>
+      <div class="progress-text">
+        <span>Started</span>
+        <span>75% Complete</span>
+        <span>Launch</span>
       </div>
       
-      <div class="quiz-question-container">
-        <div class="question-card" id="questionCard">
-          <div class="question-header">
-            <h3 id="questionText">What does "rizz" mean?</h3>
+      <div class="feature-list">
+        <div style="display: flex; justify-content: space-between; margin-top: 30px; flex-wrap: wrap; gap: 20px;">
+          <div style="text-align: center;">
+            <div style="color: var(--success); font-size: 2rem; font-weight: bold;">✓</div>
+            <div style="color: var(--gray); margin-top: 10px;">Quiz Database</div>
           </div>
-          
-          <div class="question-options" id="questionOptions">
-            <!-- Options loaded by JavaScript -->
+          <div style="text-align: center;">
+            <div style="color: var(--success); font-size: 2rem; font-weight: bold;">✓</div>
+            <div style="color: var(--gray); margin-top: 10px;">UI Design</div>
           </div>
-          
-          <div class="question-navigation">
-            <button class="nav-btn prev-btn" id="prevQuestionBtn" disabled>
-              <i class="fas fa-arrow-left"></i> Previous
-            </button>
-            
-            <div class="question-status">
-              <span class="status-text" id="statusText">Select an answer</span>
-            </div>
-            
-            <button class="nav-btn next-btn" id="nextQuestionBtn">
-              Next <i class="fas fa-arrow-right"></i>
-            </button>
+          <div style="text-align: center;">
+            <div style="color: var(--warning); font-size: 2rem; font-weight: bold;">⏳</div>
+            <div style="color: var(--gray); margin-top: 10px;">Multiplayer</div>
           </div>
-        </div>
-        
-        <div class="quiz-sidebar">
-          <div class="score-card">
-            <h4><i class="fas fa-trophy"></i> Your Score</h4>
-            <div class="score-display">
-              <span class="score-value" id="scoreValue">0</span>
-              <span class="score-max">/100</span>
-            </div>
-            <p class="score-label">Points</p>
+          <div style="text-align: center;">
+            <div style="color: var(--warning); font-size: 2rem; font-weight: bold;">⏳</div>
+            <div style="color: var(--gray); margin-top: 10px;">Leaderboards</div>
           </div>
-          
-          <div class="streak-card">
-            <h4><i class="fas fa-fire"></i> Streak</h4>
-            <div class="streak-display">
-              <span class="streak-value" id="streakValue">0</span>
-              <span class="streak-label">in a row</span>
-            </div>
-            <p class="streak-label">Correct answers</p>
-          </div>
-          
-          <div class="hint-card">
-            <h4><i class="fas fa-lightbulb"></i> Need Help?</h4>
-            <button class="hint-btn" id="hintBtn">
-              Get Hint (3 left)
-            </button>
-            <p class="hint-note">Hints don't affect score</p>
+          <div style="text-align: center;">
+            <div style="color: var(--gray); font-size: 2rem; font-weight: bold;">○</div>
+            <div style="color: var(--gray); margin-top: 10px;">Mobile App</div>
           </div>
         </div>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- QUIZ RESULTS (Hidden by default) -->
-<section class="quiz-results" id="quizResults" style="display: none;">
-  <div class="container">
-    <div class="results-card">
-      <div class="results-header">
-        <h2><i class="fas fa-award"></i> Quiz Complete!</h2>
-        <p id="resultsSubtitle">Here's how you did</p>
-      </div>
-      
-      <div class="results-content">
-        <div class="score-summary">
-          <div class="final-score">
-            <div class="score-circle">
-              <span class="score-percent" id="scorePercent">0%</span>
-            </div>
-            <div class="score-details">
-              <h3 id="scoreTitle">Novice</h3>
-              <p id="scoreDescription">Keep practicing!</p>
-            </div>
-          </div>
-          
-          <div class="score-stats">
-            <div class="stat-item">
-              <span class="stat-label">Correct</span>
-              <span class="stat-value" id="correctCount">0</span>
-            </div>
-            <div class="stat-item">
-              <span class="stat-label">Incorrect</span>
-              <span class="stat-value" id="incorrectCount">0</span>
-            </div>
-            <div class="stat-item">
-              <span class="stat-label">Time</span>
-              <span class="stat-value" id="timeTaken">0:00</span>
-            </div>
-            <div class="stat-item">
-              <span class="stat-label">Streak</span>
-              <span class="stat-value" id="finalStreak">0</span>
-            </div>
-          </div>
-        </div>
-        
-        <div class="results-breakdown">
-          <h4><i class="fas fa-chart-bar"></i> Question Breakdown</h4>
-          <div class="breakdown-list" id="breakdownList">
-            <!-- Questions breakdown loaded here -->
-          </div>
-        </div>
-        
-        <div class="results-actions">
-          <button class="action-btn retry-btn" id="retryQuizBtn">
-            <i class="fas fa-redo"></i> Retry Quiz
-          </button>
-          <button class="action-btn new-quiz-btn" id="newQuizBtn">
-            <i class="fas fa-plus"></i> Try Another Quiz
-          </button>
-          <button class="action-btn share-btn" id="shareResultsBtn">
-            <i class="fas fa-share-alt"></i> Share Score
-          </button>
-        </div>
-        
-        <div class="improvement-tips">
-          <h4><i class="fas fa-graduation-cap"></i> How to Improve</h4>
-          <div class="tips-grid">
-            <div class="tip">
-              <i class="fas fa-book"></i>
-              <p>Study our <a href="dictionary.html">dictionary</a> daily</p>
-            </div>
-            <div class="tip">
-              <i class="fas fa-film"></i>
-              <p>Watch Indian web series with subtitles</p>
-            </div>
-            <div class="tip">
-              <i class="fas fa-users"></i>
-              <p>Join online Indian youth communities</p>
-            </div>
-            <div class="tip">
-              <i class="fas fa-history"></i>
-              <p>Take quizzes regularly to track progress</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- LEADERBOARD -->
-<section class="leaderboard">
-  <div class="container">
-    <h2><i class="fas fa-trophy"></i> Top Scorers This Week</h2>
-    <p class="section-subtitle">See how you compare with other slang experts</p>
-    
-    <div class="leaderboard-table">
-      <div class="table-header">
-        <div class="header-cell rank">Rank</div>
-        <div class="header-cell name">Name</div>
-        <div class="header-cell score">Score</div>
-        <div class="header-cell time">Time</div>
-        <div class="header-cell quiz">Quiz</div>
-      </div>
-      
-      <div class="table-body" id="leaderboardBody">
-        <!-- Leaderboard loaded by JavaScript -->
-      </div>
-    </div>
-    
-    <div class="leaderboard-note">
-      <p><i class="fas fa-info-circle"></i> Leaderboard updates daily. Scores are anonymous unless you choose to share.</p>
     </div>
   </div>
 </section>
@@ -410,647 +854,140 @@
         <a href="index.html">Home</a>
         <a href="dictionary.html">Dictionary</a>
         <a href="quiz.html">Quiz</a>
-        <a href="index.html#donate">Support</a>
+        <a href="blog.html">Blog</a>
+        <a href="index.html#support">Join Movement</a>
       </div>
     </div>
     
     <div class="footer-section">
-      <h4>Quiz Info</h4>
-      <a href="#" id="quizSuggestLink">Suggest Quiz Question</a>
-      <a href="#" id="viewAnswersLink">View Answer Key</a>
-      <a href="#">Quiz Categories</a>
-      <a href="policies.html">Quiz Policies</a>
+      <h4>Quick Links</h4>
+      <a href="index.html#why-free">Why Free?</a>
+      <a href="index.html#support">Support</a>
+      <a href="index.html#submit-slang">Suggest Slang</a>
+      <a href="policies.html">Policies</a>
+      <a href="admin.html" style="color: var(--warning); font-weight: bold;">
+        <i class="fas fa-lock"></i> Admin
+      </a>
     </div>
     
     <div class="footer-section">
       <h4>Connect</h4>
       <div class="social-links">
         <a href="#"><i class="fab fa-twitter"></i> Twitter</a>
-        <a href="#"><i class="fab fa-instagram"></i> Instagram</a>
+        <a href="#"><i class="fab fa-instacles"></i> Instagram</a>
         <a href="#"><i class="fab fa-github"></i> GitHub</a>
         <a href="mailto:hello@slangadda.ai"><i class="fas fa-envelope"></i> Email</a>
+        <a href="mailto:ads@slangadda.ai"><i class="fas fa-ad"></i> Advertise</a>
       </div>
     </div>
     
     <div class="footer-section">
-      <h4>Quiz Stats</h4>
-      <p><i class="fas fa-gamepad"></i> 10,000+ Quizzes</p>
-      <p><i class="fas fa-users"></i> 5,000+ Players</p>
-      <p><i class="fas fa-question-circle"></i> 500+ Questions</p>
-      <p><i class="fas fa-heart"></i> 98% Satisfaction</p>
+      <h4>Quiz Platform</h4>
+      <p><i class="fas fa-hourglass-half"></i> Coming Soon</p>
+      <p><i class="fas fa-gamepad"></i> Interactive Quizzes</p>
+      <p><i class="fas fa-trophy"></i> Leaderboards</p>
+      <p><i class="fas fa-users"></i> Multiplayer</p>
+      <p><i class="fas fa-bell"></i> <a href="#notifyEmail" style="color: var(--secondary);">Get Notified</a></p>
     </div>
   </div>
   
   <div class="footer-bottom">
     <p>© 2025 SlangAdda AI · Made with ❤️ for India · Keeping knowledge free for everyone</p>
     <p class="footer-note">
-      Quizzes updated weekly. Challenge your friends and learn together!
+      Quiz platform launching soon. Stay tuned for updates!
     </p>
   </div>
 </footer>
 
-<!-- Quiz Data and JavaScript -->
-<script src="script.js"></script>
-<script src="slang-database.js"></script>
-
-<!-- Quiz questions database -->
+<!-- JavaScript -->
 <script>
-  const quizDatabase = {
-    beginner: [
-      {
-        question: "What does 'rizz' mean?",
-        options: [
-          "Charisma or romantic charm",
-          "A type of dance",
-          "Quick movement",
-          "A food item"
-        ],
-        correct: 0,
-        explanation: "'Rizz' is short for charisma, especially in romantic contexts. It became popular on TikTok."
-      },
-      {
-        question: "What does 'delulu' mean?",
-        options: [
-          "Delicious food",
-          "Delusional thinking",
-          "Delayed response",
-          "Delightful person"
-        ],
-        correct: 1,
-        explanation: "'Delulu' is internet slang for being delusional, often about unrealistic romantic scenarios."
-      },
-      {
-        question: "If someone says 'slay', what do they mean?",
-        options: [
-          "To kill someone",
-          "To do something exceptionally well",
-          "To sleep",
-          "To leave quickly"
-        ],
-        correct: 1,
-        explanation: "'Slay' means to do something amazingly well or look fantastic. It's praise."
-      },
-      {
-        question: "What is 'ghosting' in dating?",
-        options: [
-          "Watching horror movies together",
-          "Suddenly stopping all communication",
-          "Dressing up as ghosts",
-          "Sending ghost emojis"
-        ],
-        correct: 1,
-        explanation: "Ghosting is when someone cuts off all contact without explanation, common in dating apps."
-      }
-    ],
-    intermediate: [
-      {
-        question: "What does 'NPC energy' refer to?",
-        options: [
-          "High energy levels",
-          "Predictable, unoriginal behavior",
-          "Gaming skills",
-          "Natural charisma"
-        ],
-        correct: 1,
-        explanation: "From video games - NPCs (Non-Player Characters) act predictably. 'NPC energy' means someone lacks originality."
-      },
-      {
-        question: "What does 'mid' mean when describing something?",
-        options: [
-          "Middle of the road, average",
-          "Excellent quality",
-          "Very small",
-          "Extremely large"
-        ],
-        correct: 0,
-        explanation: "'Mid' means mediocre or average. Not terrible, but not great either."
-      },
-      {
-        question: "If someone calls you 'sus', what do they mean?",
-        options: [
-          "Sustainable",
-          "Suspicious",
-          "Successful",
-          "Supportive"
-        ],
-        correct: 1,
-        explanation: "'Sus' is short for suspicious. Popularized by the game Among Us."
-      },
-      {
-        question: "What does 'simp' mean?",
-        options: [
-          "Simple person",
-          "Someone who exercises",
-          "Person who admires someone excessively",
-          "Short for simpatico"
-        ],
-        correct: 2,
-        explanation: "A 'simp' is someone who does too much for someone they're attracted to, often losing self-respect."
-      }
-    ],
-    advanced: [
-      {
-        question: "What does 'chapri' typically describe?",
-        options: [
-          "A type of Indian bread",
-          "Someone trying too hard to be cool",
-          "A small child",
-          "Traditional clothing"
-        ],
-        correct: 1,
-        explanation: "'Chapri' describes someone with tacky style who tries too hard to be cool, often with loud modifications."
-      },
-      {
-        question: "What is 'bhai scene'?",
-        options: [
-          "A movie scene with brothers",
-          "Asking what's happening",
-          "Brotherly love",
-          "Fight scene"
-        ],
-        correct: 1,
-        explanation: "'Bhai scene kya hai?' means 'Brother, what's the situation?' - asking what's happening or the plan."
-      },
-      {
-        question: "What does 'vibe check' mean?",
-        options: [
-          "Checking the atmosphere",
-          "Testing equipment",
-          "Asking for ID",
-          "Medical checkup"
-        ],
-        correct: 0,
-        explanation: "'Vibe check' means assessing the mood or atmosphere of a situation or person."
-      },
-      {
-        question: "What does 'main character energy' mean?",
-        options: [
-          "Being the protagonist of a story",
-          "Having confidence and standing out",
-          "Being self-centered",
-          "Good acting skills"
-        ],
-        correct: 1,
-        explanation: "Having 'main character energy' means carrying yourself with confidence like you're the star of your life."
-      }
-    ]
-  };
-</script>
-
-<script>
-  // Quiz page specific JavaScript
+  // Countdown Timer
+  function updateCountdown() {
+    // Set launch date (30 days from now)
+    const launchDate = new Date();
+    launchDate.setDate(launchDate.getDate() + 30);
+    
+    const now = new Date().getTime();
+    const distance = launchDate - now;
+    
+    // Calculate days, hours, minutes, seconds
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    
+    // Update display
+    document.getElementById('days').textContent = days.toString().padStart(2, '0');
+    document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+    document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+    document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+    
+    // If countdown is over
+    if (distance < 0) {
+      clearInterval(countdownInterval);
+      document.getElementById('countdown').innerHTML = "<h3 style='color: white;'>Launched! 🎉</h3>";
+    }
+  }
+  
+  // Initialize countdown
+  let countdownInterval;
   document.addEventListener('DOMContentLoaded', function() {
-    // Initialize leaderboard
-    initializeLeaderboard();
+    updateCountdown();
+    countdownInterval = setInterval(updateCountdown, 1000);
     
-    // Quiz selection buttons
-    document.querySelectorAll('.start-quiz-btn, .special-quiz-btn').forEach(btn => {
-      btn.addEventListener('click', function() {
-        const quizType = this.getAttribute('data-quiz');
-        startQuiz(quizType);
+    // Notify button functionality
+    const notifyBtn = document.getElementById('notifyBtn');
+    const notifyEmail = document.getElementById('notifyEmail');
+    
+    if (notifyBtn) {
+      notifyBtn.addEventListener('click', function() {
+        const email = notifyEmail.value.trim();
+        if (email && email.includes('@')) {
+          alert('Thank you! We\'ll notify you when the quiz platform launches.');
+          notifyEmail.value = '';
+          
+          // Store email in localStorage
+          let subscribers = JSON.parse(localStorage.getItem('slangaddaQuizSubscribers') || '[]');
+          if (!subscribers.includes(email)) {
+            subscribers.push(email);
+            localStorage.setItem('slangaddaQuizSubscribers', JSON.stringify(subscribers));
+          }
+        } else {
+          alert('Please enter a valid email address.');
+          notifyEmail.focus();
+        }
       });
-    });
+    }
     
-    // Quiz control buttons
-    document.getElementById('quitQuizBtn').addEventListener('click', quitQuiz);
-    document.getElementById('retryQuizBtn').addEventListener('click', retryQuiz);
-    document.getElementById('newQuizBtn').addEventListener('click', newQuiz);
-    document.getElementById('shareResultsBtn').addEventListener('click', shareResults);
+    // Enter key for notify form
+    if (notifyEmail) {
+      notifyEmail.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+          notifyBtn.click();
+        }
+      });
+    }
     
-    // Navigation buttons
-    document.getElementById('prevQuestionBtn').addEventListener('click', prevQuestion);
-    document.getElementById('nextQuestionBtn').addEventListener('click', nextQuestion);
-    document.getElementById('hintBtn').addEventListener('click', showHint);
-    
-    // Suggestion link
-    document.getElementById('quizSuggestLink').addEventListener('click', function(e) {
-      e.preventDefault();
-      showQuestionSuggestionModal();
-    });
-    
-    // View answers link
-    document.getElementById('viewAnswersLink').addEventListener('click', function(e) {
-      e.preventDefault();
-      alert('Answer keys are provided after each quiz. Complete a quiz to see detailed explanations!');
-    });
+    // Pulse animation for coming soon icon
+    const icon = document.querySelector('.coming-soon-icon');
+    if (icon) {
+      setInterval(() => {
+        icon.style.animation = 'none';
+        setTimeout(() => {
+          icon.style.animation = 'pulse 2s infinite ease-in-out';
+        }, 10);
+      }, 2000);
+    }
   });
   
-  let currentQuiz = null;
-  let currentQuestionIndex = 0;
-  let userAnswers = [];
-  let quizScore = 0;
-  let correctStreak = 0;
-  let maxStreak = 0;
-  let startTime = null;
-  let timerInterval = null;
-  let timeRemaining = 600; // 10 minutes in seconds
-  let hintsRemaining = 3;
-  
-  function initializeLeaderboard() {
-    const leaderboardBody = document.getElementById('leaderboardBody');
-    
-    // Simulated leaderboard data
-    const leaders = [
-      { name: 'SlangMaster99', score: 98, time: '4:32', quiz: 'Advanced' },
-      { name: 'GenZExpert', score: 96, time: '5:10', quiz: 'Intermediate' },
-      { name: 'HindiFilmFan', score: 95, time: '6:45', quiz: 'Bollywood' },
-      { name: 'DelhiDude', score: 94, time: '4:55', quiz: 'Regional' },
-      { name: 'QuizQueen', score: 93, time: '7:20', quiz: 'Advanced' },
-      { name: 'MumbaiMaven', score: 92, time: '5:45', quiz: 'Intermediate' },
-      { name: 'ChennaiChamp', score: 91, time: '6:10', quiz: 'Beginner' },
-      { name: 'BangaloreBuddy', score: 90, time: '8:05', quiz: 'Workplace' }
-    ];
-    
-    leaderboardBody.innerHTML = leaders.map((leader, index) => `
-      <div class="table-row ${index < 3 ? 'top-three' : ''}">
-        <div class="table-cell rank">
-          ${index === 0 ? '🥇' : index === 1 ? '🥈' : index === 2 ? '🥉' : index + 1}
-        </div>
-        <div class="table-cell name">
-          <i class="fas fa-user"></i> ${leader.name}
-        </div>
-        <div class="table-cell score">${leader.score}%</div>
-        <div class="table-cell time">${leader.time}</div>
-        <div class="table-cell quiz">${leader.quiz}</div>
-      </div>
-    `).join('');
-  }
-  
-  function startQuiz(quizType) {
-    currentQuiz = quizType;
-    currentQuestionIndex = 0;
-    userAnswers = [];
-    quizScore = 0;
-    correctStreak = 0;
-    maxStreak = 0;
-    timeRemaining = quizType === 'intermediate' ? 480 : 600; // 8 min for intermediate, 10 for others
-    hintsRemaining = 3;
-    
-    // Hide selection, show active quiz
-    document.querySelector('.quiz-selection').style.display = 'none';
-    document.querySelector('.leaderboard').style.display = 'none';
-    document.getElementById('activeQuiz').style.display = 'block';
-    
-    // Set quiz title
-    const titleMap = {
-      'beginner': 'Slang Basics',
-      'intermediate': 'Gen-Z Slang Challenge',
-      'advanced': 'Slang Master',
-      'workplace': 'Workplace Slang',
-      'bollywood': 'Bollywood Slang',
-      'regional': 'Regional Slang',
-      'historical': 'Historical Slang'
-    };
-    
-    document.getElementById('quizTitle').textContent = titleMap[quizType] || 'Slang Quiz';
-    document.getElementById('quizDescription').textContent = getQuizDescription(quizType);
-    document.getElementById('totalQuestionsCount').textContent = quizDatabase[quizType]?.length || 10;
-    
-    // Start timer
-    startTime = Date.now();
-    startTimer();
-    
-    // Load first question
-    loadQuestion();
-    
-    // Update UI
-    updateProgress();
-    updateScoreDisplay();
-    updateStreakDisplay();
-    updateHintDisplay();
-  }
-  
-  function getQuizDescription(quizType) {
-    const descriptions = {
-      'beginner': 'Perfect for parents and beginners. Common terms you hear daily.',
-      'intermediate': 'Test your knowledge of trending internet slang used by youth.',
-      'advanced': 'For true slang experts. Regional terms and obscure references.',
-      'workplace': 'Office-appropriate terms and professional jargon.',
-      'bollywood': 'Slang from movies and celebrity culture.',
-      'regional': 'State-specific slang from across India.',
-      'historical': 'Old-school slang from 90s and 2000s.'
-    };
-    return descriptions[quizType] || 'Test your slang knowledge';
-  }
-  
-  function startTimer() {
-    updateTimerDisplay();
-    
-    timerInterval = setInterval(() => {
-      timeRemaining--;
-      updateTimerDisplay();
-      
-      if (timeRemaining <= 0) {
-        clearInterval(timerInterval);
-        finishQuiz();
-      }
-    }, 1000);
-  }
-  
-  function updateTimerDisplay() {
-    const minutes = Math.floor(timeRemaining / 60);
-    const seconds = timeRemaining % 60;
-    document.getElementById('timerValue').textContent = 
-      `${minutes}:${seconds.toString().padStart(2, '0')}`;
-  }
-  
-  function loadQuestion() {
-    const questions = quizDatabase[currentQuiz] || quizDatabase.beginner;
-    const question = questions[currentQuestionIndex];
-    
-    if (!question) {
-      finishQuiz();
-      return;
+  // Add some random progress updates
+  setTimeout(() => {
+    const progressFill = document.querySelector('.progress-fill');
+    if (progressFill) {
+      progressFill.style.width = '78%';
+      document.querySelector('.progress-text span:nth-child(2)').textContent = '78% Complete';
     }
-    
-    // Update question text
-    document.getElementById('questionText').textContent = question.question;
-    
-    // Update options
-    const optionsContainer = document.getElementById('questionOptions');
-    optionsContainer.innerHTML = '';
-    
-    question.options.forEach((option, index) => {
-      const optionDiv = document.createElement('div');
-      optionDiv.className = 'option';
-      optionDiv.innerHTML = `
-        <div class="option-letter">${String.fromCharCode(65 + index)}</div>
-        <div class="option-text">${option}</div>
-      `;
-      
-      optionDiv.addEventListener('click', () => selectOption(index));
-      optionsContainer.appendChild(optionDiv);
-    });
-    
-    // Reset option selection
-    document.querySelectorAll('.option').forEach(opt => {
-      opt.classList.remove('selected', 'correct', 'wrong');
-    });
-    
-    // Update navigation buttons
-    document.getElementById('prevQuestionBtn').disabled = currentQuestionIndex === 0;
-    document.getElementById('nextQuestionBtn').disabled = true;
-    
-    // Update status
-    document.getElementById('statusText').textContent = 'Select an answer';
-    
-    // Check if already answered
-    if (userAnswers[currentQuestionIndex] !== undefined) {
-      const selectedIndex = userAnswers[currentQuestionIndex];
-      const options = document.querySelectorAll('.option');
-      options[selectedIndex].classList.add('selected');
-      
-      // Show correct/wrong
-      if (selectedIndex === question.correct) {
-        options[selectedIndex].classList.add('correct');
-      } else {
-        options[selectedIndex].classList.add('wrong');
-        options[question.correct].classList.add('correct');
-      }
-      
-      document.getElementById('nextQuestionBtn').disabled = false;
-      document.getElementById('statusText').textContent = 
-        selectedIndex === question.correct ? 'Correct!' : 'Incorrect';
-    }
-    
-    // Update progress
-    updateProgress();
-  }
-  
-  function selectOption(optionIndex) {
-    // Remove selection from all options
-    document.querySelectorAll('.option').forEach(opt => {
-      opt.classList.remove('selected');
-    });
-    
-    // Add selection to clicked option
-    const selectedOption = document.querySelectorAll('.option')[optionIndex];
-    selectedOption.classList.add('selected');
-    
-    // Store answer
-    userAnswers[currentQuestionIndex] = optionIndex;
-    
-    // Check answer
-    const questions = quizDatabase[currentQuiz] || quizDatabase.beginner;
-    const question = questions[currentQuestionIndex];
-    const isCorrect = optionIndex === question.correct;
-    
-    // Update score and streak
-    if (isCorrect) {
-      quizScore += 10;
-      correctStreak++;
-      if (correctStreak > maxStreak) maxStreak = correctStreak;
-    } else {
-      correctStreak = 0;
-    }
-    
-    // Show correct/wrong
-    if (isCorrect) {
-      selectedOption.classList.add('correct');
-      document.getElementById('statusText').textContent = 'Correct!';
-    } else {
-      selectedOption.classList.add('wrong');
-      document.querySelectorAll('.option')[question.correct].classList.add('correct');
-      document.getElementById('statusText').textContent = 'Incorrect';
-    }
-    
-    // Update displays
-    updateScoreDisplay();
-    updateStreakDisplay();
-    
-    // Enable next button
-    document.getElementById('nextQuestionBtn').disabled = false;
-  }
-  
-  function updateProgress() {
-    const questions = quizDatabase[currentQuiz] || quizDatabase.beginner;
-    const progress = ((currentQuestionIndex + 1) / questions.length) * 100;
-    document.getElementById('progressFill').style.width = `${progress}%`;
-    document.getElementById('currentQuestion').textContent = currentQuestionIndex + 1;
-  }
-  
-  function updateScoreDisplay() {
-    document.getElementById('scoreValue').textContent = quizScore;
-  }
-  
-  function updateStreakDisplay() {
-    document.getElementById('streakValue').textContent = correctStreak;
-  }
-  
-  function updateHintDisplay() {
-    document.getElementById('hintBtn').textContent = `Get Hint (${hintsRemaining} left)`;
-    document.getElementById('hintBtn').disabled = hintsRemaining <= 0;
-  }
-  
-  function prevQuestion() {
-    if (currentQuestionIndex > 0) {
-      currentQuestionIndex--;
-      loadQuestion();
-    }
-  }
-  
-  function nextQuestion() {
-    const questions = quizDatabase[currentQuiz] || quizDatabase.beginner;
-    
-    if (currentQuestionIndex < questions.length - 1) {
-      currentQuestionIndex++;
-      loadQuestion();
-    } else {
-      finishQuiz();
-    }
-  }
-  
-  function showHint() {
-    if (hintsRemaining <= 0) return;
-    
-    hintsRemaining--;
-    updateHintDisplay();
-    
-    const questions = quizDatabase[currentQuiz] || quizDatabase.beginner;
-    const question = questions[currentQuestionIndex];
-    
-    // Remove two wrong options (simplified hint)
-    const options = document.querySelectorAll('.option');
-    let wrongOptionsRemoved = 0;
-    
-    for (let i = 0; i < options.length; i++) {
-      if (i !== question.correct && wrongOptionsRemoved < 2) {
-        options[i].style.opacity = '0.3';
-        options[i].style.pointerEvents = 'none';
-        wrongOptionsRemoved++;
-      }
-    }
-    
-    document.getElementById('statusText').textContent = `Hint used! ${hintsRemaining} hints remaining`;
-  }
-  
-  function finishQuiz() {
-    clearInterval(timerInterval);
-    
-    // Calculate final score
-    const questions = quizDatabase[currentQuiz] || quizDatabase.beginner;
-    const totalQuestions = questions.length;
-    const correctAnswers = userAnswers.filter((answer, index) => 
-      answer === questions[index].correct
-    ).length;
-    
-    const percentage = Math.round((correctAnswers / totalQuestions) * 100);
-    const timeTaken = Math.floor((Date.now() - startTime) / 1000);
-    
-    // Hide active quiz, show results
-    document.getElementById('activeQuiz').style.display = 'none';
-    document.getElementById('quizResults').style.display = 'block';
-    
-    // Update results
-    document.getElementById('scorePercent').textContent = `${percentage}%`;
-    document.getElementById('correctCount').textContent = correctAnswers;
-    document.getElementById('incorrectCount').textContent = totalQuestions - correctAnswers;
-    document.getElementById('finalStreak').textContent = maxStreak;
-    
-    // Format time
-    const minutes = Math.floor(timeTaken / 60);
-    const seconds = timeTaken % 60;
-    document.getElementById('timeTaken').textContent = 
-      `${minutes}:${seconds.toString().padStart(2, '0')}`;
-    
-    // Set title based on score
-    let title = 'Novice';
-    let description = 'Keep practicing!';
-    
-    if (percentage >= 90) {
-      title = 'Slang Master';
-      description = 'You\'re a slang expert!';
-    } else if (percentage >= 70) {
-      title = 'Slang Savvy';
-      description = 'Great knowledge!';
-    } else if (percentage >= 50) {
-      title = 'Getting There';
-      description = 'Good effort!';
-    }
-    
-    document.getElementById('scoreTitle').textContent = title;
-    document.getElementById('scoreDescription').textContent = description;
-    document.getElementById('resultsSubtitle').textContent = description;
-    
-    // Load breakdown
-    loadBreakdown(questions);
-  }
-  
-  function loadBreakdown(questions) {
-    const breakdownList = document.getElementById('breakdownList');
-    breakdownList.innerHTML = '';
-    
-    questions.forEach((question, index) => {
-      const userAnswer = userAnswers[index];
-      const isCorrect = userAnswer === question.correct;
-      
-      const item = document.createElement('div');
-      item.className = `breakdown-item ${isCorrect ? 'correct' : 'incorrect'}`;
-      item.innerHTML = `
-        <div class="breakdown-question">
-          <span class="breakdown-number">Q${index + 1}</span>
-          <span class="breakdown-text">${question.question}</span>
-        </div>
-        <div class="breakdown-answer">
-          <span class="breakdown-label">Your answer:</span>
-          <span class="breakdown-value">${userAnswer !== undefined ? question.options[userAnswer] : 'Not answered'}</span>
-        </div>
-        <div class="breakdown-explanation">
-          ${question.explanation}
-        </div>
-      `;
-      
-      breakdownList.appendChild(item);
-    });
-  }
-  
-  function quitQuiz() {
-    if (confirm('Are you sure you want to quit? Your progress will be lost.')) {
-      clearInterval(timerInterval);
-      
-      // Show selection, hide active quiz
-      document.querySelector('.quiz-selection').style.display = 'block';
-      document.querySelector('.leaderboard').style.display = 'block';
-      document.getElementById('activeQuiz').style.display = 'none';
-      document.getElementById('quizResults').style.display = 'none';
-    }
-  }
-  
-  function retryQuiz() {
-    if (currentQuiz) {
-      startQuiz(currentQuiz);
-      document.getElementById('quizResults').style.display = 'none';
-    }
-  }
-  
-  function newQuiz() {
-    document.querySelector('.quiz-selection').style.display = 'block';
-    document.querySelector('.leaderboard').style.display = 'block';
-    document.getElementById('quizResults').style.display = 'none';
-  }
-  
-  function shareResults() {
-    const percentage = document.getElementById('scorePercent').textContent;
-    const title = document.getElementById('scoreTitle').textContent;
-    
-    const text = `I scored ${percentage} on the SlangAdda AI ${document.getElementById('quizTitle').textContent} quiz and earned the title "${title}"! Try it yourself: ${window.location.href}`;
-    
-    if (navigator.share) {
-      navigator.share({
-        title: 'My Slang Quiz Results',
-        text: text,
-        url: window.location.href
-      });
-    } else {
-      navigator.clipboard.writeText(text).then(() => {
-        alert('Results copied to clipboard! Share with your friends.');
-      });
-    }
-  }
-  
-  function showQuestionSuggestionModal() {
-    alert('To suggest a quiz question, please email us at: questions@slangadda.ai\n\nInclude:\n1. The question\n2. Multiple choice options\n3. Correct answer\n4. Explanation\n\nWe credit contributors!');
-  }
+  }, 3000);
 </script>
 
 </body>
